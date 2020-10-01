@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('area')
-    <div class="row">
+    <div class="row area">
         @include('partials.sidebar')
 
         <div class="content col s10">
