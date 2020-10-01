@@ -74,22 +74,22 @@
 <section class="login">
     <div class="container">
         <div class="login__inner">
-            <form class="login__block z-depth-2" action="#" method="POST">
+            <form class="login__block z-depth-2" action="{{ route('login') }}" method="POST">
                 @csrf
 
                 <h4>Вход</h4>
 
                 <div class="input-field">
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" class="validate @error('email') invalid @enderror" value="{{ old('email') }}" name="email">
                     <label for="email">Email</label>
                 </div>
 
                 <div class="input-field">
-                    <input id="password" type="password" class="validate">
+                    <input id="password" type="password" class="validate @error('password') invalid @enderror" name="password">
                     <label for="password">Пароль</label>
                 </div>
 
-                <button class="btn waves-effect waves-light login__button-submit" type="submit" name="action">Войти
+                <button class="btn waves-effect waves-light login__button-submit" type="submit">Войти
                     <i class="material-icons right">send</i>
                 </button>
 

@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="ru">
 
 <head>
@@ -15,21 +14,9 @@
 
 <body>
 
-<header class="header">
-    <div class="container">
-        <div class="header__inner">
-
-            <a href="index.html" class="header__logo">Олимпиады</a>
-
-
-        </div>
-    </div>
-</header>
+@include('partials.header')
 
 @yield('area')
-
-
-
 
 @include('partials.footer')
 
