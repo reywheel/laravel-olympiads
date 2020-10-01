@@ -1,0 +1,20 @@
+<section class="sidebar col s2">
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+            <div class="collapsible-body">
+                <div><a href="">hello</a></div>
+                <div><a href="">hello</a></div>
+                <div><a href="">hello</a></div>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+    </ul>
+</section>
