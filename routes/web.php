@@ -14,6 +14,9 @@
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/users/all', 'UsersController@showAll')->name('users.all');
 });
 Auth::routes();
+
+Route::get('ajax/users/all', 'AjaxController@showAllUsers')->name('ajax.users.all');
 
