@@ -1,0 +1,84 @@
+.header {
+  background-color: #38414A;
+}
+
+.header__inner {
+  max-height: 70px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.header__user-wrapper {
+  position: relative;
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  cursor: pointer;
+  color: #fff;
+
+  &:hover {
+    color: darken(#fff, 20);
+  }
+
+  &:hover ~ .header__dropdown-menu {
+    opacity: 1;
+    pointer-events: unset;
+  }
+}
+
+.header__user-name {
+  font-weight: 500;
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.header__user-arrow {
+}
+
+.header__dropdown-menu {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  min-width: 240px;
+  box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 4px !important;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+
+  &:hover {
+    opacity: 1;
+    pointer-events: unset;
+  }
+}
+
+.header__dropdown-menu-item {
+  padding: 0 20px;
+  transition: all .3s;
+  
+  &:hover {
+    color: #272e37;
+    background-color: #f3f7f9;
+  }
+}
+
+.header__dropdown-menu-link {
+  width: 100%;
+  padding: 7px 0;
+  color: #6c757d;
+}

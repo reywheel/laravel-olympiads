@@ -1,0 +1,282 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+.container {
+  max-width: unset;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.area {
+  margin-bottom: 0;
+}
+
+.header {
+  background-color: #38414A;
+}
+
+.header__inner {
+  max-height: 70px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.header__user-wrapper {
+  position: relative;
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.header__user:hover {
+  color: #cccccc;
+}
+
+.header__user:hover ~ .header__dropdown-menu {
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.header__user-name {
+  font-weight: 500;
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.header__dropdown-menu {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  min-width: 240px;
+  box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 4px !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.header__dropdown-menu:hover {
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.header__dropdown-menu-item {
+  padding: 0 20px;
+  transition: all 0.3s;
+}
+
+.header__dropdown-menu-item:hover {
+  color: #272e37;
+  background-color: #f3f7f9;
+}
+
+.header__dropdown-menu-link {
+  width: 100%;
+  padding: 7px 0;
+  color: #6c757d;
+}
+
+.sidebar {
+  background-color: #fff;
+  height: calc(100vh - 70px);
+}
+
+.collapsible {
+  border: none;
+  box-shadow: none;
+}
+
+.content {
+  background-color: #F4F5F7;
+  min-height: calc(100vh - 70px) !important;
+}
+
+.register__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.register__block {
+  max-width: 500px;
+  width: 100%;
+  padding: 36px;
+  border-radius: 4px;
+}
+
+.register__privacy {
+  margin-bottom: 20px;
+}
+
+.register__button-submit {
+  margin-right: 20px;
+}
+
+.register__dop-btn {
+  text-transform: unset;
+}
+
+.login__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login__block {
+  max-width: 500px;
+  width: 100%;
+  padding: 36px;
+  border-radius: 4px;
+}
+
+.login__dop-btn {
+  text-transform: unset;
+}
+
+.login__dop-btn:not(:last-child) {
+  margin-right: 20px;
+}
+
+.login__button-submit {
+  margin-bottom: 20px;
+}
+
+.create-test__title {
+  font-size: 1.25rem;
+  line-height: 75px;
+  color: #323a46;
+}
+
+.create-test__header {
+  background-color: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, 0.03);
+  margin-bottom: 24px;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.create-test__input-title {
+  max-width: 250px;
+  width: 100%;
+  margin-right: 50px;
+}
+
+.create-test__question {
+  background-color: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, 0.03);
+  margin-bottom: 24px;
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+.create-test__question-type {
+  font-size: 13px;
+  color: #323a46;
+}
+
+.create-test__question-wrapper {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.create-test__question-title {
+  max-width: 500px;
+  width: 100%;
+  margin-right: 50px;
+}
+
+.create-test__question-header {
+  display: flex;
+  align-items: center;
+}
+
+.create-test__question-answer {
+  max-width: 500px;
+  width: 100%;
+}
+
+.create-test__question-delete {
+  cursor: pointer;
+  color: darkgray;
+  transition: all 0.3s;
+}
+
+.create-test__question-delete:hover {
+  color: red;
+}
+

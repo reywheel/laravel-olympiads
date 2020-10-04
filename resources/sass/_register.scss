@@ -1,0 +1,29 @@
+.register {}
+
+.container {}
+
+.register__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.register__block {
+  max-width: 500px;
+  width: 100%;
+  padding: 36px;
+  border-radius: 4px;
+}
+
+.register__privacy {
+  margin-bottom: 20px;
+}
+
+.register__button-submit {
+  margin-right: 20px;
+}
+
+.register__dop-btn {
+  text-transform: unset;
+}

@@ -1,8 +1,15 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import 'smart-grid';
 
-// Variables
 @import 'variables';
+@import 'global';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+
+@import 'area';
+@import 'header';
+@import 'sidebar';
+@import 'content';
+
+
+@import 'register';
+@import 'login';
+@import 'create-test';
