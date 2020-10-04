@@ -14,7 +14,15 @@
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/users/all', 'UsersController@showAll')->name('users.all');
+
+    Route::prefix('/users')->group(function () {
+        Route::get('/', 'UsersController@showAll')->name('users.read');
+        Route::get('/{id}/delete', 'UsersController@delete')->name('users.delete');
+        Route::get('/{id}/update', 'UsersController@updateGet')->name('users.update-get');
+        Route::post('/update', 'UsersController@updatePost')->name('users.update-post');
+        Route::get('/create', 'UsersController@createGet')->name('users.create-get');
+        Route::post('/create', 'UsersController@createPost')->name('users.create-post');
+    });
 });
 Auth::routes();
 
