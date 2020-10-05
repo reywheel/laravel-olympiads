@@ -212,74 +212,24 @@ button:focus {
   margin-bottom: 20px;
 }
 
-.create-test__title {
-  font-size: 1.25rem;
-  line-height: 75px;
-  color: #323a46;
-}
-
-.create-test__header {
-  background-color: #fff;
-  padding: 1.5rem;
-  box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, 0.03);
-  margin-bottom: 24px;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-}
-
-.create-test__input-title {
-  max-width: 250px;
-  width: 100%;
-  margin-right: 50px;
-}
-
-.create-test__question {
-  background-color: #fff;
-  padding: 1.5rem;
-  box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, 0.03);
-  margin-bottom: 24px;
-  border-radius: 0.25rem;
+.content {
   position: relative;
 }
 
-.create-test__question-type {
-  font-size: 13px;
-  color: #323a46;
+.question-adder__button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 60px;
+  height: 60px;
 }
 
-.create-test__question-wrapper {
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  display: flex;
-  align-items: center;
+.question-adder__button--text {
+  bottom: 140px;
 }
 
-.create-test__question-title {
-  max-width: 500px;
-  width: 100%;
-  margin-right: 50px;
-}
-
-.create-test__question-header {
-  display: flex;
-  align-items: center;
-}
-
-.create-test__question-answer {
-  max-width: 500px;
-  width: 100%;
-}
-
-.create-test__question-delete {
-  cursor: pointer;
-  color: darkgray;
-  transition: all 0.3s;
-}
-
-.create-test__question-delete:hover {
-  color: red;
+.question-adder__button--radio {
+  bottom: 80px;
 }
 
 /* ========================================================================

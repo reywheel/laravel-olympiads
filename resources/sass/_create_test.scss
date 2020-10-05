@@ -1,0 +1,26 @@
+.content {
+    position: relative;
+}
+
+.question-adder {
+}
+
+.question-adder__button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+}
+
+.question-adder__button--text {
+    bottom: 140px;
+}
+
+.question-adder__button--radio {
+    bottom: 80px;
+}
+
+.question-adder__button-checkbox {
+
+}

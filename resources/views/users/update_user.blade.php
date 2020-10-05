@@ -41,8 +41,13 @@
                     <p class="uk-text-danger uk-text-small uk-margin-small">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="uk-margin">
-                    <button class="uk-button uk-button-primary" type="submit">Сохранить</button>
+                <div class="uk-grid-small" uk-grid>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" type="submit">Сохранить</button>
+                    </div>
+                    <div class="uk-margin uk-margin-remove-top">
+                        <a href="{{ route('users.read') }}" class="uk-button uk-button-default">Отмена</a>
+                    </div>
                 </div>
 
             </form>

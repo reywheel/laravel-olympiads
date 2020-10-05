@@ -14,47 +14,46 @@
             @endif
 
 
-            <a href="{{ route('users.create-get') }}"
-               class="uk-button uk-button-primary uk-margin-top uk-margin-bottom">Добавить пользователя</a>
+            <a href="{{ route('tests.create-get') }}"
+               class="uk-button uk-button-primary uk-margin-top uk-margin-bottom">Создать новый тест</a>
 
             {{-- table start --}}
             <div class="uk-card uk-card-default uk-padding-small">
                 <table class="uk-table  uk-table-hover uk-table-striped">
                     <thead>
                     <tr>
-                        <th>Имя</th>
-                        <th>Фамилия</th>
-                        <th>Отчество</th>
-                        <th>Дата рождения</th>
-                        <th>Школа</th>
-                        <th>Email</th>
+                        <th>Название</th>
+                        <th>Автор</th>
+                        <th>Однонаправленный</th>
+                        <th>Дата создание</th>
+                        <th>Дата последнего изменения</th>
                         <th></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    @forelse ($users as $user)
+                    @foreach ($tests as $test)
                         <tr>
-                            <td>{{ $user->surname }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->patronymic }}</td>
-                            <td>{{ DateTime::createFromFormat('Y-m-d', $user->date_of_birth)->format('d.m.Y') }}</td>
-                            <td>{{ $user->school }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td>{{ $test->title }}</td>
+                            <td>{{ $test->user->name }}</td>
+                            <td>{{ $test->is_unidirectional }}</td>
+                            <td>{{ $test->created_at->format('d.m.Y H:i:s') }}</td>
+                            <td>{{ $test->updated_at->format('d.m.Y H:i:s') }}</td>
                             <td>
                                 <ul class="uk-iconnav">
-                                    <li><a href="{{ route('users.update-get', ['id' => $user->id]) }}"
+                                    <li><a href="{{ route('tests.update-get', ['id' => $test->id]) }}"
                                            uk-icon="icon: file-edit"></a></li>
-                                    <li><a href="{{ route('users.delete', ['id' => $user->id]) }}" uk-icon="icon: trash"
+                                    <li><a href="{{ route('tests.delete', ['id' => $test->id]) }}" uk-icon="icon: trash"
                                            class="uk-text-danger"></a></li>
                                 </ul>
                             </td>
                         </tr>
-                    @empty
-                        <p>No users</p>
-                    @endforelse
+                    @endforeach
                     </tbody>
                 </table>
+                @if(count($tests) == 0)
+                    <p class="uk-margin-small-left">Тестов нет</p>
+                @endif
             </div>
             {{-- table end --}}
 

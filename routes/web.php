@@ -23,6 +23,15 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/create', 'UsersController@createGet')->name('users.create-get');
         Route::post('/create', 'UsersController@createPost')->name('users.create-post');
     });
+
+    Route::prefix('/tests')->group(function() {
+        Route::get('/', 'TestsController@showAll')->name('tests.show-all');
+        Route::get('/create', 'TestsController@createGet')->name('tests.create-get');
+        Route::post('/create', 'TestsController@createPost')->name('tests.create-post');
+        Route::get('/{id}/update', 'TestsController@updateGet')->name('tests.update-get');
+        Route::post('/update', 'TestsController@updatePost')->name('tests.update-post');
+        Route::get('/{id}/delete', 'TestsController@delete')->name('tests.delete');
+    });
 });
 Auth::routes();
 
