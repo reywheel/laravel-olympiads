@@ -34,9 +34,9 @@
                     <tbody>
                     @foreach ($tests as $test)
                         <tr>
-                            <td>{{ $test->title }}</td>
+                            <td><a href="{{ route('tests.show-by-id', ['id' => $test->id]) }}" class="uk-link-heading">{{ $test->title }}</a></td>
                             <td>{{ $test->user->name }}</td>
-                            <td>{{ $test->is_unidirectional }}</td>
+                            <td>{{ $test->is_unidirectional == 1 ? 'Да' : 'Нет' }}</td>
                             <td>{{ $test->created_at->format('d.m.Y H:i:s') }}</td>
                             <td>{{ $test->updated_at->format('d.m.Y H:i:s') }}</td>
                             <td>

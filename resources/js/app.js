@@ -1,4 +1,4 @@
-import TestCreator from "./modules/testCreator";
+import QuestionCreator from "./modules/questionCreator";
 
 require('./bootstrap');
 import UIkit from 'uikit';
@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     var elems = document.querySelectorAll('.fixed-action-btn');
     var instances = M.FloatingActionButton.init(elems, {});
 
-    // let testCreator = new TestCreator();
+    // let testCreator = new QuestionCreator();
     // testCreator.init();
 
 // loads the Icon plugin

@@ -5,7 +5,7 @@
         @include('partials.sidebar')
 
         <div class="content uk-width-4-5">
-            <form method="POST" action="{{ route('tests.create-post') }}" class="uk-margin-large-bottom">
+            <form method="POST" action="" class="uk-margin-large-bottom">
 
                 @csrf
                 <div class="uk-card uk-card-default uk-margin-top uk-padding uk-margin-bottom">
@@ -29,24 +29,10 @@
                     </div>
                 </div>
 
-                <button class="uk-button uk-button-primary" name="action" value="save">Сохранить</button>
-                <button class="uk-button uk-button-primary" name="action" value="save_and_add_question">Сохранить и
-                    добавить вопрос
-                </button>
-
+                <button type="submit" class="uk-button uk-button-primary">Сохранить</button>
+                
             </form>
         </div>
-        {{--        <div class="question-adder">--}}
-        {{--            <button type="button" class="question-adder__button question-adder__button--text uk-button-primary js-add-text-question">--}}
-        {{--                <span uk-icon="bold"></span>--}}
-        {{--            </button>--}}
-        {{--            <button type="button" class="question-adder__button question-adder__button--radio uk-button-primary js-add-radio-question">--}}
-        {{--                <span uk-icon="plus-circle"></span>--}}
-        {{--            </button>--}}
-        {{--            <button type="button" class="question-adder__button question-adder__button--checkbox uk-button-primary js-add-checkbox-question">--}}
-        {{--                <span uk-icon="check"></span>--}}
-        {{--            </button>--}}
-        {{--        </div>--}}
     </div>
 
 

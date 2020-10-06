@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
 use App\Test;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,17 @@ class TestsController extends Controller
     {
         $all_tests = Test::with('user')->get();
         return view('tests.all_tests', ['tests' => $all_tests]);
+    }
+
+    public function showById($id)
+    {
+        $test = Test::where('id', $id)->with('user')->first();
+        $questions = Question::where('test_id', $id)->get();
+
+        return view('tests.test', [
+            'test' => $test,
+            'questions' => $questions
+        ]);
     }
 
     public function createGet()
@@ -31,11 +43,7 @@ class TestsController extends Controller
         $newTest->is_unidirectional = $request->is_unidirectional;
         $newTest->save();
 
-        if ($request->action == 'save_and_add_question') {
-            return "Сохранить и добавить вопрос";
-        } else {
-            return redirect()->route('tests.show-all')->with('status', 'Тест успешно создан');
-        }
+        return redirect()->route('tests.show-all')->with('status', 'Тест успешно создан');
     }
 
     public function delete($id)

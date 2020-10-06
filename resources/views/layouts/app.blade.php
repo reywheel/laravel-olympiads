@@ -18,7 +18,9 @@
 
 @yield('area')
 
-@include('partials.footer')
+@section('footer')
+    @include('partials.footer')
+@show
 
 </body>
 
