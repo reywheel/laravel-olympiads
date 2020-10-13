@@ -86,89 +86,120 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/modules/questionCreator.js":
-/*!*************************************************!*\
-  !*** ./resources/js/modules/questionCreator.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var QuestionCreator = /*#__PURE__*/function () {
-  function QuestionCreator() {
-    _classCallCheck(this, QuestionCreator);
-
-    _defineProperty(this, "questionTemplates", {
-      radio: "\n            <div class=\"uk-card uk-card-default uk-padding uk-margin-bottom js-question-card\">\n                <div class=\"uk-flex\">\n                    <p class=\"uk-margin-right\">\u0412\u043E\u043F\u0440\u043E\u0441 <span class=\"js-question-number\">0</span> | <span class=\"uk-text-muted\">\u0435\u0434\u0438\u043D\u0438\u0447\u043D\u044B\u0439 \u0432\u044B\u0431\u043E\u0440</span></p>\n                    <a href=\"#\" class=\"js-delete-question uk-icon-link uk-text-danger\" uk-icon=\"trash\"></a>\n                </div>\n                <div class=\"uk-margin\">\n                    <input class=\"uk-input uk-width-3-5\" type=\"text\" placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\"\n                           name=\"question[0][title]\">\n                    <input type=\"hidden\" name=\"question[0][type]\" value=\"radio\">\n                    <button class=\"uk-button uk-button-primary\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432\u0430\u0440\u0438\u0430\u043D\u0442 \u043E\u0442\u0432\u0435\u0442\u0430</button>\n                </div>\n                <p>\u0412\u0430\u0440\u0438\u0430\u043D\u0442\u044B \u043E\u0442\u0432\u0435\u0442\u043E\u0432</p>\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\" type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\" name=\"question[0][answer][0][title]\">\n                <input class=\"uk-checkbox\" type=\"checkbox\" name=\"question[0][answer][0][is_true]\">\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\" type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\" name=\"question[0][answer][1][title]\">\n                <input class=\"uk-checkbox\" type=\"checkbox\" name=\"question[0][answer][1][is_true]\">\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\" type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\" name=\"question[0][answer][2][title]\">\n                <input class=\"uk-checkbox\" type=\"checkbox\" name=\"question[0][answer][2][is_true]\">\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\" type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\" name=\"question[0][answer][3][title]\">\n                <input class=\"uk-checkbox\" type=\"checkbox\" name=\"question[0][answer][3][is_true]\">\n            </div>\n        ",
-      text: "\n            <div class=\"uk-card uk-card-default uk-padding uk-margin-bottom js-question-card\">\n                <div class=\"uk-flex\">\n                    <p class=\"uk-margin-right\">\u0412\u043E\u043F\u0440\u043E\u0441 <span class=\"js-question-number\">0</span> | <span class=\"uk-text-muted\">\u0442\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0435 \u043F\u043E\u043B\u0435</span></p>\n                    <a href=\"#\" class=\"js-delete-question uk-icon-link uk-text-danger\" uk-icon=\"trash\"></a>\n                </div>\n                <div class=\"uk-margin\">\n                    <input class=\"uk-input uk-width-3-5\" type=\"text\" placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\"\n                           name=\"question[0][title]\">\n                    <input type=\"hidden\" name=\"question[0][type]\" value=\"radio\">\n                    <button class=\"uk-button uk-button-primary\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432\u0430\u0440\u0438\u0430\u043D\u0442 \u043E\u0442\u0432\u0435\u0442\u0430</button>\n                </div>\n                <p>\u0412\u0430\u0440\u0438\u0430\u043D\u0442\u044B \u043E\u0442\u0432\u0435\u0442\u043E\u0432</p>\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\" type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\" name=\"question[0][answer][0][title]\">\n                <input class=\"uk-checkbox\" type=\"checkbox\" name=\"question[0][answer][0][is_true]\">\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\" type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\" name=\"question[0][answer][1][title]\">\n                <input class=\"uk-checkbox\" type=\"checkbox\" name=\"question[0][answer][1][is_true]\">\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\" type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\" name=\"question[0][answer][2][title]\">\n                <input class=\"uk-checkbox\" type=\"checkbox\" name=\"question[0][answer][2][is_true]\">\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\" type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\" name=\"question[0][answer][3][title]\">\n                <input class=\"uk-checkbox\" type=\"checkbox\" name=\"question[0][answer][3][is_true]\">\n            </div>\n        "
-    });
-
-    this.createTextQuestionTriggerSelector = '.js-add-text-question';
-    this.createRadioQuestionTriggerSelector = '.js-add-radio-question';
-    this.questionAreaSelector = '.js-question-area';
-    this.createTextQuestionButton = document.querySelector(this.createTextQuestionTriggerSelector);
-    this.createRadioQuestionButton = document.querySelector(this.createRadioQuestionTriggerSelector);
-    this.questionArea = document.querySelector(this.questionAreaSelector);
-  }
-
-  _createClass(QuestionCreator, [{
-    key: "bindCreateButtons",
-    value: function bindCreateButtons() {
-      var _this = this;
-
-      this.createRadioQuestionButton.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        _this.questionCreator('radio');
-      });
-      this.createTextQuestionButton.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        _this.questionCreator('text');
-      });
-    }
-  }, {
-    key: "questionCreator",
-    value: function questionCreator(type) {
-      this.questionArea.innerHTML = this.questionTemplates[type];
-    }
-  }, {
-    key: "init",
-    value: function init() {
-      this.bindCreateButtons();
-    }
-  }]);
-
-  return QuestionCreator;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (QuestionCreator);
-
-/***/ }),
-
 /***/ "./resources/js/questionCreater.js":
 /*!*****************************************!*\
   !*** ./resources/js/questionCreater.js ***!
   \*****************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_questionCreator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/questionCreator */ "./resources/js/modules/questionCreator.js");
-
+Vue.component('textQuestion', {
+  props: ['title', 'answer', 'questionIndex'],
+  methods: {
+    onTitleInput: function onTitleInput($event) {
+      this.$emit('on-question-title-input', {
+        value: $event.target.value,
+        questionIndex: this.questionIndex
+      });
+    },
+    onAnswerInput: function onAnswerInput($event) {
+      this.$emit('on-answer-text-input', {
+        value: $event.target.value,
+        questionIndex: this.questionIndex
+      });
+    },
+    onDeleteButtonClick: function onDeleteButtonClick() {
+      this.$emit('on-delete-question-button-click', this.questionIndex);
+    }
+  },
+  template: "\n        <div class=\"uk-card uk-card-default uk-padding uk-margin-bottom js-question-card\">\n            <div class=\"uk-margin\">\n                <input class=\"uk-input uk-width-3-5 uk-margin-large-right\"\n                       type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\"\n                       :value=\"title\"\n                       @input=\"onTitleInput\"\n                       required>\n                <input type=\"hidden\" name=\"question[type]\" value=\"radio\">\n                <a href=\"#\" class=\"uk-text-danger\" uk-icon=\"icon: trash\" @click.prevent=\"onDeleteButtonClick\"></a>\n            </div>\n            <p>\u041F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0439 \u043E\u0442\u0432\u0435\u0442</p>\n            <input type=\"text\" name=\"\" class=\"uk-input\" :value=\"answer\" @input=\"onAnswerInput\">\n        </div>\n    "
+});
+Vue.component('radioQuestion', {
+  props: ['title', 'answers', 'correctAnswerIndex', 'questionIndex'],
+  methods: {
+    onTitleInput: function onTitleInput($event) {
+      this.$emit('on-question-title-input', {
+        value: $event.target.value,
+        questionIndex: this.questionIndex
+      });
+    },
+    onDeleteButtonClick: function onDeleteButtonClick() {
+      this.$emit('on-delete-question-button-click', this.questionIndex);
+    },
+    onAddAnswerButtonClick: function onAddAnswerButtonClick() {
+      this.$emit('on-add-answer-button-click', this.questionIndex);
+    },
+    onAnswerInput: function onAnswerInput($event, answerIndex) {
+      this.$emit('on-radio-answer-input', {
+        questionIndex: this.questionIndex,
+        answerIndex: answerIndex,
+        value: $event.target.value
+      });
+    },
+    onAnswerDelete: function onAnswerDelete(answerIndex) {
+      this.$emit('on-radio-answer-delete-button-click', {
+        questionIndex: this.questionIndex,
+        answerIndex: answerIndex
+      });
+    },
+    onAnswerCheckboxClick: function onAnswerCheckboxClick($event) {
+      this.$emit('on-radio-answer-checkbox-click', {
+        questionIndex: this.questionIndex,
+        value: $event.target.value
+      });
+    }
+  },
+  template: "\n        <div class=\"uk-card uk-card-default uk-padding uk-margin-bottom js-question-card\">\n            <div>\n                <input class=\"uk-input uk-width-3-5\"\n                       type=\"text\"\n                       placeholder=\"\u0422\u0435\u043A\u0441\u0442 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\"\n                       name=\"question[text]\"\n                       :value=\"title\"\n                       @input=\"onTitleInput\"\n                       required>\n                <input type=\"hidden\" name=\"question[type]\" value=\"radio\">\n                <button class=\"uk-button uk-button-primary uk-margin-large-right\"\n                        @click.prevent=\"onAddAnswerButtonClick\">\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432\u0430\u0440\u0438\u0430\u043D\u0442 \u043E\u0442\u0432\u0435\u0442\u0430\n                </button>\n                <a href=\"#\" class=\"uk-text-danger\" uk-icon=\"icon: trash\" @click.prevent=\"onDeleteButtonClick\"></a>\n            </div>\n            <p v-show=\"!(answers.length == 0)\">\u0412\u0430\u0440\u0438\u0430\u043D\u0442\u044B \u043E\u0442\u0432\u0435\u0442\u043E\u0432</p>\n            <template v-for=\"(answer, index) in answers\">\n                <input class=\"uk-input uk-width-3-5 uk-margin uk-margin-remove-top uk-margin-right\"\n                       type=\"text\"\n                       :placeholder=\"'\u041E\u0442\u0432\u0435\u0442 ' + (index + 1)\"\n                       :value=\"answer\"\n                       @input=\"onAnswerInput($event, index)\"\n                       required>\n                <input v-if=\"correctAnswerIndex == index\" class=\"uk-radio\" type=\"radio\" :name=\"'question['+ questionIndex + '][correct-answer-index]'\" :value=\"index\" checked>\n                <input v-else class=\"uk-radio\" type=\"radio\" :name=\"'question['+ questionIndex + '][correct-answer-index]'\" :value=\"index\" @click=\"onAnswerCheckboxClick\">\n                <a href=\"#\" class=\"uk-text-danger\" uk-icon=\"icon: trash\" @click.prevent=\"onAnswerDelete(index)\"></a>\n            </template>\n        </div>\n    "
+});
 window.addEventListener('DOMContentLoaded', function () {
-  var creator = new _modules_questionCreator__WEBPACK_IMPORTED_MODULE_0__["default"]();
-  creator.init();
+  var app = new Vue({
+    el: '#test-area',
+    data: {
+      title: 'Тестовое название',
+      isUnidirectional: true,
+      questions: []
+    },
+    methods: {
+      addQuestion: function addQuestion(type) {
+        if (type === 'text') {
+          this.questions.push({
+            type: 'text',
+            title: '',
+            answer: ''
+          });
+        } else if (type === 'radio') {
+          this.questions.push({
+            type: 'radio',
+            title: '',
+            answers: [],
+            correctAnswerIndex: 0
+          });
+        }
+      },
+      deleteQuestion: function deleteQuestion($event) {
+        this.questions.splice($event, 1);
+      },
+      changeQuestionTitle: function changeQuestionTitle($event) {
+        Vue.set(this.questions[$event.questionIndex], 'title', $event.value);
+      },
+      changeTextAnswerText: function changeTextAnswerText($event) {
+        Vue.set(this.questions[$event.questionIndex], 'answer', $event.value);
+      },
+      addRadioAnswer: function addRadioAnswer($event) {
+        this.questions[$event].answers.push('');
+      },
+      changeRadioAnswerText: function changeRadioAnswerText($event) {
+        Vue.set(this.questions[$event.questionIndex].answers, $event.answerIndex, $event.value);
+      },
+      deleteRadioAnswer: function deleteRadioAnswer($event) {
+        this.questions[$event.questionIndex].answers.splice($event.answerIndex, 1);
+      },
+      changeRadioCorrectAnswer: function changeRadioCorrectAnswer($event) {
+        this.questions[$event.questionIndex].correctAnswerIndex = $event.value;
+      }
+    },
+    template: "\n            <div class=\"content uk-width-4-5\">\n\n                <form method=\"POST\" action=\"\" class=\"uk-margin-large-bottom\">\n\n                <div class=\"uk-card uk-card-default uk-margin-top uk-padding uk-margin-bottom\">\n                    <legend class=\"uk-legend\">\u0421\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0442\u0435\u0441\u0442\u0430</legend>\n                    <div class=\"uk-margin-top\">\n                        <div class=\"uk-width-3-5\">\n                            <input class=\"uk-input\" type=\"text\" placeholder=\"\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0442\u0435\u0441\u0442\u0430\" name=\"title\" v-model=\"title\">\n                        </div>\n                        <div class=\"uk-margin\">\n                            <div class=\"uk-form-label\">\u041E\u0434\u043D\u043E\u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0439</div>\n                            <div class=\"uk-form-controls\" v-if=\"isUnidirectional\">\n                                <label><input class=\"uk-radio uk-margin-small-right\" type=\"radio\" name=\"is_unidirectional\" value=\"true\" v-model=\"isUnidirectional\">\u0414\u0430</label>\n                                <br>\n                                <label><input class=\"uk-radio uk-margin-small-right\" type=\"radio\" name=\"is_unidirectional\" value=\"false\" v-model=\"isUnidirectional\" checked>\u041D\u0435\u0442</label>\n                            </div>\n                            <div class=\"uk-form-controls\" v-else>\n                                <label><input class=\"uk-radio uk-margin-small-right\" type=\"radio\" name=\"is_unidirectional\" value=\"true\" v-model=\"isUnidirectional\" checked>\u0414\u0430</label>\n                                <br>\n                                <label><input class=\"uk-radio uk-margin-small-right\" type=\"radio\" name=\"is_unidirectional\" value=\"false\" v-model=\"isUnidirectional\">\u041D\u0435\u0442</label>\n                            </div>\n                        </div>\n                        <button class=\"uk-button uk-button-primary js-add-text-question\"\n                                @click.prevent=\"addQuestion('text')\">\u0422\u0435\u043A\u0441\u0442\u043E\u0432\u043E\u0435 \u043F\u043E\u043B\u0435</button>\n                        <button class=\"uk-button uk-button-primary js-add-radio-question\"\n                                @click.prevent=\"addQuestion('radio')\">\u0415\u0434\u0438\u043D\u0438\u0447\u043D\u044B\u0439 \u0432\u044B\u0431\u043E\u0440</button>\n                    </div>\n                </div>\n\n                <template v-for=\"(question, index) in questions\">\n                    <textQuestion v-if=\"question.type === 'text'\"\n                                  :title=\"question.title\"\n                                  :answer=\"question.answer\"\n                                  :questionIndex=\"index\"\n                                  @on-question-title-input=\"changeQuestionTitle($event)\"\n                                  @on-answer-text-input=\"changeTextAnswerText($event)\"\n                                  @on-delete-question-button-click=\"deleteQuestion($event)\">\n                    </textQuestion>\n                    <radioQuestion v-if=\"question.type === 'radio'\"\n                                  :title=\"question.title\"\n                                  :answers=\"question.answers\"\n                                  :correctAnswerIndex=\"question.correctAnswerIndex\"\n                                  :questionIndex=\"index\"\n                                  @on-question-title-input=\"changeQuestionTitle($event)\"\n                                  @on-delete-question-button-click=\"deleteQuestion($event)\"\n                                  @on-add-answer-button-click=\"addRadioAnswer($event)\"\n                                  @on-radio-answer-input=\"changeRadioAnswerText($event)\"\n                                  @on-radio-answer-delete-button-click=\"deleteRadioAnswer($event)\"\n                                  @on-radio-answer-checkbox-click=\"changeRadioCorrectAnswer($event)\">\n\n                    </radioQuestion>\n                </template>\n\n                <button type=\"submit\" class=\"uk-button uk-button-primary\">\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C</button>\n\n                {{ questions }}\n\n                </form>\n\n\n\n            </div>\n        "
+  });
 });
 
 /***/ }),

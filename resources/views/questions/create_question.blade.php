@@ -46,8 +46,3 @@
 
 
 @endsection
-
-@section('footer')
-    @parent
-    <script src="{{ asset('js/questionCreater.js') }}"></script>
-@endsection
