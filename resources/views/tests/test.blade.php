@@ -4,11 +4,11 @@
     <div class="area uk-child-width-expand" uk-grid>
         @include('partials.sidebar')
 
-        <div class="content uk-width-4-5">
+        <div class="content uk-width-4-5 uk-padding">
             <a href="{{ route('questions.create-get', ['id' => $test->id]) }}"
-               class="uk-button uk-button-primary uk-margin-top uk-margin-bottom">Добавить вопрос</a>
+               class="uk-button uk-button-primary uk-margin-bottom">Добавить вопрос</a>
             <a href="{{ route('tests.show-all') }}"
-               class="uk-button uk-button-default uk-margin-top uk-margin-bottom">Вернуться обратно</a>
+               class="uk-button uk-button-default uk-margin-bottom">Вернуться обратно</a>
 
             {{-- table start --}}
             <div class="uk-card uk-card-default uk-padding-small uk-margin-bottom">
@@ -18,8 +18,29 @@
             </div>
 
             @forelse($questions as $question)
-                <div class="uk-card uk-card-default uk-padding-small">
-                    <p>{{ $question->text }}</p>
+                <div class="uk-card uk-card-default uk-margin">
+                    <div class="uk-padding-small">
+                        <span>{{ $loop->iteration }}. </span>
+                        <span class="uk-margin-remove-bottom">{{ $question->title }}</span>
+                    </div>
+                    <table class="uk-table uk-table-striped uk-table-hover uk-table-justify uk-margin-remove-top">
+                        <tbody>
+                        @forelse($question->answers as $answer)
+                            <tr>
+                                <td class="uk-table-expand"><span class="uk-margin-left">{{ $answer->title }}</span></td>
+                                <td class="uk-width-small">
+                                    @if($answer->is_correct)
+                                    <span class="uk-text-success" uk-icon="plus-circle"></span>
+                                    @else
+                                    <span class="uk-text-danger" uk-icon="minus"></span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>Вариантов ответо нет</tr>
+                        @endforelse
+                        </tbody>
+                    </table>
                 </div>
             @empty
                 <div class="uk-card uk-card-default uk-padding-small">

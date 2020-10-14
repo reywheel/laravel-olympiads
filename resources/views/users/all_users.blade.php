@@ -4,7 +4,7 @@
     <div class="area uk-child-width-expand" uk-grid>
         @include('partials.sidebar')
 
-        <div class="content uk-width-4-5">
+        <div class="content uk-width-4-5 uk-padding">
 
             @if(session()->has('status'))
                 <div class="uk-alert-success" uk-alert>
@@ -15,7 +15,7 @@
 
 
             <a href="{{ route('users.create-get') }}"
-               class="uk-button uk-button-primary uk-margin-top uk-margin-bottom">Добавить пользователя</a>
+               class="uk-button uk-button-primary uk-margin-bottom">Добавить пользователя</a>
 
             {{-- table start --}}
             <div class="uk-card uk-card-default uk-padding-small">

@@ -10,4 +10,9 @@ class Question extends Model
     {
         $this->belongsTo(Test::class);
     }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }
