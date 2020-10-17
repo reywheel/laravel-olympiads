@@ -35,6 +35,10 @@ Route::group(['middleware' => 'auth'], function() {
 
     });
 
+    Route::prefix('/testing')->group(function() {
+        Route::get('/{id}', 'TestingController@show')->where('id', '[0-9]+')->name('testing.show');
+    });
+
     Route::prefix('/tests/{id}/questions')->where(['id' => '[0-9]+'])->group(function() {
        Route::get('/create', 'QuestionsController@createGet')->name('questions.create-get');
        Route::post('/create', 'QuestionsController@createPost')->name('questions.create-post');

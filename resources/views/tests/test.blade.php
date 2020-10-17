@@ -7,8 +7,10 @@
         <div class="content uk-width-4-5 uk-padding">
             <a href="{{ route('questions.create-get', ['id' => $test->id]) }}"
                class="uk-button uk-button-primary uk-margin-bottom">Добавить вопрос</a>
+            <a href="{{ route('testing.show', ['id' => $test->id]) }}"
+               class="uk-button uk-button-danger uk-margin-bottom">Пройти тест</a>
             <a href="{{ route('tests.show-all') }}"
-               class="uk-button uk-button-default uk-margin-bottom">Вернуться обратно</a>
+               class="uk-button uk-button-default uk-margin-bottom">Вернуться к тестам</a>
 
             {{-- table start --}}
             <div class="uk-card uk-card-default uk-padding-small uk-margin-bottom">
@@ -37,7 +39,9 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>Вариантов ответо нет</tr>
+                            <tr>
+                                <td><span class="uk-margin-left uk-padding-small">Вариантов ответов нет</span></td>
+                            </tr>
                         @endforelse
                         </tbody>
                     </table>

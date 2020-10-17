@@ -5,7 +5,6 @@
         @include('partials.sidebar')
 
         <div id="test-area"></div>
-        @scrf
     </div>
 
 @endsection
