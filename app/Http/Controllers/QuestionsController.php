@@ -16,7 +16,6 @@ class QuestionsController extends Controller
 
     public function createPost(Request $request)
     {
-//        dd($request->all());
         $newQuestion = new Question();
         $newQuestion->text = $request->input('question.text');
         $newQuestion->type = $request->input('question.type');

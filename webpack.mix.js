@@ -15,3 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
 mix.js('resources/js/questionCreater.js', 'public/js');
+
+mix.js('resources/js/tester/tester.js', 'public/js');

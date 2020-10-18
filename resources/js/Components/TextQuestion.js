@@ -26,14 +26,14 @@ const TextQuestion = Vue.component('textQuestion', {
             <hr class="uk-margin-remove">
             <div class="uk-padding">
                 <div class="uk-margin">
-                <input class="uk-input uk-width-3-5 uk-margin-large-right"
-                       type="text"
-                       placeholder="Текст вопроса"
-                       :name="'questions[' + questionIndex + '][title]'"
-                       :value="title"
-                       @input="onTitleInput"
-                       required>
-                <input type="hidden" :name="'questions[' + questionIndex + '][type]'" value="text">
+                    <input class="uk-input uk-width-3-5 uk-margin-large-right"
+                           type="text"
+                           placeholder="Текст вопроса"
+                           :name="'questions[' + questionIndex + '][title]'"
+                           :value="title"
+                           @input="onTitleInput"
+                           required>
+                    <input type="hidden" :name="'questions[' + questionIndex + '][type]'" value="text">
                 </div>
                 <p>Правильный ответ</p>
                 <input type="text" :name="'questions[' + questionIndex + '][answers][0][title]'" class="uk-input" :value="answer" @input="onAnswerInput" required>
