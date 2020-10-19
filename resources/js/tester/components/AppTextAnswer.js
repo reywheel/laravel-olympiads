@@ -5,27 +5,12 @@ export default Vue.component('AppTextAnswer', {
                    type="text"
                    placeholder="Ведите ответ"
                    :value="value"
-                   @input="onInput"
+                   @input="$emit('input', $event.target.value)"
                    required
             >
         </div>
     `,
-    props: {
-        value: {
-            type: String,
-            required: true
-        },
-        index: {
-            type: Number,
-            required: true
-        }
-    },
+    props: ['value'],
     methods: {
-        onInput($event) {
-            this.$emit('input', {
-                value: $event.target.value,
-                index: this.index
-            })
-        }
     }
 })

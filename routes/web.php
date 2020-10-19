@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::prefix('/testing')->group(function() {
         Route::get('/{id}', 'TestingController@show')->where('id', '[0-9]+')->name('testing.show');
+        Route::get('/{id}/complete', 'TestingController@completeGet')->where('id', '[0-9]+')->name('testing.complete-get');
+        Route::post('/{id}/complete', 'TestingController@completePost')->where('id', '[0-9]+')->name('testing.complete-post');
     });
 
     Route::prefix('/tests/{id}/questions')->where(['id' => '[0-9]+'])->group(function() {

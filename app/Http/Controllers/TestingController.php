@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Result;
 use App\Test;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,7 @@ class TestingController extends Controller
         foreach ($test->questions as $index => $question) {
             $test_state['questions'][$index]['title'] = $question->title;
             $test_state['questions'][$index]['type'] = $question->type;
+            $test_state['questions'][$index]['id'] = $question->id;
 
             $test_state['questions'][$index]['answers'] = [];
 
@@ -29,6 +31,32 @@ class TestingController extends Controller
             }
         }
 
-        return view('testing.testing', ['state' => json_encode($test_state, JSON_UNESCAPED_UNICODE)]);
+        return view('testing.testing', ['state' => json_encode($test_state, JSON_UNESCAPED_UNICODE), 'test_id' => $id]);
+    }
+
+    public function completePost(Request $request, $id)
+    {
+        $results = $request->input('results');
+
+        foreach ($results as $result) {
+            foreach ($result['values'] as $value) {
+                $newResult = new Result();
+                $newResult->user_id = auth()->user()->id;
+                $newResult->test_id = $id;
+                $newResult->question_id = $result['questionId'];
+                $newResult->text = $value;
+                $newResult->is_correct = true;
+                $newResult->save();
+            }
+
+        }
+
+//        return $request->input('results');
+        return redirect()->route('testing.complete-get', ['id' => $id]);
+    }
+
+    public function completeGet(Request $request, $id)
+    {
+        return 'completed';
     }
 }
