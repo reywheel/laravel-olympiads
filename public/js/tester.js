@@ -233,7 +233,8 @@ var store = new Vuex.Store({
         "_token": csrf,
         results: store.state.results
       }).then(function (response) {
-        console.log(response); // window.location.assign(response.config.url);
+        console.log(response);
+        window.location.assign(response.config.url);
       });
     }
   }

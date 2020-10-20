@@ -9,6 +9,8 @@
                class="uk-button uk-button-primary uk-margin-bottom">Добавить вопрос</a>
             <a href="{{ route('testing.show', ['id' => $test->id]) }}"
                class="uk-button uk-button-danger uk-margin-bottom">Пройти тест</a>
+            <a href="{{ route('tests.results', ['id' => $test->id]) }}"
+               class="uk-button uk-button-secondary uk-margin-bottom">Результаты</a>
             <a href="{{ route('tests.show-all') }}"
                class="uk-button uk-button-default uk-margin-bottom">Вернуться к тестам</a>
 

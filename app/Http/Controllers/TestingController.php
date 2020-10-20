@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
+use App\Question;
 use App\Result;
 use App\Test;
 use Illuminate\Http\Request;
@@ -45,18 +47,29 @@ class TestingController extends Controller
                 $newResult->test_id = $id;
                 $newResult->question_id = $result['questionId'];
                 $newResult->text = $value;
-                $newResult->is_correct = true;
+                $newResult->is_correct = $this->resultIsCorrect($value, $result['questionId']);
                 $newResult->save();
             }
-
         }
 
-//        return $request->input('results');
         return redirect()->route('testing.complete-get', ['id' => $id]);
     }
 
     public function completeGet(Request $request, $id)
     {
         return 'completed';
+    }
+
+    private function resultIsCorrect($result, $questionId)
+    {
+        $answers = Answer::where('question_id', $questionId)->where('is_correct', true)->get();
+
+        foreach ($answers as $answer) {
+            if ($answer->title === $result) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

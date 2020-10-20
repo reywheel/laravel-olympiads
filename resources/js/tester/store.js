@@ -39,7 +39,7 @@ const store = new Vuex.Store({
                 results: store.state.results
             }).then((response) => {
                 console.log(response)
-                // window.location.assign(response.config.url);
+                window.location.assign(response.config.url);
             })
         }
     }
