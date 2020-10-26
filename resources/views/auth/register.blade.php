@@ -4,63 +4,90 @@
     <section class="register">
         <div class="container">
             <div class="register__inner">
-                <form class="register__block z-depth-2" action="{{ route('register') }}" method="POST">
+                <form class="uk-card uk-card-default uk-card-body uk-margin-large-top uk-margin-large-bottom" action="{{ route('register') }}" method="POST">
                     @csrf
 
-                    <h4>Регистрация</h4>
+                    <h4 class="uk-card-title uk-margin-remove-top">Регистрация</h4>
 
-                    <div class="input-field">
-                        <input id="surname" type="text" class="validate @error('surname') invalid @enderror" name="surname" value="{{ old('surname') }}">
-                        <label for="surname">Фамилия</label>
+                    <div class="uk-margin">
+                        <input id="surname" type="text" class="uk-input @error('surname') uk-form-danger @enderror"
+                               name="surname" value="{{ old('surname') }}" placeholder="Фамилия">
+                        @error('surname')
+                        <span class="uk-text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <div class="input-field">
-                        <input id="name" type="text" class="validate  @error('name') invalid @enderror" name="name" value="{{ old('name') }}">
-                        <label for="name">Имя</label>
+                    <div class="uk-margin">
+                        <input id="name" type="text" class="uk-input  @error('name') uk-form-danger @enderror"
+                               name="name" value="{{ old('name') }}" placeholder="Имя">
+                        @error('name')
+                        <span class="uk-text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <div class="input-field">
-                        <input id="patronymic" type="text" class="validate  @error('patronymic') invalid @enderror" name="patronymic" value="{{ old('patronymic') }}">
-                        <label for="patronymic">Отчество</label>
+                    <div class="uk-margin">
+                        <input id="patronymic" type="text"
+                               class="uk-input  @error('patronymic') uk-form-danger @enderror" name="patronymic"
+                               value="{{ old('patronymic') }}" placeholder="Отчество">
+                        @error('patronymic')
+                        <span class="uk-text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <div class="input-field">
-                        <input id="date_of_birth" type="date" class="validate  @error('date_of_birth') invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}">
-                        <label for="date_of_birth">Дата рождения</label>
+                    <div class="uk-margin">
+                        <input id="date_of_birth" type="date"
+                               class="uk-input  @error('date_of_birth') uk-form-danger @enderror" name="date_of_birth"
+                               value="{{ old('date_of_birth') }}" placeholder="Дата рождения">
+                        @error('date_of_birth')
+                        <span class="uk-text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <div class="input-field">
-                        <input id="school" type="text" class="validate  @error('school') invalid @enderror" name="school" value="{{ old('school') }}">
-                        <label for="school">Школа</label>
+                    <div class="uk-margin">
+                        <input id="school" type="text" class="uk-input  @error('school') uk-form-danger @enderror"
+                               name="school" value="{{ old('school') }}" placeholder="Школа">
+                        @error('school')
+                        <span class="uk-text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <div class="input-field">
-                        <input id="email" type="email" class="validate  @error('email') invalid @enderror" name="email" value="{{ old('email') }}">
-                        <label for="email">Email</label>
+                    <div class="uk-margin">
+                        <input id="email" type="email" class="uk-input  @error('email') uk-form-danger @enderror"
+                               name="email" value="{{ old('email') }}" placeholder="Email">
+                        @error('email')
+                        <span class="uk-text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <div class="input-field">
-                        <input id="password" type="password" class="validate  @error('password') invalid @enderror" name="password">
-                        <label for="password">Пароль</label>
+                    <div class="uk-margin">
+                        <input id="password" type="password"
+                               class="uk-input  @error('password') uk-form-danger @enderror" name="password"
+                               placeholder="Пароль">
+                        @error('password')
+                        <span class="uk-text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <div class="input-field">
-                        <input id="password_confirmation" type="password" class="validate @error('password_confirmation') invalid @enderror" name="password_confirmation">
-                        <label for="password_confirmation">Повторите пароль</label>
+                    <div class="uk-margin">
+                        <input id="password_confirmation" type="password"
+                               class="uk-input @error('password_confirmation') uk-form-danger @enderror"
+                               name="password_confirmation" placeholder="Повторите пароль">
+                        @error('password_confirmation')
+                        <span class="uk-text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <p class="register__privacy">
                         <label>
-                            <input type="checkbox" class="filled-in" name="privacy_policy" {{ old('remember') ? 'checked' : '' }}"/>
-                            <span style="@error('privacy_policy') color: red; @enderror">Cогласен с политикой конфиденциальности</span>
+                            <input type="checkbox" class="filled-in"
+                                   name="privacy_policy" {{ old('remember') ? 'checked' : '' }}"/>
+                            <span class="@error('privacy_policy') uk-text-danger @enderror">Cогласен с политикой конфиденциальности</span>
                         </label>
                     </p>
 
-                    <button class="btn waves-effect waves-light register__button-submit" type="submit">Зарегистрироваться
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <button class="uk-button uk-button-primary" type="submit">Зарегистрироваться</button>
 
-                    <a href="{{ route('login') }}" class="register__dop-btn">Уже есть аккаунт?</a>
+                    <a href="{{ route('login') }}" class="uk-margin-left">Уже есть аккаунт?</a>
 
                 </form>
             </div>

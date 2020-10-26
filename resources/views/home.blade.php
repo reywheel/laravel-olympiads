@@ -1,34 +1,10 @@
 @extends('layouts.app')
 
 @section('area')
-    <div class="row area">
+    <div class="area uk-child-width-expand" uk-grid>
         @include('partials.sidebar')
 
-        <div class="content col s10" id="js-ajax-content"></div>
-    </div>
-@endsection
+        <div class="content uk-width-4-5 uk-padding"></div>
 
-@section('footer')
-    @parent
-    <script>
-        $(function () {
-            $('#js-ajax-show-all-users').on('click', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: this.href,
-                    type: "GET",
-                    data: {},
-                    headers: {
-                        // 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (data) {
-                        $('#js-ajax-content').html(data);
-                    },
-                    error: function (msg) {
-                        alert('Ошибка');
-                    }
-                });
-            });
-        })
-    </script>
+    </div>
 @endsection

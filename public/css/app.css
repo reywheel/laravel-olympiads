@@ -164,7 +164,7 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: calc(100vh - 70px);
 }
 
 .register__block {
@@ -190,7 +190,7 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: calc(100vh - 70px);
 }
 
 .login__block {
