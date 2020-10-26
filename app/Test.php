@@ -17,4 +17,9 @@ class Test extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    public function testingTimes()
+    {
+        return $this->hasMany(TestingTime::class);
+    }
 }

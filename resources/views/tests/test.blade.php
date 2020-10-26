@@ -7,8 +7,10 @@
         <div class="content uk-width-4-5 uk-padding">
             <a href="{{ route('questions.create-get', ['id' => $test->id]) }}"
                class="uk-button uk-button-primary uk-margin-bottom">Добавить вопрос</a>
+            @can('start', $test)
             <a href="{{ route('testing.show', ['id' => $test->id]) }}"
                class="uk-button uk-button-danger uk-margin-bottom">Пройти тест</a>
+            @endcan
             <a href="{{ route('tests.results', ['id' => $test->id]) }}"
                class="uk-button uk-button-secondary uk-margin-bottom">Результаты</a>
             <a href="{{ route('tests.show-all') }}"

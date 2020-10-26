@@ -6,6 +6,7 @@ use App\Answer;
 use App\Question;
 use App\Result;
 use App\Test;
+use App\TestingTime;
 use Illuminate\Http\Request;
 
 class TestsController extends Controller
@@ -75,13 +76,13 @@ class TestsController extends Controller
             $query->where('test_id', $id);
         })->get()->count();
 
-        $results = Result::where('test_id', $id)->with('user')->get();
+        $completions = TestingTime::where('test_id', $id)->where('test_finish', '!=', 'null')->with('user')->get();
         $users = array_map(function($user_id) {
             return $user_id[0]['user'];
-        }, $results->groupBy('user_id')->toArray());
+        }, $completions->groupBy('user_id')->toArray());
 
         foreach ($users as $id => &$user) {
-            $user['number_of_correct_results'] = $results->where('user_id', $id)->where('is_correct', true)->count();
+            $user['number_of_correct_results'] = Result::where('user_id', $id)->where('is_correct', true)->count();
         }
 
         return view('tests.results', [

@@ -6,11 +6,20 @@ use App\Answer;
 use App\Question;
 use App\Result;
 use App\Test;
+use App\TestingTime;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TestingController extends Controller
 {
-    public function show(Request $request, $id) {
+    public function show(Request $request, $id)
+    {
+        if (auth()->user()->cannot('start', Test::find($id))) {
+            return redirect()->route('tests.show-by-id', ['id' => $id])->with('status_danger', "Вы уже закончили этот тест");
+        }
+
+        $this->addTestingStartTime(auth()->user()->id, $id);
+
         $test = Test::where('id', $id)->with('questions.answers')->first();
         $test_state = [];
 
@@ -38,6 +47,8 @@ class TestingController extends Controller
 
     public function completePost(Request $request, $id)
     {
+        $this->addTestingFinishTime(auth()->user()->id, $id);
+
         $results = $request->input('results');
 
         foreach ($results as $result) {
@@ -71,5 +82,28 @@ class TestingController extends Controller
         }
 
         return false;
+    }
+
+    private function addTestingStartTime($user_id, $test_id)
+    {
+        $testing_time_model = TestingTime::where('user_id', $user_id)->where('test_id', $test_id)->first();
+
+        if ($testing_time_model == null) {
+            $new_testing_time = new TestingTime();
+
+            $new_testing_time->user_id = $user_id;
+            $new_testing_time->test_id = $test_id;
+            $new_testing_time->test_id = $test_id;
+            $new_testing_time->test_start = Carbon::now();
+
+            $new_testing_time->save();
+        }
+    }
+
+    private function addTestingFinishTime($user_id, $test_id)
+    {
+        $testing_time_model = TestingTime::where('user_id', $user_id)->where('test_id', $test_id)->first();
+        $testing_time_model->test_finish = Carbon::now();
+        $testing_time_model->save();
     }
 }
