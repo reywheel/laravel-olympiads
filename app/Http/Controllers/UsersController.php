@@ -36,14 +36,14 @@ class UsersController extends Controller
 
         User::create($request->all());
 
-        return redirect()->route('users.read')->with('status', 'Пользователь успешно добавлен!');
+        return redirect()->route('users.read')->with('status_success', 'Пользователь успешно добавлен!');
     }
 
     public function delete($id)
     {
         User::destroy($id);
 
-        return redirect()->route('users.read')->with('status', 'Пользователь успешно удалён!');
+        return redirect()->route('users.read')->with('status_success', 'Пользователь успешно удалён!');
     }
 
     public function updateGet($id)
@@ -66,6 +66,6 @@ class UsersController extends Controller
         $updating_user->fill($request->all());
         $updating_user->save();
 
-        return redirect()->route('users.read')->with('status', 'Пользователь успешно отредактирован');
+        return redirect()->route('users.read')->with('status_success', 'Пользователь успешно отредактирован');
     }
 }

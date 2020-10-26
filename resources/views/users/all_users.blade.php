@@ -6,14 +6,6 @@
 
         <div class="content uk-width-4-5 uk-padding">
 
-            @if(session()->has('status'))
-                <div class="uk-alert-success" uk-alert>
-                    <a class="uk-alert-close" uk-close></a>
-                    <p>{{ session()->get('status') }}</p>
-                </div>
-            @endif
-
-
             <a href="{{ route('users.create-get') }}"
                class="uk-button uk-button-primary uk-margin-bottom">Добавить пользователя</a>
 
@@ -22,8 +14,8 @@
                 <table class="uk-table  uk-table-hover uk-table-striped">
                     <thead>
                     <tr>
-                        <th>Имя</th>
                         <th>Фамилия</th>
+                        <th>Имя</th>
                         <th>Отчество</th>
                         <th>Дата рождения</th>
                         <th>Школа</th>
