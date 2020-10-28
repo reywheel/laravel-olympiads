@@ -16,7 +16,6 @@
             <a href="{{ route('tests.show-all') }}"
                class="uk-button uk-button-default uk-margin-bottom">Вернуться к тестам</a>
 
-            {{-- table start --}}
             <div class="uk-card uk-card-default uk-padding-small uk-margin-bottom">
                 <p class="uk-text-lead">{{ $test->title }}</p>
                 <p class="uk-text-normal"><span class="uk-text-light">Автор:</span> {{ $test->user->surname }} {{ $test->user->name }} {{ $test->user->patronymic }}</p>

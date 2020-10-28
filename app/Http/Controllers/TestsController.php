@@ -70,24 +70,36 @@ class TestsController extends Controller
         return redirect()->route('tests.show-all')->with('status', 'Курс успешно удалён');
     }
 
-    public function showResults(Request $request, $id)
+    public function showResults(Request $request, $test_id)
     {
-        $number_of_correct_answers = Answer::where('is_correct', true)->whereHas('question', function($query) use ($id) {
-            $query->where('test_id', $id);
+        $number_of_correct_answers = Answer::where('is_correct', true)->whereHas('question', function($query) use ($test_id) {
+            $query->where('test_id', $test_id);
         })->get()->count();
 
-        $completions = TestingTime::where('test_id', $id)->where('test_finish', '!=', 'null')->with('user')->get();
+        $completions = TestingTime::where('test_id', $test_id)->where('test_finish', '!=', 'null')->with('user')->get();
         $users = array_map(function($user_id) {
             return $user_id[0]['user'];
         }, $completions->groupBy('user_id')->toArray());
 
         foreach ($users as $id => &$user) {
-            $user['number_of_correct_results'] = Result::where('user_id', $id)->where('is_correct', true)->count();
+            $user['number_of_correct_results'] = Result::where('user_id', $id)->where('test_id', $test_id)->where('is_correct', true)->count();
         }
 
+
         return view('tests.results', [
+            'test_id' => $test_id,
             'users' => $users,
             'number_of_correct_answers' => $number_of_correct_answers,
+        ]);
+    }
+
+    public function showUserResults(Request $request, $test_id, $user_id)
+    {
+        $results_groups = Result::where(['test_id' => $test_id, 'user_id' => $user_id])->with('question')->get()->groupBy('question.title');
+
+        return view('tests.user_results', [
+            'results_groups' => $results_groups,
+            'test_id' => $test_id
         ]);
     }
 

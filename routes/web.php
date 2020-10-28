@@ -33,6 +33,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('/update', 'TestsController@updatePost')->name('tests.update-post');
         Route::get('/{id}/delete', 'TestsController@delete')->where('id', '[0-9]+')->name('tests.delete');
         Route::get('/{id}/results', 'TestsController@showResults')->where('id', '[0-9]+')->name('tests.results');
+        Route::get('/{test_id}/results/{user_id}', 'TestsController@showUserResults')
+            ->where('id', '[0-9]+')
+            ->where('user_id', '[0-9]+')
+            ->name('tests.user_results');
 
     });
 
