@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}/delete', 'TestsController@delete')->where('id', '[0-9]+')->name('tests.delete');
         Route::get('/{id}/results', 'TestsController@showResults')->where('id', '[0-9]+')->name('tests.results');
         Route::get('/{test_id}/results/{user_id}', 'TestsController@showUserResults')
-            ->where('id', '[0-9]+')
+            ->where('test_id', '[0-9]+')
             ->where('user_id', '[0-9]+')
             ->name('tests.user_results');
 
@@ -45,14 +45,13 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{id}/complete', 'TestingController@completeGet')->where('id', '[0-9]+')->name('testing.complete-get');
         Route::post('/{id}/complete', 'TestingController@completePost')->where('id', '[0-9]+')->name('testing.complete-post');
     });
-
-    Route::prefix('/tests/{id}/questions')->where(['id' => '[0-9]+'])->group(function() {
-       Route::get('/create', 'QuestionsController@createGet')->name('questions.create-get');
-       Route::post('/create', 'QuestionsController@createPost')->name('questions.create-post');
-    });
 });
 
 Auth::routes();
 
 Route::get('ajax/users/all', 'AjaxController@showAllUsers')->name('ajax.users.all');
+
+//TODO роли у пользователей
+// время начала и конца у теста
+// показ времени до начала теста у учеников
 

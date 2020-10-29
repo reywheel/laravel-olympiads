@@ -13,21 +13,23 @@
                 </div>
             @endif
 
-
+            @can('create', new \App\Test())
             <a href="{{ route('tests.create-get') }}"
                class="uk-button uk-button-primary uk-margin-bottom">Создать новый тест</a>
-
+            @endcan
             {{-- table start --}}
             <div class="uk-card uk-card-default uk-padding-small">
                 <table class="uk-table  uk-table-hover uk-table-striped">
                     <thead>
                     <tr>
                         <th>Название</th>
+                        @can('readInfo', new \App\Test())
                         <th>Автор</th>
                         <th>Однонаправленный</th>
                         <th>Дата создание</th>
                         <th>Дата последнего изменения</th>
                         <th></th>
+                        @endcan
                     </tr>
                     </thead>
 
@@ -35,18 +37,22 @@
                     @foreach ($tests as $test)
                         <tr>
                             <td><a href="{{ route('tests.show-by-id', ['id' => $test->id]) }}" class="uk-link-heading">{{ $test->title }}</a></td>
+                            @can('readInfo', new \App\Test())
                             <td>{{ $test->user->name }}</td>
                             <td>{{ $test->is_unidirectional == 1 ? 'Да' : 'Нет' }}</td>
                             <td>{{ $test->created_at->format('d.m.Y H:i:s') }}</td>
                             <td>{{ $test->updated_at->format('d.m.Y H:i:s') }}</td>
-                            <td>
-                                <ul class="uk-iconnav">
-                                    <li><a href="{{ route('tests.update-get', ['id' => $test->id]) }}"
-                                           uk-icon="icon: file-edit"></a></li>
-                                    <li><a href="{{ route('tests.delete', ['id' => $test->id]) }}" uk-icon="icon: trash"
-                                           class="uk-text-danger"></a></li>
-                                </ul>
-                            </td>
+                                @can('delete', new \App\Test())
+                                <td>
+                                    <ul class="uk-iconnav">
+                                        <li><a href="{{ route('tests.update-get', ['id' => $test->id]) }}"
+                                               uk-icon="icon: file-edit"></a></li>
+                                        <li><a href="{{ route('tests.delete', ['id' => $test->id]) }}" uk-icon="icon: trash"
+                                               class="uk-text-danger"></a></li>
+                                    </ul>
+                                </td>
+                                @endcan
+                            @endcan
                         </tr>
                     @endforeach
                     </tbody>

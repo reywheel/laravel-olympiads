@@ -11,11 +11,6 @@ class TestPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         //
@@ -35,4 +30,26 @@ class TestPolicy
 
         return false;
     }
+
+    public function create(User $user)
+    {
+        return $user->isAdmin();
+    }
+
+    public function update(User $user)
+    {
+        return $user->isAdmin();
+    }
+
+    public function delete(User $user)
+    {
+        return $user->isAdmin();
+    }
+
+    public function readInfo(User $user)
+    {
+        return $user->isAdmin() || $user->isModerator();
+    }
+
+
 }

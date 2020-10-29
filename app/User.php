@@ -46,4 +46,29 @@ class User extends Authenticatable
     {
         return $this->hasMany(TestingTime::class);
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function isAdmin()
+    {
+        return auth()->user()->role->title === 'admin';
+    }
+
+    public function isModerator()
+    {
+        return auth()->user()->role->title === 'moderator';
+    }
+
+    public function isTeacher()
+    {
+        return auth()->user()->role->title === 'teacher';
+    }
+
+    public function isStudent()
+    {
+        return auth()->user()->role->title === 'student';
+    }
 }

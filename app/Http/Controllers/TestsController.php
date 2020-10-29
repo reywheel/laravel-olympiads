@@ -85,7 +85,6 @@ class TestsController extends Controller
             $user['number_of_correct_results'] = Result::where('user_id', $id)->where('test_id', $test_id)->where('is_correct', true)->count();
         }
 
-
         return view('tests.results', [
             'test_id' => $test_id,
             'users' => $users,
