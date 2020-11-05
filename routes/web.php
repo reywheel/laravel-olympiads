@@ -15,7 +15,7 @@
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', 'HomeController@index')->name('home');
 
-    Route::prefix('/users')->group(function () {
+    Route::prefix('/users')->middleware('role:admin')->group(function () {
         Route::get('/', 'UsersController@showAll')->name('users.read');
         Route::get('/{id}/delete', 'UsersController@delete')->where('id', '[0-9]+')->name('users.delete');
         Route::get('/{id}/update', 'UsersController@updateGet')->where('id', '[0-9]+')->name('users.update-get');
@@ -26,14 +26,32 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::prefix('/tests')->group(function() {
         Route::get('/', 'TestsController@showAll')->name('tests.show-all');
-        Route::get('/{id}', 'TestsController@showById')->where('id', '[0-9]+')->name('tests.show-by-id');
-        Route::get('/create', 'TestsController@createGet')->name('tests.create-get');
-        Route::post('/create', 'TestsController@createPost')->name('tests.create-post');
-        Route::get('/{id}/update', 'TestsController@updateGet')->where('id', '[0-9]+')->name('tests.update-get');
-        Route::post('/update', 'TestsController@updatePost')->name('tests.update-post');
-        Route::get('/{id}/delete', 'TestsController@delete')->where('id', '[0-9]+')->name('tests.delete');
-        Route::get('/{id}/results', 'TestsController@showResults')->where('id', '[0-9]+')->name('tests.results');
+        Route::get('/{id}', 'TestsController@showById')
+            ->where('id', '[0-9]+')
+            ->name('tests.show-by-id');
+        Route::get('/create', 'TestsController@createGet')
+            ->middleware('role:admin')
+            ->name('tests.create-get');
+        Route::post('/create', 'TestsController@createPost')
+            ->middleware('role:admin')
+            ->name('tests.create-post');
+        Route::get('/{id}/update', 'TestsController@updateGet')
+            ->middleware('role:admin')
+            ->where('id', '[0-9]+')
+            ->name('tests.update-get');
+        Route::post('/update', 'TestsController@updatePost')
+            ->middleware('role:admin')
+            ->name('tests.update-post');
+        Route::get('/{id}/delete', 'TestsController@delete')
+            ->middleware('role:admin')
+            ->where('id', '[0-9]+')
+            ->name('tests.delete');
+        Route::get('/{id}/results', 'TestsController@showResults')
+            ->middleware('role:admin:moderator')
+            ->where('id', '[0-9]+')
+            ->name('tests.results');
         Route::get('/{test_id}/results/{user_id}', 'TestsController@showUserResults')
+            ->middleware('role:admin:moderator')
             ->where('test_id', '[0-9]+')
             ->where('user_id', '[0-9]+')
             ->name('tests.user_results');
@@ -51,6 +69,7 @@ Auth::routes();
 
 Route::get('ajax/users/all', 'AjaxController@showAllUsers')->name('ajax.users.all');
 
-// TODO время начала и конца у теста
-// TODO показ времени до начала теста у учеников
-
+// Редактирование профиля
+// Редактирование тестов
+// Добавление вопроса с одним вариантов выбора
+// Забыли пароль?

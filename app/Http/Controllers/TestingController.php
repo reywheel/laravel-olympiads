@@ -15,7 +15,7 @@ class TestingController extends Controller
     public function show(Request $request, $id)
     {
         if (auth()->user()->cannot('start', Test::find($id))) {
-            return redirect()->route('tests.show-by-id', ['id' => $id])->with('status_danger', "Вы уже закончили этот тест");
+            return redirect()->route('tests.show-by-id', ['id' => $id])->with('status_danger', 'Нет доступа к тесту');
         }
 
         $this->addTestingStartTime(auth()->user()->id, $id);
@@ -68,7 +68,7 @@ class TestingController extends Controller
 
     public function completeGet(Request $request, $id)
     {
-        return 'completed';
+        return redirect()->route('tests.show-all')->with('status_success', 'Тест успешно завершён');
     }
 
     private function resultIsCorrect($result, $questionId)

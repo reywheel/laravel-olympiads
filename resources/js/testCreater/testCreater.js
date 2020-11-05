@@ -87,10 +87,6 @@ window.addEventListener('DOMContentLoaded', () => {
                                 <input type="datetime-local" class="uk-input" name="finish_time" required>
                             </div>
                         </div>
-                        <button class="uk-button uk-button-primary js-add-text-question"
-                                @click.prevent="addQuestion('text')">Текстовое поле</button>
-                        <button class="uk-button uk-button-primary js-add-radio-question"
-                                @click.prevent="addQuestion('checkbox')">Вопрос с выбором</button>
                     </div>
                 </div>
 
@@ -118,6 +114,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 </template>
 
                 <button type="submit" class="uk-button uk-button-primary">Сохранить</button>
+                <button class="uk-button uk-button-secondary js-add-text-question"
+                                @click.prevent="addQuestion('text')">Текстовое поле</button>
+                <button class="uk-button uk-button-secondary js-add-radio-question"
+                        @click.prevent="addQuestion('checkbox')">Вопрос с выбором</button>
 
                 </form>
 

@@ -71,4 +71,9 @@ class User extends Authenticatable
     {
         return auth()->user()->role->title === 'student';
     }
+
+    public function hasRole(string $role) {
+        $user_role = auth()->user()->role->title;
+        return $role === $user_role;
+    }
 }

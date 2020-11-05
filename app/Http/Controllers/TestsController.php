@@ -52,8 +52,6 @@ class TestsController extends Controller
 
     public function createPost(Request $request)
     {
-//        dd($request->all());
-
         $this->validate($request, [
             'title' => ['required'],
             'is_unidirectional' => ['required'],
@@ -81,13 +79,13 @@ class TestsController extends Controller
             }
         };
 
-        return redirect()->route('tests.show-by-id', ['id' => $newTest->id])->with('status', 'Тест успешно создан');
+        return redirect()->route('tests.show-by-id', ['id' => $newTest->id])->with('status_success', 'Тест успешно создан');
     }
 
     public function delete($id)
     {
         Test::destroy($id);
-        return redirect()->route('tests.show-all')->with('status', 'Курс успешно удалён');
+        return redirect()->route('tests.show-all')->with('status_success', 'Курс успешно удалён');
     }
 
     public function showResults(Request $request, $test_id)
