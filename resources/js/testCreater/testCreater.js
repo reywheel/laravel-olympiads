@@ -1,5 +1,5 @@
-import TextQuestion from "./Components/TextQuestion";
-import CheckboxQuestion from "./Components/CheckboxQuestion";
+import TextQuestion from "./components/TextQuestion";
+import CheckboxQuestion from "./components/CheckboxQuestion";
 
 window.addEventListener('DOMContentLoaded', () => {
     let app = new Vue({
@@ -75,6 +75,16 @@ window.addEventListener('DOMContentLoaded', () => {
                                 <label><input class="uk-radio uk-margin-small-right" type="radio" name="is_unidirectional" value="true" v-model="isUnidirectional">Да</label>
                                 <br>
                                 <label><input class="uk-radio uk-margin-small-right" type="radio" name="is_unidirectional" value="false" v-model="isUnidirectional" checked>Нет</label>
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <div class="uk-display-inline-block uk-width-1-3">
+                                <span class="uk-display-block">Начало теста</span>
+                                <input type="datetime-local" class="uk-input" name="start_time" required>
+                            </div>
+                            <div class="uk-display-inline-block uk-width-1-3">
+                                <span class="uk-display-block">Конец теста</span>
+                                <input type="datetime-local" class="uk-input" name="finish_time" required>
                             </div>
                         </div>
                         <button class="uk-button uk-button-primary js-add-text-question"

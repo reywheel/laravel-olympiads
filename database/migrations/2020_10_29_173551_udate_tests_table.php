@@ -14,7 +14,8 @@ class UdateTestsTable extends Migration
     public function up()
     {
         Schema::table('tests', function (Blueprint $table) {
-            //
+            $table->timestamp('start_time')->after('is_unidirectional');
+            $table->timestamp('finish_time')->after('start_time');
         });
     }
 
@@ -26,7 +27,8 @@ class UdateTestsTable extends Migration
     public function down()
     {
         Schema::table('tests', function (Blueprint $table) {
-            //
+            $table->dropColumn('start_time');
+            $table->dropColumn('finish_time');
         });
     }
 }

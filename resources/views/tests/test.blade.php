@@ -21,6 +21,8 @@
                     <p class="uk-text-lead">{{ $test->title }}</p>
                     <p class="uk-text-normal"><span class="uk-text-light">Автор:</span> {{ $test->user->surname }} {{ $test->user->name }} {{ $test->user->patronymic }}</p>
                     <p class="uk-margin-remove-bottom">Однонаправленный: {{ ($test->is_unidirectional == 1) ? 'Да' : 'Нет' }}</p>
+                    <p>Время начала: {{ $test->start_time }}</p>
+                    <p>Время конца: {{ $test->finish_time }}</p>
                 </div>
 
                 @forelse($questions as $question)
@@ -56,6 +58,24 @@
                     </div>
                 @endforelse
             @endcan
+
+            @if(auth()->user()->isStudent())
+                <div class="uk-card uk-card-default uk-card-body">
+                    <div>Время начала теста: {{ $test->start_time }}</div>
+                    <div>Время окончания теста: {{ $test->finish_time }}</div>
+
+                    @if($is_done)
+                        <p class="uk-text-danger">Вы уже прошли этот тест</p>
+                    @else
+                        @if($is_not_started)
+                            <p class="uk-text-danger">Тест ещё не начался</p>
+                        @endif
+                        @if($is_finished)
+                            <p class="uk-text-danger">Тест уже закончился</p>
+                        @endif
+                    @endif
+                </div>
+            @endif
         </div>
 
     </div>

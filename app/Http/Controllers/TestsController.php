@@ -7,6 +7,7 @@ use App\Question;
 use App\Result;
 use App\Test;
 use App\TestingTime;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TestsController extends Controller
@@ -24,10 +25,23 @@ class TestsController extends Controller
     {
         $test = Test::where('id', $id)->with('user')->first();
         $questions = Question::where('test_id', $id)->with('answers')->get();
+        $testing_time = TestingTime::where('test_id', $id)->first();
+
+        if ($testing_time) {
+            $is_done = $testing_time->test_finish === null ? false : true;
+        } else {
+            $is_done = false;
+        }
+
+        $is_not_started = Carbon::now() < $test->start_time;
+        $is_finished = Carbon::now() > $test->finish_time;
 
         return view('tests.test', [
             'test' => $test,
-            'questions' => $questions
+            'questions' => $questions,
+            'is_done' => $is_done,
+            'is_not_started' => $is_not_started,
+            'is_finished' => $is_finished
         ]);
     }
 
@@ -38,15 +52,21 @@ class TestsController extends Controller
 
     public function createPost(Request $request)
     {
+//        dd($request->all());
+
         $this->validate($request, [
-           'title' => ['required'],
-           'is_unidirectional' => ['required']
+            'title' => ['required'],
+            'is_unidirectional' => ['required'],
+            'start_time' => ['required'],
+            'finish_time' => ['required']
         ]);
 
         $newTest = new Test();
         $newTest->user_id = $request->user()->id;
         $newTest->title = $request->title;
         $newTest->is_unidirectional = $request->is_unidirectional == 'false' ? false : true;
+        $newTest->start_time = $request->start_time;
+        $newTest->finish_time = $request->finish_time;
         $newTest->save();
 
         if (isset($request->questions)) {

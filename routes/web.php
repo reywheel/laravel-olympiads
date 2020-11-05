@@ -51,7 +51,6 @@ Auth::routes();
 
 Route::get('ajax/users/all', 'AjaxController@showAllUsers')->name('ajax.users.all');
 
-//TODO роли у пользователей
-// время начала и конца у теста
-// показ времени до начала теста у учеников
+// TODO время начала и конца у теста
+// TODO показ времени до начала теста у учеников
 
