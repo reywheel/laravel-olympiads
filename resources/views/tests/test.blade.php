@@ -13,7 +13,7 @@
             <a href="{{ route('tests.results', ['id' => $test->id]) }}"
                class="uk-button uk-button-secondary uk-margin-bottom">Результаты</a>
             @endcan
-            <a href="{{ route('tests.show-all') }}"
+            <a href="{{ route('tests.index') }}"
                class="uk-button uk-button-default uk-margin-bottom">Вернуться к тестам</a>
 
             @can('readInfo', new \App\Test())

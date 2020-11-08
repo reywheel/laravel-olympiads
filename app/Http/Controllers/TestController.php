@@ -10,9 +10,9 @@ use App\TestingTime;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class TestsController extends Controller
+class TestController extends Controller
 {
-    public function showAll()
+    public function index()
     {
         $all_tests = Test::with('user')->orderByDesc('created_at')->get();
 
@@ -21,10 +21,11 @@ class TestsController extends Controller
         ]);
     }
 
-    public function showById($id)
+    public function show($id)
     {
         $test = Test::where('id', $id)->with('user')->first();
         if (!$test) return redirect()->route('tests.show-all')->with('status_danger', "Такого теста не существует");
+
         $questions = Question::where('test_id', $id)->with('answers')->get();
         $testing_time = TestingTime::where('test_id', $id)->first();
 
@@ -46,12 +47,12 @@ class TestsController extends Controller
         ]);
     }
 
-    public function createGet()
+    public function create()
     {
         return view('tests.create_test');
     }
 
-    public function createPost(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'title' => ['required'],
@@ -74,13 +75,25 @@ class TestsController extends Controller
             }
         };
 
-        return redirect()->route('tests.show-by-id', ['id' => $new_test_id])->with('status_success', 'Тест успешно создан');
+        return redirect()->route('tests.show', ['test' => $new_test_id])->with('status_success', 'Тест успешно создан');
     }
 
-    public function delete($id)
+    public function edit($test_id)
     {
-        Test::destroy($id);
-        return redirect()->route('tests.show-all')->with('status_success', 'Курс успешно удалён');
+        // TODO:
+        return "Страница редактирования";
+    }
+
+    public function update(Request $request, $test_id)
+    {
+        // TODO:
+        return redirect()->route('tests.show', ['test' => $test_id]);
+    }
+
+    public function destroy($test_id)
+    {
+        Test::destroy($test_id);
+        return redirect()->route('tests.index')->with('status_success', 'Курс успешно удалён');
     }
 
     public function showResults(Request $request, $test_id)
@@ -112,6 +125,8 @@ class TestsController extends Controller
             'test_id' => $test_id
         ]);
     }
+
+    
 
     private function saveQuestion($question, $test_id)
     {

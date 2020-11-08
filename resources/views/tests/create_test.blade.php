@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="{{ asset('js/testCreater.js') }}"></script>
     <script>
-        let route = "{{ route('tests.create-post') }}";
+        let route = "{{ route('tests.store') }}";
         let csrf = "{{ csrf_token() }}";
     </script>
 @endsection
