@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
+use Validator;
 
 class UsersController extends Controller
 {
+    protected $messages = [
+        'required' => 'Необходимо указать :attribute.',
+    ];
+
     public function showAll(Request $request)
     {
         $users = User::all();
@@ -24,7 +29,7 @@ class UsersController extends Controller
 
     public function createPost(Request $request)
     {
-        $this->validate($request, [
+        $validate_rules = [
             'name' => ['required', 'string', 'max:64'],
             'surname' => ['required', 'string', 'max:64'],
             'patronymic' => ['required', 'string', 'max:64'],
@@ -32,8 +37,10 @@ class UsersController extends Controller
             'school' => ['required', 'string', 'max:32'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'password_confirmation' => ['required'],
-        ]);
+            'password_confirmation' => ['required']
+        ];
+
+        $this->validate($request, $validate_rules);
 
         User::create($request->all());
 

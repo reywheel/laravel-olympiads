@@ -61,6 +61,9 @@
                 <div class="uk-margin">
                     <input class="uk-input  @error('password_confirmation') uk-form-danger @enderror" type="password"
                            placeholder="Повторите пароль" name="password_confirmation">
+                    @error('password_confirmation')
+                    <p class="uk-text-danger uk-text-small uk-margin-small">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="uk-grid-small" uk-grid>
                     <div class="uk-margin">
