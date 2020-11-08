@@ -24,6 +24,7 @@ class TestsController extends Controller
     public function showById($id)
     {
         $test = Test::where('id', $id)->with('user')->first();
+        if (!$test) return redirect()->route('tests.show-all')->with('status_danger', "Такого теста не существует");
         $questions = Question::where('test_id', $id)->with('answers')->get();
         $testing_time = TestingTime::where('test_id', $id)->first();
 
