@@ -5,9 +5,9 @@
         @include('partials.sidebar')
 
         <div class="content uk-width-4-5">
-            <form class="uk-width-3-5 uk-margin-top" method="POST" action="{{ route('users.update-post') }}">
+            <form class="uk-width-3-5 uk-margin-top" method="POST" action="{{ route('users.update', ['user' => $user->id]) }}">
                 <legend class="uk-legend">Редактирование пользователя</legend>
-
+                @method('PUT')
                 @csrf
                 <input type="hidden" name="id" value="{{ $user->id }}">
 
@@ -65,7 +65,7 @@
                         <button class="uk-button uk-button-primary" type="submit">Сохранить</button>
                     </div>
                     <div class="uk-margin uk-margin-remove-top">
-                        <a href="{{ route('users.read') }}" class="uk-button uk-button-default">Отмена</a>
+                        <a href="{{ route('users.index') }}" class="uk-button uk-button-default">Отмена</a>
                     </div>
                 </div>
 

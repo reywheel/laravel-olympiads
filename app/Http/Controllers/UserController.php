@@ -7,13 +7,13 @@ use App\Role;
 use Illuminate\Http\Request;
 use Validator;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     protected $messages = [
         'required' => 'Необходимо указать :attribute.',
     ];
 
-    public function showAll(Request $request)
+    public function index(Request $request)
     {
         $users = User::all();
 
@@ -22,12 +22,12 @@ class UsersController extends Controller
         ]);
     }
 
-    public function createGet()
+    public function create()
     {
         return view('users.create_user');
     }
 
-    public function createPost(Request $request)
+    public function store(Request $request)
     {
         $validate_rules = [
             'name' => ['required', 'string', 'max:64'],
@@ -44,17 +44,10 @@ class UsersController extends Controller
 
         User::create($request->all());
 
-        return redirect()->route('users.read')->with('status_success', 'Пользователь успешно добавлен!');
+        return redirect()->route('users.index')->with('status_success', 'Пользователь успешно добавлен!');
     }
 
-    public function delete($id)
-    {
-        User::destroy($id);
-
-        return redirect()->route('users.read')->with('status_success', 'Пользователь успешно удалён!');
-    }
-
-    public function updateGet($id)
+    public function edit($id)
     {
         $updating_user = User::find($id);
         $roles = Role::select(['id', 'title'])->get();
@@ -62,7 +55,7 @@ class UsersController extends Controller
         return view('users.update_user', ['user' => $updating_user, 'roles' => $roles]);
     }
 
-    public function updatePost(Request $request)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'max:64'],
@@ -78,6 +71,12 @@ class UsersController extends Controller
         $updating_user->role_id = Role::find($request->role_id)->id;
         $updating_user->save();
 
-        return redirect()->route('users.read')->with('status_success', 'Пользователь успешно отредактирован');
+        return redirect()->route('users.index')->with('status_success', 'Пользователь успешно отредактирован');
+    }
+
+    public function destroy($user_id)
+    {
+        $result = User::destroy($user_id);
+        return redirect()->route('users.index')->with('status_success', 'Пользователь успешно удалён!');
     }
 }
