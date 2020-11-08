@@ -6,6 +6,7 @@ use App\User;
 use App\Role;
 use Illuminate\Http\Request;
 use Validator;
+use Hash;
 
 class UserController extends Controller
 {
@@ -42,7 +43,8 @@ class UserController extends Controller
 
         $this->validate($request, $validate_rules);
 
-        User::create($request->all());
+        $user_data = array_merge($request->all(), ['password' => Hash::make($request->password)]);
+        User::create($user_data);
 
         return redirect()->route('users.index')->with('status_success', 'Пользователь успешно добавлен!');
     }

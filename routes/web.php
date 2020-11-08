@@ -16,14 +16,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::redirect('/', '/tests')->name('home');
 
     Route::resource('users', 'UserController', ['except' => ['show']])->middleware('role:admin');
-    // Route::prefix('/users')->middleware('role:admin')->group(function () {
-    //     Route::get('/', 'UsersController@showAll')->name('users.read');
-    //     Route::get('/{user_id}/delete', 'UsersController@delete')->name('users.delete');
-    //     Route::get('/{user_id}/update', 'UsersController@updateGet')->name('users.update-get');
-    //     Route::post('/update', 'UsersController@updatePost')->name('users.update-post');
-    //     Route::get('/create', 'UsersController@createGet')->name('users.create-get');
-    //     Route::post('/create', 'UsersController@createPost')->name('users.create-post');
-    // });
 
     Route::prefix('/tests')->group(function() {
         Route::get('/', 'TestsController@showAll')->name('tests.show-all');
@@ -66,4 +58,3 @@ Auth::routes();
 // Редактирование тестов
 // Добавление вопроса с одним вариантов выбора
 // Забыли пароль?
-// Шифрование паролей при добавлении пользователя через админку
