@@ -20,6 +20,7 @@
                         <th>Дата рождения</th>
                         <th>Школа</th>
                         <th>Email</th>
+                        <th>Роль</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -33,6 +34,7 @@
                             <td>{{ DateTime::createFromFormat('Y-m-d', $user->date_of_birth)->format('d.m.Y') }}</td>
                             <td>{{ $user->school }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->role->title }}</td>
                             <td>
                                 <ul class="uk-iconnav">
                                     <li><a href="{{ route('users.update-get', ['id' => $user->id]) }}"
