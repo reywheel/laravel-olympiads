@@ -205,7 +205,16 @@ window.addEventListener('DOMContentLoaded', function () {
           this.questions.push({
             type: 'checkbox',
             title: '',
-            answers: []
+            answers: [{
+              'title': '',
+              'is_correct': true
+            }, {
+              'title': '',
+              'is_correct': false
+            }, {
+              'title': '',
+              'is_correct': false
+            }]
           });
         }
       },

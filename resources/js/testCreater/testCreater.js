@@ -23,7 +23,20 @@ window.addEventListener('DOMContentLoaded', () => {
                     this.questions.push({
                         type: 'checkbox',
                         title: '',
-                        answers: [],
+                        answers: [
+                            {
+                                'title': '',
+                                'is_correct': true
+                            },
+                            {
+                                'title': '',
+                                'is_correct': false
+                            },
+                            {
+                                'title': '',
+                                'is_correct': false
+                            }
+                        ],
                     })
                 }
             },
