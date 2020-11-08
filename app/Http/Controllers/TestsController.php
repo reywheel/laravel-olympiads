@@ -59,17 +59,11 @@ class TestsController extends Controller
             'finish_time' => ['required']
         ]);
 
-        $newTest = new Test();
-        $newTest->user_id = $request->user()->id;
-        $newTest->title = $request->title;
-        $newTest->is_unidirectional = $request->is_unidirectional == 'false' ? false : true;
-        $newTest->start_time = $request->start_time;
-        $newTest->finish_time = $request->finish_time;
-        $newTest->save();
+        $new_test_id = $this->saveTest($request);
 
         if (isset($request->questions)) {
             foreach ($request->questions as $question) {
-                $new_question_id = $this->saveQuestion($question, $newTest->id);
+                $new_question_id = $this->saveQuestion($question, $new_test_id);
 
                 if (isset($question['answers'])) {
                     foreach ($question['answers'] as $answer) {
@@ -79,7 +73,7 @@ class TestsController extends Controller
             }
         };
 
-        return redirect()->route('tests.show-by-id', ['id' => $newTest->id])->with('status_success', 'Тест успешно создан');
+        return redirect()->route('tests.show-by-id', ['id' => $new_test_id])->with('status_success', 'Тест успешно создан');
     }
 
     public function delete($id)
@@ -90,17 +84,15 @@ class TestsController extends Controller
 
     public function showResults(Request $request, $test_id)
     {
-        $number_of_correct_answers = Answer::where('is_correct', true)->whereHas('question', function($query) use ($test_id) {
-            $query->where('test_id', $test_id);
-        })->get()->count();
+        $number_of_correct_answers = $this->get_number_of_correct_answers_in_test($test_id);
 
         $completions = TestingTime::where('test_id', $test_id)->where('test_finish', '!=', 'null')->with('user')->get();
         $users = array_map(function($user_id) {
             return $user_id[0]['user'];
         }, $completions->groupBy('user_id')->toArray());
 
-        foreach ($users as $id => &$user) {
-            $user['number_of_correct_results'] = Result::where('user_id', $id)->where('test_id', $test_id)->where('is_correct', true)->count();
+        foreach ($users as $user_id => &$user) {
+            $user['number_of_correct_results'] = $this->get_number_of_correct_results_by_user($user_id, $test_id);
         }
 
         return view('tests.results', [
@@ -140,5 +132,25 @@ class TestsController extends Controller
         $newAnswer->save();
 
         return $newAnswer->id;
+    }
+
+    private function saveTest(Request $request) : int {
+        $newTest = new Test();
+        $newTest->user_id = $request->user()->id;
+        $newTest->title = $request->title;
+        $newTest->is_unidirectional = $request->is_unidirectional == 'false' ? false : true;
+        $newTest->start_time = $request->start_time;
+        $newTest->finish_time = $request->finish_time;
+        $newTest->save();
+
+        return $newTest->id;
+    }
+
+    private function get_number_of_correct_answers_in_test(int $test_id) : int {
+        return Answer::with('question')->get()->where('question.test_id', $test_id)->where('is_correct', true)->count();
+    }
+
+    private function get_number_of_correct_results_by_user(int $user_id, int $test_id) : int {
+        return Result::where('user_id', $user_id)->where('test_id', $test_id)->where('is_correct', true)->count();
     }
 }

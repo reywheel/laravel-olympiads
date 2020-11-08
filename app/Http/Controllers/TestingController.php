@@ -12,15 +12,15 @@ use Illuminate\Http\Request;
 
 class TestingController extends Controller
 {
-    public function show(Request $request, $id)
+    public function show(Request $request, $test_id)
     {
-        if (auth()->user()->cannot('start', Test::find($id))) {
-            return redirect()->route('tests.show-by-id', ['id' => $id])->with('status_danger', 'Нет доступа к тесту');
+        if (auth()->user()->cannot('start', Test::find($test_id))) {
+            return redirect()->route('tests.show-by-id', ['id' => $test_id])->with('status_danger', 'Нет доступа к тесту');
         }
 
-        $this->addTestingStartTime(auth()->user()->id, $id);
+        $this->addTestingStartTime(auth()->user()->id, $test_id);
 
-        $test = Test::where('id', $id)->with('questions.answers')->first();
+        $test = Test::where('id', $test_id)->with('questions.answers')->first();
         $test_state = [];
 
         $test_state['title'] = $test->title;
@@ -42,7 +42,7 @@ class TestingController extends Controller
             }
         }
 
-        return view('testing.testing', ['state' => json_encode($test_state, JSON_UNESCAPED_UNICODE), 'test_id' => $id]);
+        return view('testing.testing', ['state' => json_encode($test_state, JSON_UNESCAPED_UNICODE), 'test_id' => $test_id]);
     }
 
     public function completePost(Request $request, $id)

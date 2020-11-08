@@ -1,5 +1,5 @@
 @if(session()->has('status_success'))
-    <div class="uk-alert-primary uk-margin-remove-bottom" uk-alert>
+    <div class="uk-alert-success uk-margin-remove-bottom" uk-alert>
         <a class="uk-alert-close" uk-close></a>
         <p>{{ session()->get('status_success') }}</p>
     </div>
