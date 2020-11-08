@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -49,7 +50,9 @@ class UsersController extends Controller
     public function updateGet($id)
     {
         $updating_user = User::find($id);
-        return view('users.update_user', ['user' => $updating_user]);
+        $roles = Role::select(['id', 'title'])->get();
+
+        return view('users.update_user', ['user' => $updating_user, 'roles' => $roles]);
     }
 
     public function updatePost(Request $request)
@@ -60,10 +63,12 @@ class UsersController extends Controller
             'patronymic' => ['required', 'string', 'max:64'],
             'date_of_birth' => ['required', 'date'],
             'school' => ['required', 'string', 'max:32'],
+            'role_id' => ['required', 'integer']
         ]);
 
         $updating_user = User::find($request->input('id'));
         $updating_user->fill($request->all());
+        $updating_user->role_id = Role::find($request->role_id)->id;
         $updating_user->save();
 
         return redirect()->route('users.read')->with('status_success', 'Пользователь успешно отредактирован');
