@@ -68,7 +68,7 @@ class TestingController extends Controller
 
     public function completeGet(Request $request, $id)
     {
-        return redirect()->route('tests.show-all')->with('status_success', 'Тест успешно завершён');
+        return redirect()->route('tests.index')->with('status_success', 'Тест успешно завершён');
     }
 
     private function resultIsCorrect($result, $questionId)

@@ -6,7 +6,7 @@
 
         <div class="content uk-width-4-5 uk-padding">
 
-            <a href="{{ route('tests.show-by-id', ['id' => $test_id]) }}" class="uk-button uk-button-primary uk-margin-bottom">Назад</a>
+            <a href="{{ route('tests.show', ['test' => $test_id]) }}" class="uk-button uk-button-primary uk-margin-bottom">Назад</a>
 
             <div class="uk-card uk-card-default uk-padding-small">
                 <table class="uk-table  uk-table-hover uk-table-striped">

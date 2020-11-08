@@ -19,28 +19,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('tests', 'TestController');
 
     Route::prefix('/tests')->group(function() {
-        // Route::get('/', 'TestsController@showAll')->name('tests.show-all');
-        // Route::get('/{test_id}', 'TestsController@showById')->name('tests.show-by-id');
-        // Route::get('/create', 'TestsController@createGet')
-        //     ->middleware('role:admin')
-        //     ->name('tests.create-get');
-        // Route::post('/create', 'TestsController@createPost')
-        //     ->middleware('role:admin')
-        //     ->name('tests.create-post');
-        // Route::get('/{test_id}/update', 'TestsController@updateGet')
-        //     ->middleware('role:admin')
-        //     ->name('tests.update-get');
-        // Route::post('/update', 'TestsController@updatePost')
-        //     ->middleware('role:admin')
-        //     ->name('tests.update-post');
-        // Route::get('/{test_id}/delete', 'TestsController@delete')
-        //     ->middleware('role:admin')
-        //     ->name('tests.delete');
 
-        Route::get('/{test_id}/results', 'TestsController@showResults')
+        Route::get('/{test_id}/results', 'TestController@showResults')
             ->middleware('role:admin:moderator')
             ->name('tests.results');
-        Route::get('/{test_id}/results/{user_id}', 'TestsController@showUserResults')
+        Route::get('/{test_id}/results/{user_id}', 'TestController@showUserResults')
             ->middleware('role:admin:moderator')
             ->name('tests.user_results');
 

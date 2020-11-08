@@ -10,7 +10,7 @@
                class="uk-button uk-button-danger uk-margin-bottom">Пройти тест</a>
             @endcan
             @can('read', new \App\Result())
-            <a href="{{ route('tests.results', ['id' => $test->id]) }}"
+            <a href="{{ route('tests.results', ['test_id' => $test->id]) }}"
                class="uk-button uk-button-secondary uk-margin-bottom">Результаты</a>
             @endcan
             <a href="{{ route('tests.index') }}"

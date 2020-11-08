@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Пользователя с такими данными не было найдено',
+    'failed' => 'Пользователь с такими данными не был найден',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
