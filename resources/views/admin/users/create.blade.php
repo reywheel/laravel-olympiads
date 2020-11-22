@@ -52,6 +52,16 @@
                     @enderror
                 </div>
                 <div class="uk-margin">
+                    <select class="uk-select @error('role_id') uk-form-danger @enderror" name="role_id">
+                        @foreach($roles as $role)
+                            <option value="{{ $role->id }}">{{ $role->title }}</option>
+                        @endforeach
+                    </select>
+                    @error('role_id')
+                    <p class="uk-text-danger uk-text-small uk-margin-small">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="uk-margin">
                     <input class="uk-input  @error('password') uk-form-danger @enderror" type="password"
                            placeholder="Пароль" name="password">
                     @error('password')

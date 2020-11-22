@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function() {
     });
 
     Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => 'role:admin', 'as' => 'admin/'], function () {
+        Route::redirect('/', 'admin/tests')->name('admin');
+
         Route::resource('users', 'UserController', ['except' => ['show']]);
         Route::resource('tests', 'TestController');
     });
@@ -48,4 +50,3 @@ Auth::routes();
 // Назначение роли пользователя при добавлении через админку
 // Подтверждение удаления чего-либо
 // Поменять в контроллерах аргументы с id на test_id, user_id и т.д.
-// Перенести админку на новый роут

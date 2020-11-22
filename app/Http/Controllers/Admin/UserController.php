@@ -26,7 +26,10 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::select(['id', 'title'])->orderBy('id', 'DESC')->get();
+        return view('admin.users.create', [
+            'roles' => $roles
+        ]);
     }
 
     public function store(Request $request)
@@ -38,6 +41,7 @@ class UserController extends Controller
             'date_of_birth' => ['required', 'date'],
             'school' => ['required', 'string', 'max:32'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'role_id' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => ['required']
         ];
