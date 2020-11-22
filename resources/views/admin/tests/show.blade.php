@@ -6,14 +6,14 @@
 
         <div class="content uk-width-4-5 uk-padding">
             @can('start', $test)
-            <a href="{{ route('testing.show', ['id' => $test->id]) }}"
+            <a href="{{ route('admin/testing.show', ['id' => $test->id]) }}"
                class="uk-button uk-button-danger uk-margin-bottom">Пройти тест</a>
             @endcan
             @can('read', new \App\Result())
             <a href="{{ route('tests.results', ['test_id' => $test->id]) }}"
                class="uk-button uk-button-secondary uk-margin-bottom">Результаты</a>
             @endcan
-            <a href="{{ route('tests.index') }}"
+            <a href="{{ route('admin/tests.index') }}"
                class="uk-button uk-button-default uk-margin-bottom">Вернуться к тестам</a>
 
             @can('readInfo', new \App\Test())

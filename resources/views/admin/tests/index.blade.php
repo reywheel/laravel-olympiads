@@ -14,7 +14,7 @@
             @endif
 
             @can('create', new \App\Test())
-            <a href="{{ route('tests.create') }}"
+            <a href="{{ route('admin/tests.create') }}"
                class="uk-button uk-button-primary uk-margin-bottom">Создать новый тест</a>
             @endcan
             {{-- table start --}}
@@ -36,7 +36,7 @@
                     <tbody>
                     @foreach ($tests as $test)
                         <tr>
-                            <td><a href="{{ route('tests.show', ['test' => $test->id]) }}" class="uk-link-heading">{{ $test->title }}</a></td>
+                            <td><a href="{{ route('admin/tests.show', ['test' => $test->id]) }}" class="uk-link-heading">{{ $test->title }}</a></td>
                             @can('readInfo', new \App\Test())
                             <td>{{ $test->user->name }}</td>
                             <td>{{ $test->is_unidirectional == 1 ? 'Да' : 'Нет' }}</td>
@@ -46,16 +46,16 @@
                                 <td>
                                     <ul class="uk-iconnav">
                                         <li>
-                                            <a href="{{ route('tests.edit', ['test' => $test->id]) }}"
+                                            <a href="{{ route('admin/tests.edit', ['test' => $test->id]) }}"
                                                uk-icon="icon: file-edit"></a>
                                         </li>
                                         <li>
-                                            <a href="#" uk-icon="icon: trash" 
-                                                class="uk-text-danger" 
+                                            <a href="#" uk-icon="icon: trash"
+                                                class="uk-text-danger"
                                                 onclick="document.querySelector('#delete_form_{{ $test->id }}').submit(); return false;">
                                             </a>
                                         </li>
-                                        <form id="delete_form_{{ $test->id }}" action="{{ route('tests.destroy', ['test' => $test->id]) }}" style="display: none" method="POST">
+                                        <form id="delete_form_{{ $test->id }}" action="{{ route('admin/tests.destroy', ['test' => $test->id]) }}" style="display: none" method="POST">
                                             @method("DELETE")
                                             @csrf
                                         </form>

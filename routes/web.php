@@ -15,18 +15,15 @@
 Route::group(['middleware' => 'auth'], function() {
     Route::redirect('/', '/tests')->name('home');
 
-    Route::resource('users', 'UserController', ['except' => ['show']])->middleware('role:admin');
     Route::resource('tests', 'TestController');
 
     Route::prefix('/tests')->group(function() {
-
         Route::get('/{test_id}/results', 'TestController@showResults')
             ->middleware('role:admin:moderator')
             ->name('tests.results');
         Route::get('/{test_id}/results/{user_id}', 'TestController@showUserResults')
             ->middleware('role:admin:moderator')
             ->name('tests.user_results');
-
     });
 
     Route::prefix('/testing')->group(function() {
@@ -34,16 +31,21 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/{test_id}/complete', 'TestingController@completeGet')->name('testing.complete-get');
         Route::post('/{test_id}/complete', 'TestingController@completePost')->name('testing.complete-post');
     });
+
+    Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => 'role:admin', 'as' => 'admin/'], function () {
+        Route::resource('users', 'UserController', ['except' => ['show']]);
+        Route::resource('tests', 'TestController');
+    });
 });
 
 Auth::routes();
 
-// TODO: 
+// TODO:
 // Редактирование профиля
 // Редактирование тестов
 // Добавление вопроса с одним вариантов выбора
 // Забыли пароль?
 // Назначение роли пользователя при добавлении через админку
-// Разобраться с route:list
 // Подтверждение удаления чего-либо
 // Поменять в контроллерах аргументы с id на test_id, user_id и т.д.
+// Перенести админку на новый роут

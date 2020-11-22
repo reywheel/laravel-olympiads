@@ -5,7 +5,7 @@
         @include('partials.sidebar')
 
         <div class="content uk-width-4-5">
-            <form class="uk-width-3-5 uk-margin-top" method="POST" action="{{ route('users.store') }}">
+            <form class="uk-width-3-5 uk-margin-top" method="POST" action="{{ route('admin/users.store') }}">
                 <legend class="uk-legend">Добавление нового пользователя</legend>
 
                 @csrf
@@ -70,7 +70,7 @@
                         <button class="uk-button uk-button-primary" type="submit">Добавить</button>
                     </div>
                     <div class="uk-margin uk-margin-remove-top">
-                        <a href="{{ route('users.index') }}" class="uk-button uk-button-default">Отмена</a>
+                        <a href="{{ route('admin/users.index') }}" class="uk-button uk-button-default">Отмена</a>
                     </div>
                 </div>
 

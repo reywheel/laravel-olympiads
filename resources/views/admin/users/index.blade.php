@@ -6,7 +6,7 @@
 
         <div class="content uk-width-4-5 uk-padding">
 
-            <a href="{{ route('users.create') }}"
+            <a href="{{ route('admin/users.create') }}"
                class="uk-button uk-button-primary uk-margin-bottom">Добавить пользователя</a>
 
             {{-- table start --}}
@@ -37,16 +37,16 @@
                             <td>{{ $user->role->title }}</td>
                             <td>
                                 <ul class="uk-iconnav">
-                                    <li><a href="{{ route('users.edit', ['id' => $user->id]) }}"
+                                    <li><a href="{{ route('admin/users.edit', ['id' => $user->id]) }}"
                                            uk-icon="icon: file-edit"></a>
                                     </li>
                                     <li>
-                                        <a href="#" uk-icon="icon: trash" 
-                                            class="uk-text-danger" 
+                                        <a href="#" uk-icon="icon: trash"
+                                            class="uk-text-danger"
                                             onclick="document.querySelector('#delete_form_{{ $user->id }}').submit(); return false;">
                                         </a>
                                     </li>
-                                    <form id="delete_form_{{ $user->id }}" action="{{ route('users.destroy', ['id' => $user->id]) }}" style="display: none" method="POST">
+                                    <form id="delete_form_{{ $user->id }}" action="{{ route('admin/users.destroy', ['id' => $user->id]) }}" style="display: none" method="POST">
                                         @method("DELETE")
                                         @csrf
                                     </form>

@@ -15,7 +15,7 @@ class TestingController extends Controller
     public function show(Request $request, $test_id)
     {
         if (auth()->user()->cannot('start', Test::find($test_id))) {
-            return redirect()->route('tests.show-by-id', ['id' => $test_id])->with('status_danger', 'Нет доступа к тесту');
+            return redirect()->route('tests.show', ['id' => $test_id])->with('status_danger', 'Нет доступа к тесту');
         }
 
         $this->addTestingStartTime(auth()->user()->id, $test_id);

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
@@ -18,14 +19,14 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('users.all_users', [
+        return view('admin.users.index', [
             'users' => $users
         ]);
     }
 
     public function create()
     {
-        return view('users.create_user');
+        return view('admin.users.create');
     }
 
     public function store(Request $request)
@@ -46,7 +47,7 @@ class UserController extends Controller
         $user_data = array_merge($request->all(), ['password' => Hash::make($request->password)]);
         User::create($user_data);
 
-        return redirect()->route('users.index')->with('status_success', 'Пользователь успешно добавлен!');
+        return redirect()->route('admin/users.index')->with('status_success', 'Пользователь успешно добавлен!');
     }
 
     public function edit($id)
@@ -54,7 +55,7 @@ class UserController extends Controller
         $updating_user = User::find($id);
         $roles = Role::select(['id', 'title'])->get();
 
-        return view('users.update_user', ['user' => $updating_user, 'roles' => $roles]);
+        return view('admin.users.edit', ['user' => $updating_user, 'roles' => $roles]);
     }
 
     public function update(Request $request, $id)
@@ -73,12 +74,12 @@ class UserController extends Controller
         $updating_user->role_id = Role::find($request->role_id)->id;
         $updating_user->save();
 
-        return redirect()->route('users.index')->with('status_success', 'Пользователь успешно отредактирован');
+        return redirect()->route('admin/users.index')->with('status_success', 'Пользователь успешно отредактирован');
     }
 
     public function destroy($user_id)
     {
         $result = User::destroy($user_id);
-        return redirect()->route('users.index')->with('status_success', 'Пользователь успешно удалён!');
+        return redirect()->route('admin/users.index')->with('status_success', 'Пользователь успешно удалён!');
     }
 }
