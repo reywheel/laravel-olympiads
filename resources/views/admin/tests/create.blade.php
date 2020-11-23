@@ -5,7 +5,7 @@
         @include('partials.sidebar')
 
         <div class="content uk-width-4-5 uk-padding" id="app">
-            <hello-world>
+            <test-creator></test-creator>
         </div>
 
     </div>
