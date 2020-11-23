@@ -6,13 +6,6 @@
 
         <div class="content uk-width-4-5 uk-padding">
 
-            @if(session()->has('status'))
-                <div class="uk-alert-success" uk-alert>
-                    <a class="uk-alert-close" uk-close></a>
-                    <p>{{ session()->get('status') }}</p>
-                </div>
-            @endif
-
             @can('create', new \App\Test())
             <a href="{{ route('admin/tests.create') }}"
                class="uk-button uk-button-primary uk-margin-bottom">Создать новый тест</a>

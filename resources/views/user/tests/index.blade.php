@@ -28,6 +28,9 @@
                 @endif
             </div>
             {{-- table end --}}
+            <div id="app">
+                <hello-world></hello-world>
+            </div>
 
         </div>
 
