@@ -62,6 +62,8 @@ class TestController extends Controller
             'finish_time' => ['required']
         ]);
 
+        return $request->all();
+
         $new_test_id = $this->saveTest($request);
 
         if (isset($request->questions)) {

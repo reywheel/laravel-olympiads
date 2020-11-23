@@ -1,7 +1,7 @@
 <template>
     <div class="uk-card uk-card-body uk-card-default">
         <div class="question__header">
-            <span>{{index + 1}}. Множественные выбор</span>
+            <span>{{index + 1}}. Единичный выбор</span>
             <li><a href="#" class="uk-text-danger" uk-icon="icon: trash" @click.prevent="deleteQuestion"></a></li>
         </div>
         <div class="uk-margin">

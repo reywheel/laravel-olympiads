@@ -5,7 +5,7 @@
         @include('partials.sidebar')
 
         <div class="content uk-width-4-5 uk-padding" id="app">
-            <test-creator></test-creator>
+            <test-creator url="{{ route('admin/tests.store') }}"></test-creator>
         </div>
 
     </div>

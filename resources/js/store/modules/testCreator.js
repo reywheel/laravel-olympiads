@@ -1,5 +1,7 @@
+import axios from 'axios'
+
 class baseQuestion {
-    constructor(text = 'text') {
+    constructor(text = '') {
         this.type = 'baseQuestion'
         this.text = text
     }
@@ -54,15 +56,27 @@ export const mutationTypes = {
     deleteQuestion: '[testCreator] deleteQuestion',
     addAnswer: '[testCreator] addAnswer',
     deleteAnswer: '[testCreator] deleteAnswer',
+
+    createTestStart: '[testCreator] createTestStart',
+    createTestSuccess: '[testCreator] createTestSuccess',
+    createTestFailure: '[testCreator] createTestFailure',
+}
+
+export const actionTypes = {
+    createTest: '[testCreator] createTest'
 }
 
 export default {
     state: {
         test: {
             title: 'title',
+            is_unidirectional: false,
+            start_time: null,
+            finish_time: null,
             questions: []
         },
-        isSubmitting: false
+        isSubmitting: false,
+        errors: null
     },
     getters: {},
     mutations: {
@@ -86,7 +100,34 @@ export default {
         },
         [mutationTypes.deleteAnswer](state, {questionIndex, answerIndex}) {
             state.test.questions[questionIndex].answers.splice(answerIndex, 1)
+        },
+
+        [mutationTypes.createTestStart](state) {
+            state.isSubmitting = true
+            state.errors = null
+        },
+        [mutationTypes.createTestSuccess](state) {
+            state.isSubmitting = false
+        },
+        [mutationTypes.createTestFailure](state, errors) {
+            state.isSubmitting = false
+            state.errors = errors
         }
     },
-    actions: {}
+    actions: {
+        [actionTypes.createTest](context, {url}) {
+            context.commit(mutationTypes.createTestStart)
+            return new Promise(resolve => {
+                axios.post(url, context.state.test)
+                    .then(response => {
+                        context.commit(mutationTypes.createTestSuccess)
+                        resolve()
+                    })
+                    .catch(errors => {
+                        context.commit(mutationTypes.createTestFailure)
+                        console.log(errors)
+                    })
+            })
+        }
+    }
 }
