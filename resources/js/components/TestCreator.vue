@@ -23,6 +23,11 @@
                 :index="index"
                 class="uk-margin-bottom"
             />
+            <app-radio-question
+                v-if="question.type === 'radio'"
+                :index="index"
+                class="uk-margin-bottom"
+            />
         </template>
     </form>
 </template>
@@ -30,6 +35,7 @@
 <script>
     import AppTextQuestion from './TextQuestion'
     import AppCheckboxQuestion from './CheckboxQuestion'
+    import AppRadioQuestion from './RadioQuestion'
     import {mapState} from 'vuex'
     import {mutationTypes} from "../store/modules/testCreator";
 
@@ -37,7 +43,8 @@
         name: "TestCreator",
         components: {
             AppTextQuestion,
-            AppCheckboxQuestion
+            AppCheckboxQuestion,
+            AppRadioQuestion
         },
         computed: {
             ...mapState({

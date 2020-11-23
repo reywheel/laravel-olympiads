@@ -1,23 +1,51 @@
-class textQuestion {
-    constructor(text = '', exact = false) {
-        this.type = 'text'
+class baseQuestion {
+    constructor(text = 'text') {
+        this.type = 'baseQuestion'
         this.text = text
+    }
+}
+
+class textQuestion extends baseQuestion {
+    constructor(props, exact = false) {
+        super(props)
+        this.type = 'text'
         this.exact = exact
     }
 }
 
-class checkboxQuestion {
-    constructor(text = '') {
+class checkboxQuestion extends baseQuestion {
+    constructor(props) {
+        super(props)
         this.type = 'checkbox'
-        this.text = 'text'
         this.answers = []
     }
 }
 
-class answer {
-    constructor(text = '', isCorrect = false) {
+class radioQuestion extends baseQuestion {
+    constructor(props) {
+        super(props)
+        this.type = 'radio'
+        this.answers = []
+        this.correctAnswerIndex = 0
+    }
+}
+
+class baseAnswer {
+    constructor(text = '') {
         this.text = text
+    }
+}
+
+class checkboxAnswer extends baseAnswer {
+    constructor(props, isCorrect = false) {
+        super(props);
         this.isCorrect = isCorrect
+    }
+}
+
+class radioAnswer extends baseAnswer {
+    constructor(props) {
+        super(props);
     }
 }
 
@@ -43,14 +71,18 @@ export default {
             switch (type) {
                 case 'text': question = new textQuestion(); break;
                 case 'checkbox': question = new checkboxQuestion(); break;
+                case 'radio': question = new radioQuestion(); break;
             }
             state.test.questions.push(question)
         },
         [mutationTypes.deleteQuestion](state, questionIndex) {
             state.test.questions.splice(questionIndex, 1)
         },
-        [mutationTypes.addAnswer](state, questionIndex) {
-            state.test.questions[questionIndex].answers.push(new answer())
+        [mutationTypes.addAnswer](state, {type, questionIndex}) {
+            switch (type) {
+                case 'checkbox': state.test.questions[questionIndex].answers.push(new checkboxAnswer()); break;
+                case 'radio': state.test.questions[questionIndex].answers.push(new radioAnswer()); break;
+            }
         },
         [mutationTypes.deleteAnswer](state, {questionIndex, answerIndex}) {
             state.test.questions[questionIndex].answers.splice(answerIndex, 1)

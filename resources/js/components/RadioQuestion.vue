@@ -11,7 +11,7 @@
         </div>
         <div class="uk-margin question__answer" v-for="(answer, index) of answers">
             <input class="uk-input uk-width-2-3" type="text" id="title" v-model="answer.text">
-            <input class="uk-checkbox" type="checkbox" :checked="answer.isCorrect" v-model="answer.isCorrect">
+            <input class="uk-radio" type="radio" :checked="question.correctAnswerIndex === index" v-model="question.correctAnswerIndex" :value="index">
             <li><a href="#" class="uk-text-danger" uk-icon="icon: trash" @click.prevent="deleteAnswer(index)"></a></li>
         </div>
     </div>
@@ -21,7 +21,7 @@
     import {mutationTypes} from "../store/modules/testCreator";
 
     export default {
-        name: "CheckboxQuestion",
+        name: "RadioQuestion",
         props: {
             index: {
                 type: Number,

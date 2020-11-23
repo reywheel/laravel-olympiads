@@ -137,7 +137,77 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteQuestion, this.index);
     },
     addAnswer: function addAnswer() {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].addAnswer, this.index);
+      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].addAnswer, {
+        type: 'checkbox',
+        questionIndex: this.index
+      });
+    },
+    deleteAnswer: function deleteAnswer(answerIndex) {
+      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteAnswer, {
+        questionIndex: this.index,
+        answerIndex: answerIndex
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RadioQuestion.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RadioQuestion.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "RadioQuestion",
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  computed: {
+    question: function question() {
+      return this.$store.state.testCreator.test.questions[this.index];
+    },
+    answers: function answers() {
+      return this.$store.state.testCreator.test.questions[this.index].answers;
+    }
+  },
+  methods: {
+    deleteQuestion: function deleteQuestion() {
+      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteQuestion, this.index);
+    },
+    addAnswer: function addAnswer() {
+      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].addAnswer, {
+        type: 'checkbox',
+        questionIndex: this.index
+      });
     },
     deleteAnswer: function deleteAnswer(answerIndex) {
       this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteAnswer, {
@@ -161,8 +231,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TextQuestion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextQuestion */ "./resources/js/components/TextQuestion.vue");
 /* harmony import */ var _CheckboxQuestion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CheckboxQuestion */ "./resources/js/components/CheckboxQuestion.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
+/* harmony import */ var _RadioQuestion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RadioQuestion */ "./resources/js/components/RadioQuestion.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -198,6 +269,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -206,16 +283,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: "TestCreator",
   components: {
     AppTextQuestion: _TextQuestion__WEBPACK_IMPORTED_MODULE_0__["default"],
-    AppCheckboxQuestion: _CheckboxQuestion__WEBPACK_IMPORTED_MODULE_1__["default"]
+    AppCheckboxQuestion: _CheckboxQuestion__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AppRadioQuestion: _RadioQuestion__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])({
     test: function test(state) {
       return state.testCreator.test;
     }
   })),
   methods: {
     addQuestion: function addQuestion(type) {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_3__["mutationTypes"].addQuestion, type);
+      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__["mutationTypes"].addQuestion, type);
     },
     formSubmit: function formSubmit() {
       console.log('submit');
@@ -289,6 +367,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.question__header[data-v-e9936298] {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n.question__answer[data-v-e9936298] {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.question__header[data-v-7c9a3c26] {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n.question__answer[data-v-7c9a3c26] {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n", ""]);
 
 // exports
 
@@ -11687,6 +11784,36 @@ process.umask = function() { return 0; };
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CheckboxQuestion.vue?vue&type=style&index=0&id=e9936298&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckboxQuestion.vue?vue&type=style&index=0&id=e9936298&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -24808,6 +24935,156 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RadioQuestion.vue?vue&type=template&id=7c9a3c26&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RadioQuestion.vue?vue&type=template&id=7c9a3c26&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "uk-card uk-card-body uk-card-default" },
+    [
+      _c("div", { staticClass: "question__header" }, [
+        _c("span", [_vm._v(_vm._s(_vm.index + 1) + ". Множественные выбор")]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", {
+            staticClass: "uk-text-danger",
+            attrs: { href: "#", "uk-icon": "icon: trash" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.deleteQuestion($event)
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-margin" }, [
+        _c("label", { staticClass: "uk-form-label", attrs: { for: "text" } }, [
+          _vm._v("Текст вопроса")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.question.text,
+              expression: "question.text"
+            }
+          ],
+          staticClass: "uk-input uk-margin-bottom",
+          attrs: { type: "text", id: "text" },
+          domProps: { value: _vm.question.text },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.question, "text", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "uk-button uk-button-primary",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.addAnswer($event)
+              }
+            }
+          },
+          [_vm._v("Добавить вариант ответа")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.answers, function(answer, index) {
+        return _c("div", { staticClass: "uk-margin question__answer" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: answer.text,
+                expression: "answer.text"
+              }
+            ],
+            staticClass: "uk-input uk-width-2-3",
+            attrs: { type: "text", id: "title" },
+            domProps: { value: answer.text },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(answer, "text", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.question.correctAnswerIndex,
+                expression: "question.correctAnswerIndex"
+              }
+            ],
+            staticClass: "uk-radio",
+            attrs: { type: "radio" },
+            domProps: {
+              checked: _vm.question.correctAnswerIndex === index,
+              value: index,
+              checked: _vm._q(_vm.question.correctAnswerIndex, index)
+            },
+            on: {
+              change: function($event) {
+                return _vm.$set(_vm.question, "correctAnswerIndex", index)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", {
+              staticClass: "uk-text-danger",
+              attrs: { href: "#", "uk-icon": "icon: trash" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.deleteAnswer(index)
+                }
+              }
+            })
+          ])
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestCreator.vue?vue&type=template&id=90228dc2&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TestCreator.vue?vue&type=template&id=90228dc2&scoped=true& ***!
@@ -24932,6 +25209,13 @@ var render = function() {
           _vm._v(" "),
           question.type === "checkbox"
             ? _c("app-checkbox-question", {
+                staticClass: "uk-margin-bottom",
+                attrs: { index: index }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          question.type === "radio"
+            ? _c("app-radio-question", {
                 staticClass: "uk-margin-bottom",
                 attrs: { index: index }
               })
@@ -38643,6 +38927,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/RadioQuestion.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/RadioQuestion.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RadioQuestion_vue_vue_type_template_id_7c9a3c26_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RadioQuestion.vue?vue&type=template&id=7c9a3c26&scoped=true& */ "./resources/js/components/RadioQuestion.vue?vue&type=template&id=7c9a3c26&scoped=true&");
+/* harmony import */ var _RadioQuestion_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RadioQuestion.vue?vue&type=script&lang=js& */ "./resources/js/components/RadioQuestion.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _RadioQuestion_vue_vue_type_style_index_0_id_7c9a3c26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css& */ "./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _RadioQuestion_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RadioQuestion_vue_vue_type_template_id_7c9a3c26_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RadioQuestion_vue_vue_type_template_id_7c9a3c26_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "7c9a3c26",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/RadioQuestion.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/RadioQuestion.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/RadioQuestion.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./RadioQuestion.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RadioQuestion.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_style_index_0_id_7c9a3c26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RadioQuestion.vue?vue&type=style&index=0&id=7c9a3c26&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_style_index_0_id_7c9a3c26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_style_index_0_id_7c9a3c26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_style_index_0_id_7c9a3c26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_style_index_0_id_7c9a3c26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_style_index_0_id_7c9a3c26_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/RadioQuestion.vue?vue&type=template&id=7c9a3c26&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/RadioQuestion.vue?vue&type=template&id=7c9a3c26&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_template_id_7c9a3c26_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./RadioQuestion.vue?vue&type=template&id=7c9a3c26&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RadioQuestion.vue?vue&type=template&id=7c9a3c26&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_template_id_7c9a3c26_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RadioQuestion_vue_vue_type_template_id_7c9a3c26_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/TestCreator.vue":
 /*!*************************************************!*\
   !*** ./resources/js/components/TestCreator.vue ***!
@@ -38842,38 +39213,134 @@ var _mutations;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var textQuestion = function textQuestion() {
-  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  var exact = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+var baseQuestion = function baseQuestion() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'text';
 
-  _classCallCheck(this, textQuestion);
+  _classCallCheck(this, baseQuestion);
 
-  this.type = 'text';
+  this.type = 'baseQuestion';
   this.text = text;
-  this.exact = exact;
 };
 
-var checkboxQuestion = function checkboxQuestion() {
+var textQuestion = /*#__PURE__*/function (_baseQuestion) {
+  _inherits(textQuestion, _baseQuestion);
+
+  var _super = _createSuper(textQuestion);
+
+  function textQuestion(props) {
+    var _this;
+
+    var exact = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    _classCallCheck(this, textQuestion);
+
+    _this = _super.call(this, props);
+    _this.type = 'text';
+    _this.exact = exact;
+    return _this;
+  }
+
+  return textQuestion;
+}(baseQuestion);
+
+var checkboxQuestion = /*#__PURE__*/function (_baseQuestion2) {
+  _inherits(checkboxQuestion, _baseQuestion2);
+
+  var _super2 = _createSuper(checkboxQuestion);
+
+  function checkboxQuestion(props) {
+    var _this2;
+
+    _classCallCheck(this, checkboxQuestion);
+
+    _this2 = _super2.call(this, props);
+    _this2.type = 'checkbox';
+    _this2.answers = [];
+    return _this2;
+  }
+
+  return checkboxQuestion;
+}(baseQuestion);
+
+var radioQuestion = /*#__PURE__*/function (_baseQuestion3) {
+  _inherits(radioQuestion, _baseQuestion3);
+
+  var _super3 = _createSuper(radioQuestion);
+
+  function radioQuestion(props) {
+    var _this3;
+
+    _classCallCheck(this, radioQuestion);
+
+    _this3 = _super3.call(this, props);
+    _this3.type = 'radio';
+    _this3.answers = [];
+    _this3.correctAnswerIndex = 0;
+    return _this3;
+  }
+
+  return radioQuestion;
+}(baseQuestion);
+
+var baseAnswer = function baseAnswer() {
   var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-  _classCallCheck(this, checkboxQuestion);
-
-  this.type = 'checkbox';
-  this.text = 'text';
-  this.answers = [];
-};
-
-var answer = function answer() {
-  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  var isCorrect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  _classCallCheck(this, answer);
+  _classCallCheck(this, baseAnswer);
 
   this.text = text;
-  this.isCorrect = isCorrect;
 };
+
+var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
+  _inherits(checkboxAnswer, _baseAnswer);
+
+  var _super4 = _createSuper(checkboxAnswer);
+
+  function checkboxAnswer(props) {
+    var _this4;
+
+    var isCorrect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    _classCallCheck(this, checkboxAnswer);
+
+    _this4 = _super4.call(this, props);
+    _this4.isCorrect = isCorrect;
+    return _this4;
+  }
+
+  return checkboxAnswer;
+}(baseAnswer);
+
+var radioAnswer = /*#__PURE__*/function (_baseAnswer2) {
+  _inherits(radioAnswer, _baseAnswer2);
+
+  var _super5 = _createSuper(radioAnswer);
+
+  function radioAnswer(props) {
+    _classCallCheck(this, radioAnswer);
+
+    return _super5.call(this, props);
+  }
+
+  return radioAnswer;
+}(baseAnswer);
 
 var mutationTypes = {
   addQuestion: '[testCreator] addQuestion',
@@ -38901,16 +39368,31 @@ var mutationTypes = {
       case 'checkbox':
         question = new checkboxQuestion();
         break;
+
+      case 'radio':
+        question = new radioQuestion();
+        break;
     }
 
     state.test.questions.push(question);
   }), _defineProperty(_mutations, mutationTypes.deleteQuestion, function (state, questionIndex) {
     state.test.questions.splice(questionIndex, 1);
-  }), _defineProperty(_mutations, mutationTypes.addAnswer, function (state, questionIndex) {
-    state.test.questions[questionIndex].answers.push(new answer());
-  }), _defineProperty(_mutations, mutationTypes.deleteAnswer, function (state, _ref) {
-    var questionIndex = _ref.questionIndex,
-        answerIndex = _ref.answerIndex;
+  }), _defineProperty(_mutations, mutationTypes.addAnswer, function (state, _ref) {
+    var type = _ref.type,
+        questionIndex = _ref.questionIndex;
+
+    switch (type) {
+      case 'checkbox':
+        state.test.questions[questionIndex].answers.push(new checkboxAnswer());
+        break;
+
+      case 'radio':
+        state.test.questions[questionIndex].answers.push(new radioAnswer());
+        break;
+    }
+  }), _defineProperty(_mutations, mutationTypes.deleteAnswer, function (state, _ref2) {
+    var questionIndex = _ref2.questionIndex,
+        answerIndex = _ref2.answerIndex;
     state.test.questions[questionIndex].answers.splice(answerIndex, 1);
   }), _mutations),
   actions: {}
