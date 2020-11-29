@@ -3,7 +3,7 @@ import axios from 'axios'
 class baseQuestion {
     constructor(text = '') {
         this.type = 'baseQuestion'
-        this.text = text
+        this.title = text
     }
 }
 
@@ -11,6 +11,7 @@ class textQuestion extends baseQuestion {
     constructor(props, exact = false) {
         super(props)
         this.type = 'text'
+        this.answer = ''
         this.exact = exact
     }
 }
@@ -19,7 +20,11 @@ class checkboxQuestion extends baseQuestion {
     constructor(props) {
         super(props)
         this.type = 'checkbox'
-        this.answers = []
+        this.answers = [
+            new checkboxAnswer('', true),
+            new checkboxAnswer(),
+            new checkboxAnswer(),
+        ]
     }
 }
 
@@ -27,14 +32,18 @@ class radioQuestion extends baseQuestion {
     constructor(props) {
         super(props)
         this.type = 'radio'
-        this.answers = []
+        this.answers = [
+            new radioAnswer(),
+            new radioAnswer(),
+            new radioAnswer(),
+        ]
         this.correctAnswerIndex = 0
     }
 }
 
 class baseAnswer {
     constructor(text = '') {
-        this.text = text
+        this.title = text
     }
 }
 
@@ -69,7 +78,7 @@ export const actionTypes = {
 export default {
     state: {
         test: {
-            title: 'title',
+            title: '',
             is_unidirectional: false,
             start_time: null,
             finish_time: null,
@@ -121,7 +130,7 @@ export default {
                 axios.post(url, context.state.test)
                     .then(response => {
                         context.commit(mutationTypes.createTestSuccess)
-                        resolve()
+                        resolve(response)
                     })
                     .catch(errors => {
                         context.commit(mutationTypes.createTestFailure)

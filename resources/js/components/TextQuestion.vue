@@ -6,7 +6,9 @@
         </div>
         <div class="uk-margin">
             <label class="uk-form-label">Текст вопроса</label>
-            <input class="uk-input" type="text" id="text" v-model="question.text">
+            <input class="uk-input uk-margin-bottom" type="text" v-model="question.title">
+            <label class="uk-form-label">Ответ</label>
+            <input class="uk-input" type="text" v-model="question.answer">
             <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                 <label>Точное соответствие
                     <input class="uk-checkbox" type="checkbox" :checked="question.exact" v-model="question.exact">

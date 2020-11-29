@@ -6,11 +6,11 @@
         </div>
         <div class="uk-margin">
             <label class="uk-form-label" for="text">Текст вопроса</label>
-            <input class="uk-input uk-margin-bottom" type="text" id="text" v-model="question.text">
+            <input class="uk-input uk-margin-bottom" type="text" id="text" v-model="question.title">
             <button class="uk-button uk-button-primary" @click.prevent="addAnswer">Добавить вариант ответа</button>
         </div>
         <div class="uk-margin question__answer" v-for="(answer, index) of answers">
-            <input class="uk-input uk-width-2-3" type="text" id="title" v-model="answer.text">
+            <input class="uk-input uk-width-2-3" type="text" id="title" v-model="answer.title">
             <input class="uk-checkbox" type="checkbox" :checked="answer.isCorrect" v-model="answer.isCorrect">
             <li><a href="#" class="uk-text-danger" uk-icon="icon: trash" @click.prevent="deleteAnswer(index)"></a></li>
         </div>

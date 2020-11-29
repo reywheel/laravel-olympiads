@@ -74,6 +74,10 @@
             },
             formSubmit() {
                 this.$store.dispatch(actionTypes.createTest, { url: this.url })
+                    .then(response => {
+                        console.log(response)
+                        window.location.href = response.data.testUrl
+                    })
             }
         }
     }

@@ -2128,6 +2128,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     formSubmit: function formSubmit() {
       this.$store.dispatch(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__["actionTypes"].createTest, {
         url: this.url
+      }).then(function (response) {
+        console.log(response);
+        window.location.href = response.data.testUrl;
       });
     }
   }
@@ -2145,6 +2148,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
+//
+//
 //
 //
 //
@@ -26693,19 +26698,19 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.question.text,
-              expression: "question.text"
+              value: _vm.question.title,
+              expression: "question.title"
             }
           ],
           staticClass: "uk-input uk-margin-bottom",
           attrs: { type: "text", id: "text" },
-          domProps: { value: _vm.question.text },
+          domProps: { value: _vm.question.title },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.question, "text", $event.target.value)
+              _vm.$set(_vm.question, "title", $event.target.value)
             }
           }
         }),
@@ -26732,19 +26737,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: answer.text,
-                expression: "answer.text"
+                value: answer.title,
+                expression: "answer.title"
               }
             ],
             staticClass: "uk-input uk-width-2-3",
             attrs: { type: "text", id: "title" },
-            domProps: { value: answer.text },
+            domProps: { value: answer.title },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(answer, "text", $event.target.value)
+                _vm.$set(answer, "title", $event.target.value)
               }
             }
           }),
@@ -26862,19 +26867,19 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.question.text,
-              expression: "question.text"
+              value: _vm.question.title,
+              expression: "question.title"
             }
           ],
           staticClass: "uk-input uk-margin-bottom",
           attrs: { type: "text", id: "text" },
-          domProps: { value: _vm.question.text },
+          domProps: { value: _vm.question.title },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.question, "text", $event.target.value)
+              _vm.$set(_vm.question, "title", $event.target.value)
             }
           }
         }),
@@ -26901,19 +26906,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: answer.text,
-                expression: "answer.text"
+                value: answer.title,
+                expression: "answer.title"
               }
             ],
             staticClass: "uk-input uk-width-2-3",
             attrs: { type: "text", id: "title" },
-            domProps: { value: answer.text },
+            domProps: { value: answer.title },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(answer, "text", $event.target.value)
+                _vm.$set(answer, "title", $event.target.value)
               }
             }
           }),
@@ -27275,19 +27280,43 @@ var render = function() {
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.question.text,
-            expression: "question.text"
+            value: _vm.question.title,
+            expression: "question.title"
           }
         ],
-        staticClass: "uk-input",
-        attrs: { type: "text", id: "text" },
-        domProps: { value: _vm.question.text },
+        staticClass: "uk-input uk-margin-bottom",
+        attrs: { type: "text" },
+        domProps: { value: _vm.question.title },
         on: {
           input: function($event) {
             if ($event.target.composing) {
               return
             }
-            _vm.$set(_vm.question, "text", $event.target.value)
+            _vm.$set(_vm.question, "title", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "uk-form-label" }, [_vm._v("Ответ")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.question.answer,
+            expression: "question.answer"
+          }
+        ],
+        staticClass: "uk-input",
+        attrs: { type: "text" },
+        domProps: { value: _vm.question.answer },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.question, "answer", $event.target.value)
           }
         }
       }),
@@ -41261,7 +41290,7 @@ var baseQuestion = function baseQuestion() {
   _classCallCheck(this, baseQuestion);
 
   this.type = 'baseQuestion';
-  this.text = text;
+  this.title = text;
 };
 
 var textQuestion = /*#__PURE__*/function (_baseQuestion) {
@@ -41278,6 +41307,7 @@ var textQuestion = /*#__PURE__*/function (_baseQuestion) {
 
     _this = _super.call(this, props);
     _this.type = 'text';
+    _this.answer = '';
     _this.exact = exact;
     return _this;
   }
@@ -41297,7 +41327,7 @@ var checkboxQuestion = /*#__PURE__*/function (_baseQuestion2) {
 
     _this2 = _super2.call(this, props);
     _this2.type = 'checkbox';
-    _this2.answers = [];
+    _this2.answers = [new checkboxAnswer('', true), new checkboxAnswer(), new checkboxAnswer()];
     return _this2;
   }
 
@@ -41316,7 +41346,7 @@ var radioQuestion = /*#__PURE__*/function (_baseQuestion3) {
 
     _this3 = _super3.call(this, props);
     _this3.type = 'radio';
-    _this3.answers = [];
+    _this3.answers = [new radioAnswer(), new radioAnswer(), new radioAnswer()];
     _this3.correctAnswerIndex = 0;
     return _this3;
   }
@@ -41329,7 +41359,7 @@ var baseAnswer = function baseAnswer() {
 
   _classCallCheck(this, baseAnswer);
 
-  this.text = text;
+  this.title = text;
 };
 
 var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
@@ -41381,7 +41411,7 @@ var actionTypes = {
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
     test: {
-      title: 'title',
+      title: '',
       is_unidirectional: false,
       start_time: null,
       finish_time: null,
@@ -41443,7 +41473,7 @@ var actionTypes = {
     return new Promise(function (resolve) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, context.state.test).then(function (response) {
         context.commit(mutationTypes.createTestSuccess);
-        resolve();
+        resolve(response);
       })["catch"](function (errors) {
         context.commit(mutationTypes.createTestFailure);
         console.log(errors);
