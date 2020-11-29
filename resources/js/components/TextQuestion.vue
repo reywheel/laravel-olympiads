@@ -2,7 +2,7 @@
     <div class="uk-card uk-card-body uk-card-default">
         <div class="question__header">
             <span>{{index + 1}}. Текстовый</span>
-            <li><a href="#" class="uk-text-danger" uk-icon="icon: trash" @click.prevent="deleteQuestion"></a></li>
+            <li><a href="#" class="uk-text-danger" uk-icon="icon: trash" @click.prevent="destroy"></a></li>
         </div>
         <div class="uk-margin">
             <label class="uk-form-label">Текст вопроса</label>
@@ -19,33 +19,58 @@
 </template>
 
 <script>
-    import {mutationTypes} from "../store/modules/testCreator";
-
     export default {
         name: "TextQuestion",
         props: {
             index: {
                 type: Number,
                 required: true
+            },
+            questionData: {
+                type: Object,
+                required: true
             }
         },
-        computed: {
-            question() {
-                return this.$store.state.testCreator.test.questions[this.index]
+        data() {
+            return {
+                question: {
+                    title: '',
+                    exact: '',
+                    type: '',
+                    answer: ''
+                }
+            }
+        },
+        watch: {
+            questionData: {
+                handler: 'setData',
+                immediate: true
             },
+            question: {
+                handler: function (newValue) {
+                    this.$emit('change', newValue)
+                },
+                deep: true
+            }
         },
         methods: {
-            deleteQuestion() {
-                this.$store.commit(mutationTypes.deleteQuestion, this.index)
+            destroy() {
+                this.$emit('destroy')
+            },
+            setData(data) {
+                this.question.title = data.title,
+                this.question.exact = data.exact,
+                this.question.type = data.type,
+                this.question.answer = data.answer
             }
         }
     }
 </script>
 
 <style scoped>
-.question__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+    .question__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 </style>

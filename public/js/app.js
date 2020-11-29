@@ -1908,61 +1908,119 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CheckboxQuestion",
   props: {
     index: {
       type: Number,
       required: true
+    },
+    questionData: {
+      type: Object,
+      required: true
     }
   },
-  computed: {
-    question: function question() {
-      return this.$store.state.testCreator.test.questions[this.index];
+  data: function data() {
+    return {
+      question: {
+        title: '',
+        type: '',
+        answers: []
+      }
+    };
+  },
+  watch: {
+    questionData: {
+      handler: 'setData',
+      immediate: true
     },
-    answers: function answers() {
-      return this.$store.state.testCreator.test.questions[this.index].answers;
+    question: {
+      handler: function handler(newValue, oldValue) {
+        this.$emit('change', newValue);
+      },
+      deep: true
     }
   },
   methods: {
-    deleteQuestion: function deleteQuestion() {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteQuestion, this.index);
+    destroy: function destroy() {
+      this.$emit('destroy');
     },
     addAnswer: function addAnswer() {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].addAnswer, {
-        type: 'checkbox',
-        questionIndex: this.index
-      });
+      this.question.answers.push(new checkboxAnswer());
     },
     deleteAnswer: function deleteAnswer(answerIndex) {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteAnswer, {
-        questionIndex: this.index,
-        answerIndex: answerIndex
-      });
+      this.question.answers.splice(answerIndex, 1);
+    },
+    setData: function setData(data) {
+      this.question.title = data.title, this.question.type = data.type, this.question.answers = data.answers;
     }
   }
 });
+
+var baseAnswer = function baseAnswer() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  _classCallCheck(this, baseAnswer);
+
+  this.title = text;
+};
+
+var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
+  _inherits(checkboxAnswer, _baseAnswer);
+
+  var _super = _createSuper(checkboxAnswer);
+
+  function checkboxAnswer(props) {
+    var _this;
+
+    var isCorrect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    _classCallCheck(this, checkboxAnswer);
+
+    _this = _super.call(this, props);
+    _this.isCorrect = isCorrect;
+    return _this;
+  }
+
+  return checkboxAnswer;
+}(baseAnswer);
 
 /***/ }),
 
@@ -1975,61 +2033,114 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RadioQuestion",
   props: {
     index: {
       type: Number,
       required: true
+    },
+    questionData: {
+      type: Object,
+      required: true
     }
   },
-  computed: {
-    question: function question() {
-      return this.$store.state.testCreator.test.questions[this.index];
+  data: function data() {
+    return {
+      question: {
+        title: '',
+        type: '',
+        correctAnswerIndex: 0,
+        answers: []
+      }
+    };
+  },
+  watch: {
+    questionData: {
+      handler: 'setData',
+      immediate: true
     },
-    answers: function answers() {
-      return this.$store.state.testCreator.test.questions[this.index].answers;
+    question: {
+      handler: function handler(newValue, oldValue) {
+        this.$emit('change', newValue);
+      },
+      deep: true
     }
   },
   methods: {
-    deleteQuestion: function deleteQuestion() {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteQuestion, this.index);
+    destroy: function destroy() {
+      this.$emit('destroy');
     },
     addAnswer: function addAnswer() {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].addAnswer, {
-        type: 'checkbox',
-        questionIndex: this.index
-      });
+      this.question.answers.push(new radioAnswer());
     },
     deleteAnswer: function deleteAnswer(answerIndex) {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteAnswer, {
-        questionIndex: this.index,
-        answerIndex: answerIndex
-      });
+      this.question.answers.splice(answerIndex, 1);
+    },
+    setData: function setData(data) {
+      this.question.title = data.title, this.question.type = data.type, this.question.answers = data.answers;
     }
   }
 });
+
+var baseAnswer = function baseAnswer() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  _classCallCheck(this, baseAnswer);
+
+  this.title = text;
+};
+
+var radioAnswer = /*#__PURE__*/function (_baseAnswer) {
+  _inherits(radioAnswer, _baseAnswer);
+
+  var _super = _createSuper(radioAnswer);
+
+  function radioAnswer(props) {
+    _classCallCheck(this, radioAnswer);
+
+    return _super.call(this, props);
+  }
+
+  return radioAnswer;
+}(baseAnswer);
 
 /***/ }),
 
@@ -2047,12 +2158,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RadioQuestion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RadioQuestion */ "./resources/js/components/RadioQuestion.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2110,7 +2248,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TestCreator",
-  props: ['url'],
+  props: {
+    url: {
+      type: String,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      title: '',
+      questions: []
+    };
+  },
   components: {
     AppTextQuestion: _TextQuestion__WEBPACK_IMPORTED_MODULE_0__["default"],
     AppCheckboxQuestion: _CheckboxQuestion__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -2123,7 +2272,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   })),
   methods: {
     addQuestion: function addQuestion(type) {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__["mutationTypes"].addQuestion, type);
+      switch (type) {
+        case 'text':
+          this.questions.push(new textQuestion());
+          break;
+
+        case 'radio':
+          this.questions.push(new radioQuestion());
+          break;
+
+        case 'checkbox':
+          this.questions.push(new checkboxQuestion());
+          break;
+      }
+    },
+    changeQuestion: function changeQuestion(newValue, index) {
+      this.questions[index] = newValue;
+    },
+    deleteQuestion: function deleteQuestion(index) {
+      console.log(index);
+      this.questions.splice(index, 1);
     },
     formSubmit: function formSubmit() {
       this.$store.dispatch(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__["actionTypes"].createTest, {
@@ -2136,6 +2304,118 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }
 });
 
+var baseQuestion = function baseQuestion() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  _classCallCheck(this, baseQuestion);
+
+  this.type = 'baseQuestion';
+  this.title = text;
+};
+
+var textQuestion = /*#__PURE__*/function (_baseQuestion) {
+  _inherits(textQuestion, _baseQuestion);
+
+  var _super = _createSuper(textQuestion);
+
+  function textQuestion(props) {
+    var _this;
+
+    var exact = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    _classCallCheck(this, textQuestion);
+
+    _this = _super.call(this, props);
+    _this.type = 'text';
+    _this.answer = '';
+    _this.exact = exact;
+    return _this;
+  }
+
+  return textQuestion;
+}(baseQuestion);
+
+var checkboxQuestion = /*#__PURE__*/function (_baseQuestion2) {
+  _inherits(checkboxQuestion, _baseQuestion2);
+
+  var _super2 = _createSuper(checkboxQuestion);
+
+  function checkboxQuestion(props) {
+    var _this2;
+
+    _classCallCheck(this, checkboxQuestion);
+
+    _this2 = _super2.call(this, props);
+    _this2.type = 'checkbox';
+    _this2.answers = [new checkboxAnswer('', true), new checkboxAnswer(), new checkboxAnswer()];
+    return _this2;
+  }
+
+  return checkboxQuestion;
+}(baseQuestion);
+
+var radioQuestion = /*#__PURE__*/function (_baseQuestion3) {
+  _inherits(radioQuestion, _baseQuestion3);
+
+  var _super3 = _createSuper(radioQuestion);
+
+  function radioQuestion(props) {
+    var _this3;
+
+    _classCallCheck(this, radioQuestion);
+
+    _this3 = _super3.call(this, props);
+    _this3.type = 'radio';
+    _this3.answers = [new radioAnswer(), new radioAnswer(), new radioAnswer()];
+    _this3.correctAnswerIndex = 0;
+    return _this3;
+  }
+
+  return radioQuestion;
+}(baseQuestion);
+
+var baseAnswer = function baseAnswer() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  _classCallCheck(this, baseAnswer);
+
+  this.title = text;
+};
+
+var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
+  _inherits(checkboxAnswer, _baseAnswer);
+
+  var _super4 = _createSuper(checkboxAnswer);
+
+  function checkboxAnswer(props) {
+    var _this4;
+
+    var isCorrect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    _classCallCheck(this, checkboxAnswer);
+
+    _this4 = _super4.call(this, props);
+    _this4.isCorrect = isCorrect;
+    return _this4;
+  }
+
+  return checkboxAnswer;
+}(baseAnswer);
+
+var radioAnswer = /*#__PURE__*/function (_baseAnswer2) {
+  _inherits(radioAnswer, _baseAnswer2);
+
+  var _super5 = _createSuper(radioAnswer);
+
+  function radioAnswer(props) {
+    _classCallCheck(this, radioAnswer);
+
+    return _super5.call(this, props);
+  }
+
+  return radioAnswer;
+}(baseAnswer);
+
 /***/ }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TextQuestion.vue?vue&type=script&lang=js&":
@@ -2147,7 +2427,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
 //
 //
 //
@@ -2168,23 +2447,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TextQuestion",
   props: {
     index: {
       type: Number,
       required: true
+    },
+    questionData: {
+      type: Object,
+      required: true
     }
   },
-  computed: {
-    question: function question() {
-      return this.$store.state.testCreator.test.questions[this.index];
+  data: function data() {
+    return {
+      question: {
+        title: '',
+        exact: '',
+        type: '',
+        answer: ''
+      }
+    };
+  },
+  watch: {
+    questionData: {
+      handler: 'setData',
+      immediate: true
+    },
+    question: {
+      handler: function handler(newValue) {
+        this.$emit('change', newValue);
+      },
+      deep: true
     }
   },
   methods: {
-    deleteQuestion: function deleteQuestion() {
-      this.$store.commit(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_0__["mutationTypes"].deleteQuestion, this.index);
+    destroy: function destroy() {
+      this.$emit('destroy');
+    },
+    setData: function setData(data) {
+      this.question.title = data.title, this.question.exact = data.exact, this.question.type = data.type, this.question.answer = data.answer;
     }
   }
 });
@@ -26681,7 +26983,7 @@ var render = function() {
             on: {
               click: function($event) {
                 $event.preventDefault()
-                return _vm.deleteQuestion($event)
+                return _vm.destroy($event)
               }
             }
           })
@@ -26730,7 +27032,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._l(_vm.answers, function(answer, index) {
+      _vm._l(_vm.question.answers, function(answer, index) {
         return _c("div", { staticClass: "uk-margin question__answer" }, [
           _c("input", {
             directives: [
@@ -26850,7 +27152,7 @@ var render = function() {
             on: {
               click: function($event) {
                 $event.preventDefault()
-                return _vm.deleteQuestion($event)
+                return _vm.destroy($event)
               }
             }
           })
@@ -26899,7 +27201,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._l(_vm.answers, function(answer, index) {
+      _vm._l(_vm.question.answers, function(answer, index) {
         return _c("div", { staticClass: "uk-margin question__answer" }, [
           _c("input", {
             directives: [
@@ -27018,19 +27320,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.test.title,
-                  expression: "test.title"
+                  value: _vm.title,
+                  expression: "title"
                 }
               ],
               staticClass: "uk-input",
               attrs: { type: "text" },
-              domProps: { value: _vm.test.title },
+              domProps: { value: _vm.title },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.test, "title", $event.target.value)
+                  _vm.title = $event.target.value
                 }
               }
             })
@@ -27160,26 +27462,50 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._l(_vm.test.questions, function(question, index) {
+      _vm._l(_vm.questions, function(question, index) {
         return [
           question.type === "text"
             ? _c("app-text-question", {
                 staticClass: "uk-margin-bottom",
-                attrs: { index: index }
+                attrs: { index: index, questionData: question },
+                on: {
+                  change: function($event) {
+                    return _vm.changeQuestion($event, index)
+                  },
+                  destroy: function($event) {
+                    return _vm.deleteQuestion(index)
+                  }
+                }
               })
             : _vm._e(),
           _vm._v(" "),
           question.type === "checkbox"
             ? _c("app-checkbox-question", {
                 staticClass: "uk-margin-bottom",
-                attrs: { index: index }
+                attrs: { index: index, questionData: question },
+                on: {
+                  change: function($event) {
+                    return _vm.changeQuestion($event, index)
+                  },
+                  destroy: function($event) {
+                    return _vm.deleteQuestion(index)
+                  }
+                }
               })
             : _vm._e(),
           _vm._v(" "),
           question.type === "radio"
             ? _c("app-radio-question", {
                 staticClass: "uk-margin-bottom",
-                attrs: { index: index }
+                attrs: { index: index, questionData: question },
+                on: {
+                  change: function($event) {
+                    return _vm.changeQuestion($event, index)
+                  },
+                  destroy: function($event) {
+                    return _vm.deleteQuestion(index)
+                  }
+                }
               })
             : _vm._e()
         ]
@@ -27265,7 +27591,7 @@ var render = function() {
           on: {
             click: function($event) {
               $event.preventDefault()
-              return _vm.deleteQuestion($event)
+              return _vm.destroy($event)
             }
           }
         })

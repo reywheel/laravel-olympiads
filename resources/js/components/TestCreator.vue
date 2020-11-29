@@ -4,7 +4,7 @@
             <legend class="uk-legend">Создание нового теста</legend>
             <div class="uk-margin">
                 <label class="uk-form-label">Название теста</label>
-                <input class="uk-input" type="text" v-model="test.title">
+                <input class="uk-input" type="text" v-model="title">
             </div>
             <div class="uk-margin form__dates">
                 <div class="uk-width-1-3 form__dates-input">
@@ -23,20 +23,29 @@
             </div>
             <button class="uk-button uk-button-primary">Сохранить</button>
         </div>
-        <template v-for="(question, index) of test.questions">
+        <template v-for="(question, index) of questions">
             <app-text-question
                 v-if="question.type === 'text'"
                 :index="index"
+                :questionData="question"
+                @change="changeQuestion($event, index)"
+                @destroy="deleteQuestion(index)"
                 class="uk-margin-bottom"
             />
             <app-checkbox-question
                 v-if="question.type === 'checkbox'"
                 :index="index"
+                :questionData="question"
+                @change="changeQuestion($event, index)"
+                @destroy="deleteQuestion(index)"
                 class="uk-margin-bottom"
             />
             <app-radio-question
                 v-if="question.type === 'radio'"
                 :index="index"
+                :questionData="question"
+                @change="changeQuestion($event, index)"
+                @destroy="deleteQuestion(index)"
                 class="uk-margin-bottom"
             />
         </template>
@@ -57,7 +66,18 @@
 
     export default {
         name: "TestCreator",
-        props: ['url'],
+        props: {
+            url: {
+                type: String,
+                required: true
+            }
+        },
+        data() {
+            return {
+                title: '',
+                questions: [],
+            }
+        },
         components: {
             AppTextQuestion,
             AppCheckboxQuestion,
@@ -70,7 +90,18 @@
         },
         methods: {
             addQuestion(type) {
-                this.$store.commit(mutationTypes.addQuestion, type)
+                switch (type) {
+                    case 'text': this.questions.push(new textQuestion()); break;
+                    case 'radio': this.questions.push(new radioQuestion()); break;
+                    case 'checkbox': this.questions.push(new checkboxQuestion()); break;
+                }
+            },
+            changeQuestion(newValue, index) {
+                this.questions[index] = newValue
+            },
+            deleteQuestion(index) {
+                console.log(index)
+                this.questions.splice(index, 1)
             },
             formSubmit() {
                 this.$store.dispatch(actionTypes.createTest, { url: this.url })
@@ -79,6 +110,66 @@
                         window.location.href = response.data.testUrl
                     })
             }
+        }
+    }
+
+    class baseQuestion {
+        constructor(text = '') {
+            this.type = 'baseQuestion'
+            this.title = text
+        }
+    }
+
+    class textQuestion extends baseQuestion {
+        constructor(props, exact = false) {
+            super(props)
+            this.type = 'text'
+            this.answer = ''
+            this.exact = exact
+        }
+    }
+
+    class checkboxQuestion extends baseQuestion {
+        constructor(props) {
+            super(props)
+            this.type = 'checkbox'
+            this.answers = [
+                new checkboxAnswer('', true),
+                new checkboxAnswer(),
+                new checkboxAnswer(),
+            ]
+        }
+    }
+
+    class radioQuestion extends baseQuestion {
+        constructor(props) {
+            super(props)
+            this.type = 'radio'
+            this.answers = [
+                new radioAnswer(),
+                new radioAnswer(),
+                new radioAnswer(),
+            ]
+            this.correctAnswerIndex = 0
+        }
+    }
+
+    class baseAnswer {
+        constructor(text = '') {
+            this.title = text
+        }
+    }
+
+    class checkboxAnswer extends baseAnswer {
+        constructor(props, isCorrect = false) {
+            super(props);
+            this.isCorrect = isCorrect
+        }
+    }
+
+    class radioAnswer extends baseAnswer {
+        constructor(props) {
+            super(props);
         }
     }
 </script>
