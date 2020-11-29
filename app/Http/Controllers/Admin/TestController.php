@@ -59,24 +59,19 @@ class TestController extends Controller
             'title' => ['required'],
             'is_unidirectional' => ['required'],
             'start_time' => ['required'],
-            'finish_time' => ['required']
+            'finish_time' => ['required'],
+            'questions' => ['required']
         ]);
 
         $new_test_id = $this->saveTest($request);
 
         if (isset($request->questions)) {
-            foreach ($request->questions as $question) {
-                $new_question_id = $this->saveQuestion($question, $new_test_id);
+            $this->saveQuestionsAndAnswers($request->questions, $new_test_id);
+        }
 
-                if (isset($question['answers'])) {
-                    foreach ($question['answers'] as $answer) {
-                        $this->saveAnswer($answer, $new_question_id);
-                    }
-                }
-            }
-        };
-
-        return redirect()->route('admin/tests.show', ['test' => $new_test_id])->with('status_success', 'Тест успешно создан');
+        return json_encode([
+            'testUrl' => route('admin/tests.show', ['test' => $new_test_id])
+        ]);
     }
 
     public function edit($test_id)
@@ -95,6 +90,101 @@ class TestController extends Controller
     {
         Test::destroy($test_id);
         return redirect()->route('admin/tests.index')->with('status_success', 'Курс успешно удалён');
+    }
+
+    private function saveTest(Request $request) : int {
+        $newTest = new Test();
+        $newTest->user_id = $request->user()->id;
+        $newTest->title = $request->title;
+        $newTest->is_unidirectional = $request->is_unidirectional == 'false' ? false : true;
+        $newTest->start_time = $request->start_time;
+        $newTest->finish_time = $request->finish_time;
+        $newTest->save();
+
+        return $newTest->id;
+    }
+
+    private function saveQuestionsAndAnswers(array $questions, int $test_id) {
+
+            foreach ($questions as $question) {
+                switch ($question['type']) {
+                    case 'text': $new_question_id = $this->saveTextQuestion($question, $test_id); break;
+                    case 'radio': $new_question_id = $this->saveRadioQuestion($question, $test_id); break;
+                    case 'checkbox': $new_question_id = $this->saveCheckboxQuestion($question, $test_id); break;
+                }
+            }
+    }
+
+    private function saveTextQuestion($question, $test_id)
+    {
+        $newQuestion = new Question();
+        $newQuestion->title = $question['title'];
+        $newQuestion->type = $question['type'];
+        $newQuestion->test_id = $test_id;
+        $newQuestion->save();
+
+        $this->saveTextAnswer($question['answer'], $newQuestion->id, $question['exact']);
+    }
+
+    private function saveRadioQuestion($question, $test_id)
+    {
+        $newQuestion = new Question();
+        $newQuestion->title = $question['title'];
+        $newQuestion->type = $question['type'];
+        $newQuestion->test_id = $test_id;
+        $newQuestion->save();
+
+        foreach ($question['answers'] as $index => $answer) {
+            $is_correct = $question['correctAnswerIndex'] === $index;
+            $this->saveRadioAnswer($answer, $newQuestion->id, $is_correct);
+        }
+    }
+
+    private function saveCheckboxQuestion($question, $test_id)
+    {
+        $newQuestion = new Question();
+        $newQuestion->title = $question['title'];
+        $newQuestion->type = $question['type'];
+        $newQuestion->test_id = $test_id;
+        $newQuestion->save();
+
+        foreach ($question['answers'] as $index => $answer) {
+            $this->saveCheckboxAnswer($answer, $newQuestion->id);
+        }
+    }
+
+    private function saveTextAnswer(string $answer, int $question_id, bool $is_exact) : int
+    {
+        $newAnswer = new Answer();
+        $newAnswer->title = $answer;
+        $newAnswer->is_correct = true;
+        $newAnswer->exact = $is_exact;
+        $newAnswer->question_id = $question_id;
+        $newAnswer->save();
+
+        return $newAnswer->id;
+    }
+
+    private function saveRadioAnswer(array $answer, int $question_id, bool $is_correct) : int
+    {
+        $newAnswer = new Answer();
+        $newAnswer->title = $answer['title'];
+        $newAnswer->is_correct = $is_correct;
+        $newAnswer->question_id = $question_id;
+        $newAnswer->save();
+
+        return $newAnswer->id;
+    }
+
+    private function saveCheckboxAnswer(array $answer, int $question_id) : int
+    {
+        $newAnswer = new Answer();
+        $newAnswer->title = $answer['title'];
+        $newAnswer->is_correct = $answer['isCorrect'];
+        $newAnswer->question_id = $question_id;
+        $newAnswer->save();
+
+        return $newAnswer->id;
     }
 
     public function showResults(Request $request, $test_id)
@@ -125,42 +215,6 @@ class TestController extends Controller
             'results_groups' => $results_groups,
             'test_id' => $test_id
         ]);
-    }
-
-
-
-    private function saveQuestion($question, $test_id)
-    {
-        $newQuestion = new Question();
-        $newQuestion->title = $question['title'];
-        $newQuestion->type = $question['type'];
-        $newQuestion->test_id = $test_id;
-        $newQuestion->save();
-
-        return $newQuestion->id;
-    }
-
-    private function saveAnswer($answer, $question_id)
-    {
-        $newAnswer = new Answer();
-        $newAnswer->title = $answer['title'];
-        $newAnswer->is_correct = isset($answer['is_correct']) ? true : false;
-        $newAnswer->question_id = $question_id;
-        $newAnswer->save();
-
-        return $newAnswer->id;
-    }
-
-    private function saveTest(Request $request) : int {
-        $newTest = new Test();
-        $newTest->user_id = $request->user()->id;
-        $newTest->title = $request->title;
-        $newTest->is_unidirectional = $request->is_unidirectional == 'false' ? false : true;
-        $newTest->start_time = $request->start_time;
-        $newTest->finish_time = $request->finish_time;
-        $newTest->save();
-
-        return $newTest->id;
     }
 
     private function get_number_of_correct_answers_in_test(int $test_id) : int {

@@ -6,7 +6,7 @@
 
         <div class="content uk-width-4-5 uk-padding">
             @can('start', $test)
-            <a href="{{ route('admin/testing.show', ['id' => $test->id]) }}"
+            <a href="{{ route('testing.show', ['id' => $test->id]) }}"
                class="uk-button uk-button-danger uk-margin-bottom">Пройти тест</a>
             @endcan
             @can('read', new \App\Result())

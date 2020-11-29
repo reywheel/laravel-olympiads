@@ -4,15 +4,16 @@
     <div class="area uk-child-width-expand" uk-grid>
         @include('partials.sidebar')
 
-        <div id="test-area"></div>
+        <div class="content uk-width-4-5 uk-padding" id="app">
+            <test-creator url="{{ route('admin/tests.store') }}"></test-creator>
+        </div>
+
     </div>
 
 @endsection
 
 @section('footer')
     @parent
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="{{ asset('js/testCreater.js') }}"></script>
     <script>
         let route = "{{ route('admin/tests.store') }}";
         let csrf = "{{ csrf_token() }}";
