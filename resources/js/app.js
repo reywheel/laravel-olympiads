@@ -27,6 +27,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('test-creator', require('./components/TestCreator').default);
+Vue.component('test-updater', require('./components/TestUpdater').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -1908,33 +1908,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -1951,76 +1924,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     index: {
       type: Number,
       required: true
-    },
-    questionData: {
-      type: Object,
-      required: true
-    }
-  },
-  data: function data() {
-    return {
-      question: {
-        title: '',
-        type: '',
-        answers: []
-      }
-    };
-  },
-  watch: {
-    questionData: {
-      handler: 'setData',
-      immediate: true
-    },
-    question: {
-      handler: function handler(newValue, oldValue) {
-        this.$emit('change', newValue);
-      },
-      deep: true
     }
   },
   methods: {
     destroy: function destroy() {
       this.$emit('destroy');
-    },
-    addAnswer: function addAnswer() {
-      this.question.answers.push(new checkboxAnswer());
-    },
-    deleteAnswer: function deleteAnswer(answerIndex) {
-      this.question.answers.splice(answerIndex, 1);
-    },
-    setData: function setData(data) {
-      this.question.title = data.title, this.question.type = data.type, this.question.answers = data.answers;
     }
   }
 });
-
-var baseAnswer = function baseAnswer() {
-  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-  _classCallCheck(this, baseAnswer);
-
-  this.title = text;
-};
-
-var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
-  _inherits(checkboxAnswer, _baseAnswer);
-
-  var _super = _createSuper(checkboxAnswer);
-
-  function checkboxAnswer(props) {
-    var _this;
-
-    var isCorrect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-    _classCallCheck(this, checkboxAnswer);
-
-    _this = _super.call(this, props);
-    _this.isCorrect = isCorrect;
-    return _this;
-  }
-
-  return checkboxAnswer;
-}(baseAnswer);
 
 /***/ }),
 
@@ -2033,33 +1944,6 @@ var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2076,71 +1960,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     index: {
       type: Number,
       required: true
-    },
-    questionData: {
-      type: Object,
-      required: true
-    }
-  },
-  data: function data() {
-    return {
-      question: {
-        title: '',
-        type: '',
-        correctAnswerIndex: 0,
-        answers: []
-      }
-    };
-  },
-  watch: {
-    questionData: {
-      handler: 'setData',
-      immediate: true
-    },
-    question: {
-      handler: function handler(newValue, oldValue) {
-        this.$emit('change', newValue);
-      },
-      deep: true
     }
   },
   methods: {
     destroy: function destroy() {
       this.$emit('destroy');
-    },
-    addAnswer: function addAnswer() {
-      this.question.answers.push(new radioAnswer());
-    },
-    deleteAnswer: function deleteAnswer(answerIndex) {
-      this.question.answers.splice(answerIndex, 1);
-    },
-    setData: function setData(data) {
-      this.question.title = data.title, this.question.type = data.type, this.question.answers = data.answers;
     }
   }
 });
-
-var baseAnswer = function baseAnswer() {
-  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-  _classCallCheck(this, baseAnswer);
-
-  this.title = text;
-};
-
-var radioAnswer = /*#__PURE__*/function (_baseAnswer) {
-  _inherits(radioAnswer, _baseAnswer);
-
-  var _super = _createSuper(radioAnswer);
-
-  function radioAnswer(props) {
-    _classCallCheck(this, radioAnswer);
-
-    return _super.call(this, props);
-  }
-
-  return radioAnswer;
-}(baseAnswer);
 
 /***/ }),
 
@@ -2252,12 +2079,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     url: {
       type: String,
       required: true
+    },
+    initialData: {
+      type: String,
+      required: false,
+      "default": ""
     }
   },
   data: function data() {
     return {
       title: '',
-      questions: []
+      questions: [],
+      start_time: '',
+      finish_time: '',
+      is_unidirectional: false
     };
   },
   components: {
@@ -2265,11 +2100,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     AppCheckboxQuestion: _CheckboxQuestion__WEBPACK_IMPORTED_MODULE_1__["default"],
     AppRadioQuestion: _RadioQuestion__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])({
-    test: function test(state) {
-      return state.testCreator.test;
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])({
+    isSubmitting: function isSubmitting(state) {
+      return state.testCreator.isSubmitting;
     }
-  })),
+  })), {}, {
+    test: function test() {
+      return {
+        title: this.title,
+        questions: this.questions,
+        start_time: this.start_time,
+        finish_time: this.finish_time,
+        is_unidirectional: this.is_unidirectional
+      };
+    },
+    localInitialData: function localInitialData() {
+      return JSON.parse(this.initialData);
+    }
+  }),
   methods: {
     addQuestion: function addQuestion(type) {
       switch (type) {
@@ -2295,11 +2143,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     formSubmit: function formSubmit() {
       this.$store.dispatch(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__["actionTypes"].createTest, {
+        test: this.test,
         url: this.url
       }).then(function (response) {
         console.log(response);
         window.location.href = response.data.testUrl;
       });
+    }
+  },
+  mounted: function mounted() {
+    if (this.initialData) {
+      var data = JSON.parse(this.initialData);
+      this.title = this.localInitialData.title;
+      this.questions = this.localInitialData.questions;
+      this.start_time = this.localInitialData.start_time.split(' ').join('T');
+      this.finish_time = this.localInitialData.finish_time.split(' ').join('T');
+      this.is_unidirectional = Boolean(this.localInitialData.is_unidirectional);
     }
   }
 });
@@ -2327,7 +2186,7 @@ var textQuestion = /*#__PURE__*/function (_baseQuestion) {
 
     _this = _super.call(this, props);
     _this.type = 'text';
-    _this.answer = '';
+    _this.answers = [new textAnswer()];
     _this.exact = exact;
     return _this;
   }
@@ -2382,10 +2241,24 @@ var baseAnswer = function baseAnswer() {
   this.title = text;
 };
 
-var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
-  _inherits(checkboxAnswer, _baseAnswer);
+var textAnswer = /*#__PURE__*/function (_baseAnswer) {
+  _inherits(textAnswer, _baseAnswer);
 
-  var _super4 = _createSuper(checkboxAnswer);
+  var _super4 = _createSuper(textAnswer);
+
+  function textAnswer(props) {
+    _classCallCheck(this, textAnswer);
+
+    return _super4.call(this, props);
+  }
+
+  return textAnswer;
+}(baseAnswer);
+
+var checkboxAnswer = /*#__PURE__*/function (_baseAnswer2) {
+  _inherits(checkboxAnswer, _baseAnswer2);
+
+  var _super5 = _createSuper(checkboxAnswer);
 
   function checkboxAnswer(props) {
     var _this4;
@@ -2394,7 +2267,7 @@ var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
 
     _classCallCheck(this, checkboxAnswer);
 
-    _this4 = _super4.call(this, props);
+    _this4 = _super5.call(this, props);
     _this4.isCorrect = isCorrect;
     return _this4;
   }
@@ -2402,15 +2275,402 @@ var checkboxAnswer = /*#__PURE__*/function (_baseAnswer) {
   return checkboxAnswer;
 }(baseAnswer);
 
-var radioAnswer = /*#__PURE__*/function (_baseAnswer2) {
-  _inherits(radioAnswer, _baseAnswer2);
+var radioAnswer = /*#__PURE__*/function (_baseAnswer3) {
+  _inherits(radioAnswer, _baseAnswer3);
 
-  var _super5 = _createSuper(radioAnswer);
+  var _super6 = _createSuper(radioAnswer);
 
   function radioAnswer(props) {
     _classCallCheck(this, radioAnswer);
 
-    return _super5.call(this, props);
+    return _super6.call(this, props);
+  }
+
+  return radioAnswer;
+}(baseAnswer);
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestUpdater.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TestUpdater.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TextQuestion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextQuestion */ "./resources/js/components/TextQuestion.vue");
+/* harmony import */ var _CheckboxQuestion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CheckboxQuestion */ "./resources/js/components/CheckboxQuestion.vue");
+/* harmony import */ var _RadioQuestion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RadioQuestion */ "./resources/js/components/RadioQuestion.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/modules/testCreator */ "./resources/js/store/modules/testCreator.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "TestUpdater",
+  props: {
+    url: {
+      type: String,
+      required: true
+    },
+    initialData: {
+      type: String,
+      required: false,
+      "default": ""
+    }
+  },
+  data: function data() {
+    return {
+      title: '',
+      questions: [],
+      start_time: '',
+      finish_time: '',
+      is_unidirectional: false
+    };
+  },
+  components: {
+    AppTextQuestion: _TextQuestion__WEBPACK_IMPORTED_MODULE_0__["default"],
+    AppCheckboxQuestion: _CheckboxQuestion__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AppRadioQuestion: _RadioQuestion__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])({
+    isSubmitting: function isSubmitting(state) {
+      return state.testCreator.isSubmitting;
+    }
+  })), {}, {
+    test: function test() {
+      return {
+        title: this.title,
+        questions: this.questions,
+        start_time: this.start_time,
+        finish_time: this.finish_time,
+        is_unidirectional: this.is_unidirectional
+      };
+    },
+    localInitialData: function localInitialData() {
+      return JSON.parse(this.initialData);
+    }
+  }),
+  methods: {
+    addQuestion: function addQuestion(type) {
+      switch (type) {
+        case 'text':
+          this.questions.push(new textQuestion());
+          break;
+
+        case 'radio':
+          this.questions.push(new radioQuestion());
+          break;
+
+        case 'checkbox':
+          this.questions.push(new checkboxQuestion());
+          break;
+      }
+    },
+    deleteQuestion: function deleteQuestion(index) {
+      console.log(index);
+      this.questions.splice(index, 1);
+    },
+    addAnswer: function addAnswer(questionIndex, type) {
+      var newAnswer;
+
+      switch (type) {
+        case 'text':
+          newAnswer = new textAnswer();
+          break;
+
+        case 'radio':
+          newAnswer = new radioAnswer();
+          break;
+
+        case 'checkbox':
+          newAnswer = new checkboxAnswer();
+          break;
+      }
+
+      this.questions[questionIndex].answers.push(newAnswer);
+    },
+    deleteAnswer: function deleteAnswer(questionIndex, answerIndex) {
+      this.questions[questionIndex].answers.splice(answerIndex, 1);
+    },
+    formSubmit: function formSubmit() {
+      this.$store.dispatch(_store_modules_testCreator__WEBPACK_IMPORTED_MODULE_4__["actionTypes"].updateTest, {
+        test: this.test,
+        url: this.url
+      }).then(function (response) {
+        console.log(response);
+        window.location.href = response.data.testUrl;
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (this.initialData) {
+      this.title = this.localInitialData.title;
+      this.questions = this.localInitialData.questions.map(function (question, index) {
+        if (question.type === 'radio') {
+          var correctAnswerIndex = question.answers.reduce(function (correctIndex, answer, index) {
+            if (answer.is_correct) {
+              return index;
+            } else return correctIndex;
+          }, 0);
+
+          _this.$set(question, 'correctAnswerIndex', correctAnswerIndex);
+        }
+
+        return question;
+      });
+      this.start_time = this.localInitialData.start_time.split(' ').join('T');
+      this.finish_time = this.localInitialData.finish_time.split(' ').join('T');
+      this.is_unidirectional = Boolean(this.localInitialData.is_unidirectional);
+    }
+  }
+});
+
+var baseQuestion = function baseQuestion() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  _classCallCheck(this, baseQuestion);
+
+  this.type = 'baseQuestion';
+  this.title = text;
+};
+
+var textQuestion = /*#__PURE__*/function (_baseQuestion) {
+  _inherits(textQuestion, _baseQuestion);
+
+  var _super = _createSuper(textQuestion);
+
+  function textQuestion(props) {
+    var _this2;
+
+    var exact = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    _classCallCheck(this, textQuestion);
+
+    _this2 = _super.call(this, props);
+    _this2.type = 'text';
+    _this2.answers = [new textAnswer()];
+    _this2.exact = exact;
+    return _this2;
+  }
+
+  return textQuestion;
+}(baseQuestion);
+
+var checkboxQuestion = /*#__PURE__*/function (_baseQuestion2) {
+  _inherits(checkboxQuestion, _baseQuestion2);
+
+  var _super2 = _createSuper(checkboxQuestion);
+
+  function checkboxQuestion(props) {
+    var _this3;
+
+    _classCallCheck(this, checkboxQuestion);
+
+    _this3 = _super2.call(this, props);
+    _this3.type = 'checkbox';
+    _this3.answers = [new checkboxAnswer('', true), new checkboxAnswer(), new checkboxAnswer()];
+    return _this3;
+  }
+
+  return checkboxQuestion;
+}(baseQuestion);
+
+var radioQuestion = /*#__PURE__*/function (_baseQuestion3) {
+  _inherits(radioQuestion, _baseQuestion3);
+
+  var _super3 = _createSuper(radioQuestion);
+
+  function radioQuestion(props) {
+    var _this4;
+
+    _classCallCheck(this, radioQuestion);
+
+    _this4 = _super3.call(this, props);
+    _this4.type = 'radio';
+    _this4.answers = [new radioAnswer(), new radioAnswer(), new radioAnswer()];
+    _this4.correctAnswerIndex = 0;
+    return _this4;
+  }
+
+  return radioQuestion;
+}(baseQuestion);
+
+var baseAnswer = function baseAnswer() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  _classCallCheck(this, baseAnswer);
+
+  this.title = text;
+};
+
+var textAnswer = /*#__PURE__*/function (_baseAnswer) {
+  _inherits(textAnswer, _baseAnswer);
+
+  var _super4 = _createSuper(textAnswer);
+
+  function textAnswer(props) {
+    _classCallCheck(this, textAnswer);
+
+    return _super4.call(this, props);
+  }
+
+  return textAnswer;
+}(baseAnswer);
+
+var checkboxAnswer = /*#__PURE__*/function (_baseAnswer2) {
+  _inherits(checkboxAnswer, _baseAnswer2);
+
+  var _super5 = _createSuper(checkboxAnswer);
+
+  function checkboxAnswer(props) {
+    var _this5;
+
+    var is_correct = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    _classCallCheck(this, checkboxAnswer);
+
+    _this5 = _super5.call(this, props);
+    _this5.is_correct = is_correct;
+    return _this5;
+  }
+
+  return checkboxAnswer;
+}(baseAnswer);
+
+var radioAnswer = /*#__PURE__*/function (_baseAnswer3) {
+  _inherits(radioAnswer, _baseAnswer3);
+
+  var _super6 = _createSuper(radioAnswer);
+
+  function radioAnswer(props) {
+    _classCallCheck(this, radioAnswer);
+
+    return _super6.call(this, props);
   }
 
   return radioAnswer;
@@ -2439,54 +2699,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TextQuestion",
   props: {
     index: {
       type: Number,
       required: true
-    },
-    questionData: {
-      type: Object,
-      required: true
-    }
-  },
-  data: function data() {
-    return {
-      question: {
-        title: '',
-        exact: '',
-        type: '',
-        answer: ''
-      }
-    };
-  },
-  watch: {
-    questionData: {
-      handler: 'setData',
-      immediate: true
-    },
-    question: {
-      handler: function handler(newValue) {
-        this.$emit('change', newValue);
-      },
-      deep: true
     }
   },
   methods: {
     destroy: function destroy() {
       this.$emit('destroy');
-    },
-    setData: function setData(data) {
-      this.question.title = data.title, this.question.exact = data.exact, this.question.type = data.type, this.question.answer = data.answer;
     }
   }
 });
@@ -2543,7 +2766,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.form__dates[data-v-90228dc2] {\n    display: flex;\n    align-items: center;\n}\n.form__dates-input[data-v-90228dc2]:first-child {\n        margin-right: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.form__dates[data-v-90228dc2] {\n    display: flex;\n    align-items: center;\n}\n.form__dates-input[data-v-90228dc2]:first-child {\n    margin-right: 20px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.form__dates[data-v-bbc8f988] {\n    display: flex;\n    align-items: center;\n}\n.form__dates-input[data-v-bbc8f988]:first-child {\n    margin-right: 20px;\n}\n", ""]);
 
 // exports
 
@@ -14002,6 +14244,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TestCreator.vue?vue&type=style&index=0&id=90228dc2&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestCreator.vue?vue&type=style&index=0&id=90228dc2&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -26990,128 +27262,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "uk-margin" }, [
-        _c("label", { staticClass: "uk-form-label", attrs: { for: "text" } }, [
-          _vm._v("Текст вопроса")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.question.title,
-              expression: "question.title"
-            }
-          ],
-          staticClass: "uk-input uk-margin-bottom",
-          attrs: { type: "text", id: "text" },
-          domProps: { value: _vm.question.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.question, "title", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "uk-button uk-button-primary",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.addAnswer($event)
-              }
-            }
-          },
-          [_vm._v("Добавить вариант ответа")]
-        )
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.question.answers, function(answer, index) {
-        return _c("div", { staticClass: "uk-margin question__answer" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: answer.title,
-                expression: "answer.title"
-              }
-            ],
-            staticClass: "uk-input uk-width-2-3",
-            attrs: { type: "text", id: "title" },
-            domProps: { value: answer.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(answer, "title", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: answer.isCorrect,
-                expression: "answer.isCorrect"
-              }
-            ],
-            staticClass: "uk-checkbox",
-            attrs: { type: "checkbox" },
-            domProps: {
-              checked: answer.isCorrect,
-              checked: Array.isArray(answer.isCorrect)
-                ? _vm._i(answer.isCorrect, null) > -1
-                : answer.isCorrect
-            },
-            on: {
-              change: function($event) {
-                var $$a = answer.isCorrect,
-                  $$el = $event.target,
-                  $$c = $$el.checked ? true : false
-                if (Array.isArray($$a)) {
-                  var $$v = null,
-                    $$i = _vm._i($$a, $$v)
-                  if ($$el.checked) {
-                    $$i < 0 && _vm.$set(answer, "isCorrect", $$a.concat([$$v]))
-                  } else {
-                    $$i > -1 &&
-                      _vm.$set(
-                        answer,
-                        "isCorrect",
-                        $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                      )
-                  }
-                } else {
-                  _vm.$set(answer, "isCorrect", $$c)
-                }
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", {
-              staticClass: "uk-text-danger",
-              attrs: { href: "#", "uk-icon": "icon: trash" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.deleteAnswer(index)
-                }
-              }
-            })
-          ])
-        ])
-      })
+      _vm._t("default")
     ],
     2
   )
@@ -27159,109 +27310,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "uk-margin" }, [
-        _c("label", { staticClass: "uk-form-label", attrs: { for: "text" } }, [
-          _vm._v("Текст вопроса")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.question.title,
-              expression: "question.title"
-            }
-          ],
-          staticClass: "uk-input uk-margin-bottom",
-          attrs: { type: "text", id: "text" },
-          domProps: { value: _vm.question.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.question, "title", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "uk-button uk-button-primary",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.addAnswer($event)
-              }
-            }
-          },
-          [_vm._v("Добавить вариант ответа")]
-        )
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.question.answers, function(answer, index) {
-        return _c("div", { staticClass: "uk-margin question__answer" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: answer.title,
-                expression: "answer.title"
-              }
-            ],
-            staticClass: "uk-input uk-width-2-3",
-            attrs: { type: "text", id: "title" },
-            domProps: { value: answer.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(answer, "title", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.question.correctAnswerIndex,
-                expression: "question.correctAnswerIndex"
-              }
-            ],
-            staticClass: "uk-radio",
-            attrs: { type: "radio" },
-            domProps: {
-              checked: _vm.question.correctAnswerIndex === index,
-              value: index,
-              checked: _vm._q(_vm.question.correctAnswerIndex, index)
-            },
-            on: {
-              change: function($event) {
-                return _vm.$set(_vm.question, "correctAnswerIndex", index)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", {
-              staticClass: "uk-text-danger",
-              attrs: { href: "#", "uk-icon": "icon: trash" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.deleteAnswer(index)
-                }
-              }
-            })
-          ])
-        ])
-      })
+      _vm._t("default")
     ],
     2
   )
@@ -27349,19 +27398,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.test.start_time,
-                    expression: "test.start_time"
+                    value: _vm.start_time,
+                    expression: "start_time"
                   }
                 ],
                 staticClass: "uk-input",
                 attrs: { type: "datetime-local" },
-                domProps: { value: _vm.test.start_time },
+                domProps: { value: _vm.start_time },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.test, "start_time", $event.target.value)
+                    _vm.start_time = $event.target.value
                   }
                 }
               })
@@ -27377,19 +27426,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.test.finish_time,
-                    expression: "test.finish_time"
+                    value: _vm.finish_time,
+                    expression: "finish_time"
                   }
                 ],
                 staticClass: "uk-input",
                 attrs: { type: "datetime-local" },
-                domProps: { value: _vm.test.finish_time },
+                domProps: { value: _vm.finish_time },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.test, "finish_time", $event.target.value)
+                    _vm.finish_time = $event.target.value
                   }
                 }
               })
@@ -27410,19 +27459,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.test.is_unidirectional,
-                      expression: "test.is_unidirectional"
+                      value: _vm.is_unidirectional,
+                      expression: "is_unidirectional"
                     }
                   ],
                   staticClass: "uk-radio",
                   attrs: { type: "radio" },
                   domProps: {
                     value: true,
-                    checked: _vm._q(_vm.test.is_unidirectional, true)
+                    checked: _vm._q(_vm.is_unidirectional, true)
                   },
                   on: {
                     change: function($event) {
-                      return _vm.$set(_vm.test, "is_unidirectional", true)
+                      _vm.is_unidirectional = true
                     }
                   }
                 }),
@@ -27435,19 +27484,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.test.is_unidirectional,
-                      expression: "test.is_unidirectional"
+                      value: _vm.is_unidirectional,
+                      expression: "is_unidirectional"
                     }
                   ],
                   staticClass: "uk-radio",
                   attrs: { type: "radio" },
                   domProps: {
                     value: false,
-                    checked: _vm._q(_vm.test.is_unidirectional, false)
+                    checked: _vm._q(_vm.is_unidirectional, false)
                   },
                   on: {
                     change: function($event) {
-                      return _vm.$set(_vm.test, "is_unidirectional", false)
+                      _vm.is_unidirectional = false
                     }
                   }
                 }),
@@ -27456,9 +27505,14 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("button", { staticClass: "uk-button uk-button-primary" }, [
-            _vm._v("Сохранить")
-          ])
+          _c(
+            "button",
+            {
+              staticClass: "uk-button uk-button-primary",
+              attrs: { disabled: _vm.isSubmitting }
+            },
+            [_vm._v("Сохранить")]
+          )
         ]
       ),
       _vm._v(" "),
@@ -27565,6 +27619,749 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestUpdater.vue?vue&type=template&id=bbc8f988&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TestUpdater.vue?vue&type=template&id=bbc8f988&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: { action: "" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.formSubmit($event)
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "uk-card uk-card-body uk-card-default uk-margin-bottom"
+        },
+        [
+          _c("legend", { staticClass: "uk-legend" }, [
+            _vm._v("Изменение теста")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-margin" }, [
+            _c("label", { staticClass: "uk-form-label" }, [
+              _vm._v("Название теста")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title,
+                  expression: "title"
+                }
+              ],
+              staticClass: "uk-input",
+              attrs: { type: "text" },
+              domProps: { value: _vm.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "uk-margin form__dates" }, [
+            _c("div", { staticClass: "uk-width-1-3 form__dates-input" }, [
+              _c("label", { staticClass: "uk-form-label" }, [
+                _vm._v("Начало теста")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.start_time,
+                    expression: "start_time"
+                  }
+                ],
+                staticClass: "uk-input",
+                attrs: { type: "datetime-local" },
+                domProps: { value: _vm.start_time },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.start_time = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "uk-width-1-3 form__dates-input" }, [
+              _c("label", { staticClass: "uk-form-label" }, [
+                _vm._v("Конец теста")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.finish_time,
+                    expression: "finish_time"
+                  }
+                ],
+                staticClass: "uk-input",
+                attrs: { type: "datetime-local" },
+                domProps: { value: _vm.finish_time },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.finish_time = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "uk-margin uk-grid-small uk-child-width-auto uk-grid"
+            },
+            [
+              _c("p", [_vm._v("Однонаправленный")]),
+              _vm._v(" "),
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.is_unidirectional,
+                      expression: "is_unidirectional"
+                    }
+                  ],
+                  staticClass: "uk-radio",
+                  attrs: { type: "radio" },
+                  domProps: {
+                    value: true,
+                    checked: _vm._q(_vm.is_unidirectional, true)
+                  },
+                  on: {
+                    change: function($event) {
+                      _vm.is_unidirectional = true
+                    }
+                  }
+                }),
+                _vm._v(" Да")
+              ]),
+              _vm._v(" "),
+              _c("label", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.is_unidirectional,
+                      expression: "is_unidirectional"
+                    }
+                  ],
+                  staticClass: "uk-radio",
+                  attrs: { type: "radio" },
+                  domProps: {
+                    value: false,
+                    checked: _vm._q(_vm.is_unidirectional, false)
+                  },
+                  on: {
+                    change: function($event) {
+                      _vm.is_unidirectional = false
+                    }
+                  }
+                }),
+                _vm._v(" Нет")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "uk-button uk-button-primary",
+              attrs: { disabled: _vm.isSubmitting }
+            },
+            [_vm._v("Сохранить")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.questions, function(question, questionIndex) {
+        return [
+          question.type === "text"
+            ? _c("app-text-question", {
+                staticClass: "uk-margin-bottom",
+                attrs: { index: questionIndex },
+                on: {
+                  destroy: function($event) {
+                    return _vm.deleteQuestion(questionIndex)
+                  }
+                },
+                scopedSlots: _vm._u(
+                  [
+                    {
+                      key: "default",
+                      fn: function() {
+                        return [
+                          _c("label", { staticClass: "uk-form-label" }, [
+                            _vm._v("Текст вопроса")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: question.title,
+                                expression: "question.title"
+                              }
+                            ],
+                            staticClass: "uk-input uk-margin-bottom",
+                            attrs: { type: "text", required: "" },
+                            domProps: { value: question.title },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(question, "title", $event.target.value)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "uk-form-label" }, [
+                            _vm._v("Ответ")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: question.answers[0].title,
+                                expression: "question.answers[0].title"
+                              }
+                            ],
+                            staticClass: "uk-input",
+                            attrs: { type: "text", required: "" },
+                            domProps: { value: question.answers[0].title },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  question.answers[0],
+                                  "title",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "uk-margin uk-grid-small uk-child-width-auto uk-grid"
+                            },
+                            [
+                              _c("label", [
+                                _vm._v(
+                                  "Точное соответствие\n                        "
+                                ),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: question.answers[0].exact,
+                                      expression: "question.answers[0].exact"
+                                    }
+                                  ],
+                                  staticClass: "uk-checkbox",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    checked: question.answers[0].exact,
+                                    checked: Array.isArray(
+                                      question.answers[0].exact
+                                    )
+                                      ? _vm._i(
+                                          question.answers[0].exact,
+                                          null
+                                        ) > -1
+                                      : question.answers[0].exact
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = question.answers[0].exact,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            _vm.$set(
+                                              question.answers[0],
+                                              "exact",
+                                              $$a.concat([$$v])
+                                            )
+                                        } else {
+                                          $$i > -1 &&
+                                            _vm.$set(
+                                              question.answers[0],
+                                              "exact",
+                                              $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1))
+                                            )
+                                        }
+                                      } else {
+                                        _vm.$set(
+                                          question.answers[0],
+                                          "exact",
+                                          $$c
+                                        )
+                                      }
+                                    }
+                                  }
+                                })
+                              ])
+                            ]
+                          )
+                        ]
+                      },
+                      proxy: true
+                    }
+                  ],
+                  null,
+                  true
+                )
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          question.type === "radio"
+            ? _c("app-radio-question", {
+                staticClass: "uk-margin-bottom",
+                attrs: { index: questionIndex },
+                on: {
+                  destroy: function($event) {
+                    return _vm.deleteQuestion(questionIndex)
+                  }
+                },
+                scopedSlots: _vm._u(
+                  [
+                    {
+                      key: "default",
+                      fn: function() {
+                        return [
+                          _c("div", { staticClass: "uk-margin" }, [
+                            _c("label", { staticClass: "uk-form-label" }, [
+                              _vm._v("Текст вопроса")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: question.title,
+                                  expression: "question.title"
+                                }
+                              ],
+                              staticClass: "uk-input uk-margin-bottom",
+                              attrs: { type: "text", required: "" },
+                              domProps: { value: question.title },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    question,
+                                    "title",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "uk-button uk-button-primary",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.addAnswer(questionIndex, "radio")
+                                  }
+                                }
+                              },
+                              [_vm._v("Добавить вариант ответа")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(question.answers, function(
+                            answer,
+                            answerIndex
+                          ) {
+                            return _c(
+                              "div",
+                              { staticClass: "uk-margin question__answer" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: answer.title,
+                                      expression: "answer.title"
+                                    }
+                                  ],
+                                  staticClass: "uk-input uk-width-2-3",
+                                  attrs: { type: "text", required: "" },
+                                  domProps: { value: answer.title },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        answer,
+                                        "title",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: question.correctAnswerIndex,
+                                      expression: "question.correctAnswerIndex"
+                                    }
+                                  ],
+                                  staticClass: "uk-radio",
+                                  attrs: { type: "radio" },
+                                  domProps: {
+                                    checked:
+                                      question.correctAnswerIndex ===
+                                      answerIndex,
+                                    value: answerIndex,
+                                    checked: _vm._q(
+                                      question.correctAnswerIndex,
+                                      answerIndex
+                                    )
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      return _vm.$set(
+                                        question,
+                                        "correctAnswerIndex",
+                                        answerIndex
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("li", [
+                                  _c("a", {
+                                    staticClass: "uk-text-danger",
+                                    attrs: {
+                                      href: "#",
+                                      "uk-icon": "icon: trash"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deleteAnswer(
+                                          questionIndex,
+                                          answerIndex
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              ]
+                            )
+                          })
+                        ]
+                      },
+                      proxy: true
+                    }
+                  ],
+                  null,
+                  true
+                )
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          question.type === "checkbox"
+            ? _c("app-checkbox-question", {
+                staticClass: "uk-margin-bottom",
+                attrs: { index: questionIndex },
+                on: {
+                  destroy: function($event) {
+                    return _vm.deleteQuestion(questionIndex)
+                  }
+                },
+                scopedSlots: _vm._u(
+                  [
+                    {
+                      key: "default",
+                      fn: function() {
+                        return [
+                          _c("div", { staticClass: "uk-margin" }, [
+                            _c("label", { staticClass: "uk-form-label" }, [
+                              _vm._v("Текст вопроса")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: question.title,
+                                  expression: "question.title"
+                                }
+                              ],
+                              staticClass: "uk-input uk-margin-bottom",
+                              attrs: { type: "text", required: "" },
+                              domProps: { value: question.title },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    question,
+                                    "title",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "uk-button uk-button-primary",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.addAnswer(
+                                      questionIndex,
+                                      "checkbox"
+                                    )
+                                  }
+                                }
+                              },
+                              [_vm._v("Добавить вариант ответа")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(question.answers, function(
+                            answer,
+                            answerIndex
+                          ) {
+                            return _c(
+                              "div",
+                              { staticClass: "uk-margin question__answer" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: answer.title,
+                                      expression: "answer.title"
+                                    }
+                                  ],
+                                  staticClass: "uk-input uk-width-2-3",
+                                  attrs: { type: "text", required: "" },
+                                  domProps: { value: answer.title },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        answer,
+                                        "title",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: answer.is_correct,
+                                      expression: "answer.is_correct"
+                                    }
+                                  ],
+                                  staticClass: "uk-checkbox",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    checked: answer.is_correct,
+                                    checked: Array.isArray(answer.is_correct)
+                                      ? _vm._i(answer.is_correct, null) > -1
+                                      : answer.is_correct
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = answer.is_correct,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            _vm.$set(
+                                              answer,
+                                              "is_correct",
+                                              $$a.concat([$$v])
+                                            )
+                                        } else {
+                                          $$i > -1 &&
+                                            _vm.$set(
+                                              answer,
+                                              "is_correct",
+                                              $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1))
+                                            )
+                                        }
+                                      } else {
+                                        _vm.$set(answer, "is_correct", $$c)
+                                      }
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("li", [
+                                  _c("a", {
+                                    staticClass: "uk-text-danger",
+                                    attrs: {
+                                      href: "#",
+                                      "uk-icon": "icon: trash"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deleteAnswer(
+                                          questionIndex,
+                                          answerIndex
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              ]
+                            )
+                          })
+                        ]
+                      },
+                      proxy: true
+                    }
+                  ],
+                  null,
+                  true
+                )
+              })
+            : _vm._e()
+        ]
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "uk-button-group" }, [
+        _c(
+          "button",
+          {
+            staticClass: "uk-button uk-button-primary",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.addQuestion("text")
+              }
+            }
+          },
+          [_vm._v("Текстовый")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "uk-button uk-button-primary",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.addQuestion("radio")
+              }
+            }
+          },
+          [_vm._v("Radio")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "uk-button uk-button-primary",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.addQuestion("checkbox")
+              }
+            }
+          },
+          [_vm._v("Checkbox")]
+        )
+      ])
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TextQuestion.vue?vue&type=template&id=07538a9e&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TextQuestion.vue?vue&type=template&id=07538a9e&scoped=true& ***!
@@ -27598,107 +28395,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "uk-margin" }, [
-      _c("label", { staticClass: "uk-form-label" }, [_vm._v("Текст вопроса")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.question.title,
-            expression: "question.title"
-          }
-        ],
-        staticClass: "uk-input uk-margin-bottom",
-        attrs: { type: "text" },
-        domProps: { value: _vm.question.title },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.question, "title", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("label", { staticClass: "uk-form-label" }, [_vm._v("Ответ")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.question.answer,
-            expression: "question.answer"
-          }
-        ],
-        staticClass: "uk-input",
-        attrs: { type: "text" },
-        domProps: { value: _vm.question.answer },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.question, "answer", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "uk-margin uk-grid-small uk-child-width-auto uk-grid" },
-        [
-          _c("label", [
-            _vm._v("Точное соответствие\n                "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.question.exact,
-                  expression: "question.exact"
-                }
-              ],
-              staticClass: "uk-checkbox",
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: _vm.question.exact,
-                checked: Array.isArray(_vm.question.exact)
-                  ? _vm._i(_vm.question.exact, null) > -1
-                  : _vm.question.exact
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.question.exact,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 &&
-                        _vm.$set(_vm.question, "exact", $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        _vm.$set(
-                          _vm.question,
-                          "exact",
-                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                        )
-                    }
-                  } else {
-                    _vm.$set(_vm.question, "exact", $$c)
-                  }
-                }
-              }
-            })
-          ])
-        ]
-      )
-    ])
+    _c("div", { staticClass: "uk-margin" }, [_vm._t("default")], 2)
   ])
 }
 var staticRenderFns = []
@@ -41138,6 +41835,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('test-creator', __webpack_require__(/*! ./components/TestCreator */ "./resources/js/components/TestCreator.vue")["default"]);
+Vue.component('test-updater', __webpack_require__(/*! ./components/TestUpdater */ "./resources/js/components/TestUpdater.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -41457,6 +42155,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/TestUpdater.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/TestUpdater.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TestUpdater_vue_vue_type_template_id_bbc8f988_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TestUpdater.vue?vue&type=template&id=bbc8f988&scoped=true& */ "./resources/js/components/TestUpdater.vue?vue&type=template&id=bbc8f988&scoped=true&");
+/* harmony import */ var _TestUpdater_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TestUpdater.vue?vue&type=script&lang=js& */ "./resources/js/components/TestUpdater.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TestUpdater_vue_vue_type_style_index_0_id_bbc8f988_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css& */ "./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TestUpdater_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TestUpdater_vue_vue_type_template_id_bbc8f988_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TestUpdater_vue_vue_type_template_id_bbc8f988_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "bbc8f988",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/TestUpdater.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/TestUpdater.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/TestUpdater.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./TestUpdater.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestUpdater.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css& ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_style_index_0_id_bbc8f988_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestUpdater.vue?vue&type=style&index=0&id=bbc8f988&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_style_index_0_id_bbc8f988_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_style_index_0_id_bbc8f988_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_style_index_0_id_bbc8f988_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_style_index_0_id_bbc8f988_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_style_index_0_id_bbc8f988_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/TestUpdater.vue?vue&type=template&id=bbc8f988&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/TestUpdater.vue?vue&type=template&id=bbc8f988&scoped=true& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_template_id_bbc8f988_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./TestUpdater.vue?vue&type=template&id=bbc8f988&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TestUpdater.vue?vue&type=template&id=bbc8f988&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_template_id_bbc8f988_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestUpdater_vue_vue_type_template_id_bbc8f988_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/TextQuestion.vue":
 /*!**************************************************!*\
   !*** ./resources/js/components/TextQuestion.vue ***!
@@ -41586,7 +42371,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actionTypes", function() { return actionTypes; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-var _mutations;
+var _mutations, _actions;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -41729,10 +42514,14 @@ var mutationTypes = {
   deleteAnswer: '[testCreator] deleteAnswer',
   createTestStart: '[testCreator] createTestStart',
   createTestSuccess: '[testCreator] createTestSuccess',
-  createTestFailure: '[testCreator] createTestFailure'
+  createTestFailure: '[testCreator] createTestFailure',
+  updateTestStart: '[testCreator] updateTestStart',
+  updateTestSuccess: '[testCreator] updateTestSuccess',
+  updateTestFailure: '[testCreator] updateTestFailure'
 };
 var actionTypes = {
-  createTest: '[testCreator] createTest'
+  createTest: '[testCreator] createTest',
+  updateTest: '[testCreator] updateTest'
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
@@ -41792,12 +42581,21 @@ var actionTypes = {
   }), _defineProperty(_mutations, mutationTypes.createTestFailure, function (state, errors) {
     state.isSubmitting = false;
     state.errors = errors;
+  }), _defineProperty(_mutations, mutationTypes.updateTestStart, function (state) {
+    state.isSubmitting = true;
+    state.errors = null;
+  }), _defineProperty(_mutations, mutationTypes.updateTestSuccess, function (state) {
+    state.isSubmitting = false;
+  }), _defineProperty(_mutations, mutationTypes.updateTestFailure, function (state, errors) {
+    state.isSubmitting = false;
+    state.errors = errors;
   }), _mutations),
-  actions: _defineProperty({}, actionTypes.createTest, function (context, _ref3) {
-    var url = _ref3.url;
+  actions: (_actions = {}, _defineProperty(_actions, actionTypes.createTest, function (context, _ref3) {
+    var test = _ref3.test,
+        url = _ref3.url;
     context.commit(mutationTypes.createTestStart);
     return new Promise(function (resolve) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, context.state.test).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, test).then(function (response) {
         context.commit(mutationTypes.createTestSuccess);
         resolve(response);
       })["catch"](function (errors) {
@@ -41805,7 +42603,20 @@ var actionTypes = {
         console.log(errors);
       });
     });
-  })
+  }), _defineProperty(_actions, actionTypes.updateTest, function (context, _ref4) {
+    var test = _ref4.test,
+        url = _ref4.url;
+    context.commit(mutationTypes.updateTestStart);
+    return new Promise(function (resolve) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, test).then(function (response) {
+        context.commit(mutationTypes.updateTestSuccess);
+        resolve(response);
+      })["catch"](function (errors) {
+        context.commit(mutationTypes.updateTestFailure);
+        console.log(errors);
+      });
+    });
+  }), _actions)
 });
 
 /***/ }),
@@ -41835,3 +42646,4 @@ module.exports = __webpack_require__(/*! E:\Programs\OpenServer\OSPanel\domains\
 /***/ })
 
 /******/ });
+//# sourceMappingURL=app.js.map

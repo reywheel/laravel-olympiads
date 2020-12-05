@@ -69,21 +69,31 @@ class TestController extends Controller
             $this->saveQuestionsAndAnswers($request->questions, $new_test_id);
         }
 
-        return json_encode([
+        return response()->json([
             'testUrl' => route('admin/tests.show', ['test' => $new_test_id])
-        ]);
+        ], 200);
     }
 
     public function edit($test_id)
     {
-        // TODO:
-        return "Страница редактирования";
+        $test = Test::with('questions')->with('questions.answers')->find($test_id);
+        return view('admin.tests.edit', ['test' => $test]);
     }
 
     public function update(Request $request, $test_id)
     {
-        // TODO:
-        return redirect()->route('admin/tests.show', ['test' => $test_id]);
+        $test = Test::findOrFail($test_id);
+        $test->update($request->only(['title', 'is_unidirectional', 'start_time', 'finish_time']));
+
+        Question::where('test_id', $test_id)->delete();
+
+        if (isset($request->questions)) {
+            $this->saveQuestionsAndAnswers($request->questions, $test_id);
+        }
+
+        return response()->json([
+            'testUrl' => route('admin/tests.show', ['test' => $test_id])
+        ], 200);
     }
 
     public function destroy($test_id)
@@ -96,7 +106,7 @@ class TestController extends Controller
         $newTest = new Test();
         $newTest->user_id = $request->user()->id;
         $newTest->title = $request->title;
-        $newTest->is_unidirectional = $request->is_unidirectional == 'false' ? false : true;
+        $newTest->is_unidirectional = $request->is_unidirectional;
         $newTest->start_time = $request->start_time;
         $newTest->finish_time = $request->finish_time;
         $newTest->save();
@@ -123,7 +133,7 @@ class TestController extends Controller
         $newQuestion->test_id = $test_id;
         $newQuestion->save();
 
-        $this->saveTextAnswer($question['answer'], $newQuestion->id, $question['exact']);
+        $this->saveTextAnswer($question['answers'][0]['title'], $newQuestion->id, $question['answers'][0]['exact']);
     }
 
     private function saveRadioQuestion($question, $test_id)
@@ -180,7 +190,7 @@ class TestController extends Controller
     {
         $newAnswer = new Answer();
         $newAnswer->title = $answer['title'];
-        $newAnswer->is_correct = $answer['isCorrect'];
+        $newAnswer->is_correct = $answer['is_correct'];
         $newAnswer->question_id = $question_id;
         $newAnswer->save();
 

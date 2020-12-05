@@ -69,10 +69,15 @@ export const mutationTypes = {
     createTestStart: '[testCreator] createTestStart',
     createTestSuccess: '[testCreator] createTestSuccess',
     createTestFailure: '[testCreator] createTestFailure',
+
+    updateTestStart: '[testCreator] updateTestStart',
+    updateTestSuccess: '[testCreator] updateTestSuccess',
+    updateTestFailure: '[testCreator] updateTestFailure',
 }
 
 export const actionTypes = {
-    createTest: '[testCreator] createTest'
+    createTest: '[testCreator] createTest',
+    updateTest: '[testCreator] updateTest',
 }
 
 export default {
@@ -121,19 +126,45 @@ export default {
         [mutationTypes.createTestFailure](state, errors) {
             state.isSubmitting = false
             state.errors = errors
+        },
+
+        [mutationTypes.updateTestStart](state) {
+            state.isSubmitting = true
+            state.errors = null
+        },
+        [mutationTypes.updateTestSuccess](state) {
+            state.isSubmitting = false
+        },
+        [mutationTypes.updateTestFailure](state, errors) {
+            state.isSubmitting = false
+            state.errors = errors
         }
     },
     actions: {
-        [actionTypes.createTest](context, {url}) {
+        [actionTypes.createTest](context, {test, url}) {
             context.commit(mutationTypes.createTestStart)
             return new Promise(resolve => {
-                axios.post(url, context.state.test)
+                axios.post(url, test)
                     .then(response => {
                         context.commit(mutationTypes.createTestSuccess)
                         resolve(response)
                     })
                     .catch(errors => {
                         context.commit(mutationTypes.createTestFailure)
+                        console.log(errors)
+                    })
+            })
+        },
+        [actionTypes.updateTest](context, {test, url}) {
+            context.commit(mutationTypes.updateTestStart)
+            return new Promise(resolve => {
+                axios.put(url, test)
+                    .then(response => {
+                        context.commit(mutationTypes.updateTestSuccess)
+                        resolve(response)
+                    })
+                    .catch(errors => {
+                        context.commit(mutationTypes.updateTestFailure)
                         console.log(errors)
                     })
             })

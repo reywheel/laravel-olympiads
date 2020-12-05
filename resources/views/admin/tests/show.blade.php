@@ -13,6 +13,8 @@
             <a href="{{ route('tests.results', ['test_id' => $test->id]) }}"
                class="uk-button uk-button-secondary uk-margin-bottom">Результаты</a>
             @endcan
+            <a href="{{ route('admin/tests.edit', ['test' => $test->id]) }}"
+               class="uk-button uk-button-primary uk-margin-bottom">Отредактировать</a>
             <a href="{{ route('admin/tests.index') }}"
                class="uk-button uk-button-default uk-margin-bottom">Вернуться к тестам</a>
 

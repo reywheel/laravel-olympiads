@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Test extends Model
 {
-    protected $fillable = ['title', 'is_unidirectional', 'user_id'];
+    protected $fillable = ['title', 'is_unidirectional', 'start_time', 'finish_time'];
 
     public function user()
     {
